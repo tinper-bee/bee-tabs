@@ -1,0 +1,81 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+.cls{
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
+	zoom: 1;
+	color: #666;
+	border:1px solid ;
+	width: 300px;
+	.bee-tabs-nav{
+		&:before{
+			content: " ";
+			display:table;
+		}
+	    margin-bottom: 16px;
+	    box-sizing: border-box;
+	    padding-left: 0;
+	    -webkit-transition: -webkit-transform .5s cubic-bezier(.645,.045,.355,1);
+	    transition: -webkit-transform .5s cubic-bezier(.645,.045,.355,1);
+	    transition: transform .5s cubic-bezier(.645,.045,.355,1);
+	    transition: transform .5s cubic-bezier(.645,.045,.355,1),-webkit-transform .5s cubic-bezier(.645,.045,.355,1);
+	    position: relative;
+	    margin: 0;
+	    list-style: none;
+		overflow: hidden;
+		font-size: 14px;
+		line-height: 1.5;
+		box-sizing: border-box;
+		position: relative;
+		white-space: nowrap;
+		margin-bottom: -1px;
+		zoom: 1;
+	    .bee-tabs-tab{
+	    	&:before{
+	    		content: " ";
+	    		display: table;
+	    	}
+	    	margin: 0;
+		    border: 1px solid #d9d9d9;	   
+		    border-radius: 6px 6px 0 0;
+		    -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
+		    transition: all .3s cubic-bezier(.645,.045,.355,1);
+		    background: #f9f9f9;
+		    margin-right: 2px;
+		    padding: 5px 16px 4px;
+    	    float: left;
+			display: inline-block;
+			height: 100%;
+			box-sizing: border-box;
+			position: relative;
+			-webkit-transition: color .3s cubic-bezier(.645,.045,.355,1);
+			transition: color .3s cubic-bezier(.645,.045,.355,1);
+			cursor: pointer;
+			text-decoration: none;
+	    }
+	    .bee-tabs-tab-active{
+	    	background: #fff;
+    		border-bottom: 1px solid #fff;
+    		display: block;
+	    }
+	}
+	.bee-content-list{
+		border-bottom: 1px solid #d9d9d9;
+		height: 120px;
+		margin-top: -16px;
+		background: #fff;
+    	padding: 16px;
+    	.bee-content{
+    		width: 100%;
+    		display: inline-block;
+    		float: left;
+    		display: none;
+    	}
+    	.bee-content-active{
+    		display: block;
+    	}
+	}
+}
+
+    
