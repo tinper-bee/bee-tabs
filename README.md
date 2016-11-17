@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # bee-tabs
 [![npm version](https://img.shields.io/npm/v/bee-tabs.svg)](https://www.npmjs.com/package/bee-tabs)
 [![Build Status](https://img.shields.io/travis/tinper-bee/generator-tinper-bee/master.svg)](https://travis-ci.org/tinper-bee/bee-tabs)
@@ -30,7 +29,4 @@ $ cd bee-tabs
 $ npm install
 $ npm run dev
 ```
-=======
 # bee-tabs
-tabs
->>>>>>> 4bf89a872a182748d5ea6c30016f538d5b100add
