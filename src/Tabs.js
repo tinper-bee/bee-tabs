@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 const propTypesTabs = {
   	cls:React.PropTypes.string,
+  	nav:React.PropTypes.string,
+  	cont:React.PropTypes.string,
+  	suffix:React.PropTypes.string,
   	defaultActiveKey:React.PropTypes.string
 };
 const defaultPropsTabs = {
 	cls:'cls',
-	defaultActiveKey:"2"
+	nav:'simple',
+	cont:'simple',
+	navsuffix:'-tabs-nav',
+	contsuffix:'-tabs-content',
+	defaultActiveKey:"1"
 };
 class Tabs extends Component {
 	constructor(props) {
@@ -28,6 +36,11 @@ class Tabs extends Component {
 	formatChildren(v){
 		let arr = this.props.children;
 		let stateActiveKey = v||this.state.activeKey;
+		let nav = this.props.navtype||this.props.nav,
+			cont = this.props.contenttype||this.props.cont,
+			clsname = '';
+		clsname = `${nav}${this.props.navsuffix} ${cont}${this.props.contsuffix}`;
+
 		const navArr = [];
 		const contentArr = [];
 		arr.forEach((e)=>{
@@ -40,7 +53,7 @@ class Tabs extends Component {
 			contentArr.push(<div className={cont_active} data-id={key} key={key}>{children}</div>)
 		});
 		const content =  (
-			<div>
+			<div className={clsname}>
 				<div className="bee-tabs-nav">
 					{navArr}
 				</div>

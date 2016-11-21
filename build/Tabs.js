@@ -19,10 +19,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypesTabs = {
-	cls: _react2["default"].PropTypes.string
+	cls: _react2["default"].PropTypes.string,
+	defaultActiveKey: _react2["default"].PropTypes.string
 };
 var defaultPropsTabs = {
-	cls: 'cls'
+	cls: 'cls',
+	defaultActiveKey: "2"
 };
 
 var Tabs = function (_Component) {
@@ -34,24 +36,61 @@ var Tabs = function (_Component) {
 		var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
 		_this.state = {
-			content: ''
+			content: '',
+			activeKey: _this.props.defaultActiveKey
 		};
 		_this.formatChildren = _this.formatChildren.bind(_this);
+		_this.clickHandler = _this.clickHandler.bind(_this);
 		return _this;
 	}
 
-	Tabs.prototype.formatChildren = function formatChildren() {
-		var arr = this.props.children;
-		var content = void 0;
-		var navList = '<div className="bee-tabs-nav">';
-		var contentList = '<div className="bee-content-list">';
-		arr.forEach(function (e) {
-			navList += '<div key=' + e.key + '>' + e.props.tab + '</div>';
-			contentList += '<div>' + e.props.children + '</div>';
+	Tabs.prototype.clickHandler = function clickHandler(e) {
+		console.log(e.currentTarget.dataset.id);
+		this.setState({
+			activeKey: e.currentTarget.dataset.id
 		});
-		navList += '</div>';
-		contentList += '</div>';
-		content = navList + contentList;
+		console.log(this.state.activeKey);
+		this.formatChildren(e.currentTarget.dataset.id);
+	};
+
+	Tabs.prototype.formatChildren = function formatChildren(v) {
+		var _this2 = this;
+
+		var arr = this.props.children;
+		var stateActiveKey = v || this.state.activeKey;
+		var navArr = [];
+		var contentArr = [];
+		arr.forEach(function (e) {
+			var key = e.key,
+			    tab = e.props.tab,
+			    children = e.props.children,
+			    tab_active = e.key == stateActiveKey ? 'bee-tabs-tab bee-tabs-tab-active' : 'bee-tabs-tab',
+			    cont_active = e.key == stateActiveKey ? 'bee-content bee-content-active' : 'bee-content';
+			navArr.push(_react2["default"].createElement(
+				'div',
+				{ onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
+				tab
+			));
+			contentArr.push(_react2["default"].createElement(
+				'div',
+				{ className: cont_active, 'data-id': key, key: key },
+				children
+			));
+		});
+		var content = _react2["default"].createElement(
+			'div',
+			{ className: 'simple-tabs-nav simple-tabs-content' },
+			_react2["default"].createElement(
+				'div',
+				{ className: 'bee-tabs-nav' },
+				navArr
+			),
+			_react2["default"].createElement(
+				'div',
+				{ className: 'bee-content-list' },
+				contentArr
+			)
+		);
 		this.setState({
 			content: content
 		});
@@ -62,9 +101,11 @@ var Tabs = function (_Component) {
 	};
 
 	Tabs.prototype.render = function render() {
-		var content = this.state.content;
-		console.log(content);
-		return _react2["default"].createElement('div', { className: this.props.cls, dangerouslySetInnerHTML: { __html: content } });
+		return _react2["default"].createElement(
+			'div',
+			{ className: this.props.cls },
+			this.state.content
+		);
 	};
 
 	return Tabs;
