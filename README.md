@@ -4,9 +4,8 @@
 [![devDependency Status](https://img.shields.io/david/dev/tinper-bee/bee-tabs.svg)](https://david-dm.org/tinper-bee/bee-tabs#info=devDependencies)
 
 
-react bee-tabs component for tinper-bee
+react bee-switch component for tinper-bee
 
-some description...
 
 ## 使用方法
 
@@ -37,4 +36,11 @@ $ cd bee-tabs
 $ npm install
 $ npm run dev
 ```
-# bee-tabs
+
+## TODOS
+
+- [x] [css样式层级问题]
+- [] [动态计算样式]
+- [x] [autoprefix] 产出工具集成
+
+
