@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -20,11 +24,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var propTypesTabs = {
 	cls: _react2["default"].PropTypes.string,
+	nav: _react2["default"].PropTypes.string,
+	cont: _react2["default"].PropTypes.string,
+	suffix: _react2["default"].PropTypes.string,
 	defaultActiveKey: _react2["default"].PropTypes.string
 };
 var defaultPropsTabs = {
 	cls: 'cls',
-	defaultActiveKey: "2"
+	nav: 'simple',
+	cont: 'simple',
+	navsuffix: '-tabs-nav',
+	contsuffix: '-tabs-content',
+	defaultActiveKey: "1",
+	count: null //记录子节点个数
 };
 
 var Tabs = function (_Component) {
@@ -41,15 +53,20 @@ var Tabs = function (_Component) {
 		};
 		_this.formatChildren = _this.formatChildren.bind(_this);
 		_this.clickHandler = _this.clickHandler.bind(_this);
+		_this.ruleSelector = _this.ruleSelector.bind(_this);
 		return _this;
 	}
 
+	Tabs.prototype.ruleSelector = function ruleSelector(n) {
+		var count = (n - 1) * 100 + '%';
+		document.querySelector('.bee-tabs-tab-child').style.transform = 'translate3d(' + count + ',0,0)';
+	};
+
 	Tabs.prototype.clickHandler = function clickHandler(e) {
-		console.log(e.currentTarget.dataset.id);
 		this.setState({
 			activeKey: e.currentTarget.dataset.id
 		});
-		console.log(this.state.activeKey);
+		this.ruleSelector(e.currentTarget.dataset.id);
 		this.formatChildren(e.currentTarget.dataset.id);
 	};
 
@@ -57,7 +74,16 @@ var Tabs = function (_Component) {
 		var _this2 = this;
 
 		var arr = this.props.children;
+		var width = 100 / Number(this.props.children.length) + '%';
+		this.setState({
+			count: arr.length
+		});
 		var stateActiveKey = v || this.state.activeKey;
+		var nav = this.props.navtype || this.props.nav,
+		    cont = this.props.contenttype || this.props.cont,
+		    clsname = '';
+		clsname = '' + nav + this.props.navsuffix + ' ' + cont + this.props.contsuffix;
+
 		var navArr = [];
 		var contentArr = [];
 		arr.forEach(function (e) {
@@ -68,7 +94,7 @@ var Tabs = function (_Component) {
 			    cont_active = e.key == stateActiveKey ? 'bee-content bee-content-active' : 'bee-content';
 			navArr.push(_react2["default"].createElement(
 				'div',
-				{ onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
+				{ style: { width: width }, onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
 				tab
 			));
 			contentArr.push(_react2["default"].createElement(
@@ -79,11 +105,12 @@ var Tabs = function (_Component) {
 		});
 		var content = _react2["default"].createElement(
 			'div',
-			{ className: 'simple-tabs-nav simple-tabs-content' },
+			{ className: clsname },
 			_react2["default"].createElement(
 				'div',
 				{ className: 'bee-tabs-nav' },
-				navArr
+				navArr,
+				_react2["default"].createElement('div', { style: { width: width }, className: 'bee-tabs-tab-child' })
 			),
 			_react2["default"].createElement(
 				'div',
