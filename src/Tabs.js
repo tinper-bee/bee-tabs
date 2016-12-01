@@ -14,8 +14,7 @@ const defaultPropsTabs = {
 	navsuffix:'-tabs-nav',
 	contsuffix:'-tabs-content',
 	defaultActiveKey:"1",
-	count:null ,//记录子节点个数
-	sheet:null
+	count:null //记录子节点个数
 };
 class Tabs extends Component {
 	constructor(props) {
@@ -33,16 +32,11 @@ class Tabs extends Component {
         document.querySelector('.bee-tabs-tab-child').style.transform=`translate3d(${count},0,0)`
     }
 	clickHandler(e){
-		console.log("current",e.currentTarget.dataset.id)
 		this.setState({
 			activeKey:e.currentTarget.dataset.id
 		})
-		console.log(this.state.activeKey)
 		this.ruleSelector(e.currentTarget.dataset.id)
 		this.formatChildren(e.currentTarget.dataset.id);
-	}
-	componentWillUpdate(nextProps, nextState) {
-		console.log(nextProps,nextState)
 	}
 	formatChildren(v){
 		let arr = this.props.children;
