@@ -56,8 +56,8 @@ class Tabs extends Component {
 			let key  = 	e.key,
 				tab = e.props.tab,
 				children = e.props.children,
-				tab_active = e.key==stateActiveKey?'bee-tabs-tab bee-tabs-tab-active':'bee-tabs-tab',
-				cont_active = e.key==stateActiveKey?'bee-content bee-content-active':'bee-content';
+				tab_active =classNames('bee-tabs-tab',{['bee-tabs-tab-active']:(e.key==stateActiveKey)}),
+				cont_active =classNames('bee-content',{['bee-content-active']:(e.key==stateActiveKey)});
 			navArr.push(<div style={{width:width}} onClick={this.clickHandler} className={tab_active} data-id={key} key={key}>{tab}</div>)	
 			contentArr.push(<div className={cont_active} data-id={key} key={key}>{children}</div>)
 		});
