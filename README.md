@@ -1,7 +1,6 @@
 # bee-tabs
 [![npm version](https://img.shields.io/npm/v/bee-tabs.svg)](https://www.npmjs.com/package/bee-tabs)
-[![Build Status](https://img.shields.io/travis/tinper-bee/generator-tinper-bee/master.svg)](https://travis-ci.org/tinper-bee/bee-tabs)
-[![devDependency Status](https://img.shields.io/david/dev/tinper-bee/bee-tabs.svg)](https://david-dm.org/tinper-bee/bee-tabs#info=devDependencies)
+[![Build Status](https://travis-ci.org/tinper-bee/bee-tabs.svg?branch=master)](https://travis-ci.org/tinper-bee/bee-tabs)[![devDependency Status](https://img.shields.io/david/dev/tinper-bee/bee-tabs.svg)](https://david-dm.org/tinper-bee/bee-tabs#info=devDependencies)
 
 
 react bee-switch component for tinper-bee
