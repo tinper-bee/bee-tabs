@@ -18,10 +18,10 @@ const CARETUP = <i className="uf uf-chevronarrowup"></i>;
  *
  */
 
-class Demo1 extends Component {
+class Demo2 extends Component {
     render () {
         return (
-            <Tabs navtype="slide" contenttype="" defaultActiveKey="2">
+            <Tabs navtype="simple" contenttype="" defaultActiveKey="2">
                 <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
                 <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
                 <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
@@ -32,8 +32,70 @@ class Demo1 extends Component {
             </Tabs>
         )
     }
-}
-var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description \n *\n */\n\nclass Demo1 extends Component {\n    render () {\n        return (\n            <Tabs navtype=\"slide\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":" "}]
+}/**
+ *
+ * @title 基础tab
+ * @description 
+ *
+ */
+
+class Demo3 extends Component {
+    render () {
+        return (
+            <Tabs navtype="fill" contenttype="" defaultActiveKey="2">
+                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
+                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
+                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
+                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
+                <TabPanel tab="Tab 5" key="5">测试测试 5</TabPanel>
+                <TabPanel tab="Tab 6" key="6">测试测试 6</TabPanel>
+                <TabPanel tab="Tab 7" key="7">测试测试 7</TabPanel>
+            </Tabs>
+        )
+    }
+}/**
+ *
+ * @title 基础tab
+ * @description 
+ *
+ */
+
+class Demo4 extends Component {
+    render () {
+        return (
+            <Tabs navtype="turn" contenttype="moveleft" defaultActiveKey="2">
+                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
+                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
+                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
+                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
+                <TabPanel tab="Tab 5" key="5">测试测试 5</TabPanel>
+                <TabPanel tab="Tab 6" key="6">测试测试 6</TabPanel>
+                <TabPanel tab="Tab 7" key="7">测试测试 7</TabPanel>
+            </Tabs>
+        )
+    }
+}/**
+ *
+ * @title 基础tab
+ * @description 
+ *
+ */
+
+class Demo5 extends Component {
+    render () {
+        return (
+            <Tabs navtype="simple" contenttype="fade" defaultActiveKey="2">
+                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
+                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
+                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
+                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
+                <TabPanel tab="Tab 5" key="5">测试测试 5</TabPanel>
+                <TabPanel tab="Tab 6" key="6">测试测试 6</TabPanel>
+                <TabPanel tab="Tab 7" key="7">测试测试 7</TabPanel>
+            </Tabs>
+        )
+    }
+}var DemoArray = [{"example":<Demo2 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description \n *\n */\n\nclass Demo2 extends Component {\n    render () {\n        return (\n            <Tabs navtype=\"simple\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\n            </Tabs>\n        )\n    }\n}","desc":" "},{"example":<Demo3 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description \n *\n */\n\nclass Demo3 extends Component {\n    render () {\n        return (\n            <Tabs navtype=\"fill\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\n            </Tabs>\n        )\n    }\n}","desc":" "},{"example":<Demo4 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description \n *\n */\n\nclass Demo4 extends Component {\n    render () {\n        return (\n            <Tabs navtype=\"turn\" contenttype=\"moveleft\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\n            </Tabs>\n        )\n    }\n}","desc":" "},{"example":<Demo5 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description \n *\n */\n\nclass Demo5 extends Component {\n    render () {\n        return (\n            <Tabs navtype=\"simple\" contenttype=\"fade\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\n            </Tabs>\n        )\n    }\n}","desc":" "}]
 
 
 class Demo extends Component {
