@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow, mount, render} from 'enzyme';
 import {expect} from 'chai';
-import Tabs from '../src/index';
+import { Tabs } from '../src/index';
 import TabPanel from '../src/TabPanel';
 describe('测试simple样式',function(){
 	it('卡片样式应该存在',function(){
