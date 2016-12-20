@@ -1,6 +1,6 @@
 {
   "name": "bee-tabs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "tabs ui component for react",
   "keywords": [
     "react",
@@ -13,10 +13,10 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "homepage": "https://github.com/tinper-bee/tabs",
+  "homepage": "https://github.com/tinper-bee/bee-tabs",
   "author": "supernever",
-  "repository": "http://github.com/tinper-bee/tabs",
-  "bugs": "https://github.com/tinper-bee/tabs/issues",
+  "repository": "http://github.com/tinper-bee/bee-tabs",
+  "bugs": "https://github.com/tinper-bee/bee-tabs/issues",
   "license": "MIT",
   "main": "./build/index",
   "config": {

@@ -33,7 +33,7 @@ class Demo1 extends Component {
         )
     }
 }
-var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description \r\n *\r\n */\r\n\r\nclass Demo1 extends Component {\r\n    render () {\r\n        return (\r\n            <Tabs navtype=\"slide\" contenttype=\"\" defaultActiveKey=\"2\">\r\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\r\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\r\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\r\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\r\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\r\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\r\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":" "}]
+var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description \n *\n */\n\nclass Demo1 extends Component {\n    render () {\n        return (\n            <Tabs navtype=\"slide\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":" "}]
 
 
 class Demo extends Component {
