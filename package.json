@@ -15,36 +15,36 @@
   },
   "homepage": "https://github.com/tinper-bee/tabs",
   "author": "supernever",
-  
-"repository": "http://github.com/tinper-bee/tabs",
-
-"bugs": "https://github.com/tinper-bee/tabs/issues",
-"license": "MIT",
-
-"main":"./build/index",
-"config":{
-"port": 9000
-},
-"scripts": {
-"dev": "bee-tools run start",
-"build": "bee-tools run build",
-"lint": "bee-tools run lint",
-"test": "bee-tools run test",
-"chrome": "bee-tools run chrome",
-"browsers": "bee-tools run browsers",
-"pub": "bee-tools run pub"
-},
-"dependencies": {
-  "classnames": "^2.2.5",
-  "tinper-bee-core": "latest"
-},
-"devDependencies": {
-  "chai": "^3.5.0",
-  "enzyme": "^2.4.1",
-  "react": "~0.14.0",
-  "react-addons-test-utils": "15.3.2",
-  "react-dom": "~0.14.0",
-  "console-polyfill": "~0.2.1",
-  "es5-shim": "~4.1.10"
-}
+  "repository": "http://github.com/tinper-bee/tabs",
+  "bugs": "https://github.com/tinper-bee/tabs/issues",
+  "license": "MIT",
+  "main": "./build/index",
+  "config": {
+    "port": 9000
+  },
+  "scripts": {
+    "dev": "bee-tools run start",
+    "build": "bee-tools run build",
+    "lint": "bee-tools run lint",
+    "test": "bee-tools run test",
+    "chrome": "bee-tools run chrome",
+    "browsers": "bee-tools run browsers",
+    "pub": "bee-tools run pub"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "tinper-bee-core": "latest"
+  },
+  "devDependencies": {
+    "bee-button": "^0.1.10",
+    "bee-layout": "^0.1.6",
+    "bee-panel": "0.0.6",
+    "chai": "^3.5.0",
+    "console-polyfill": "~0.2.1",
+    "enzyme": "^2.4.1",
+    "es5-shim": "~4.1.10",
+    "react": "~0.14.0",
+    "react-addons-test-utils": "15.3.2",
+    "react-dom": "~0.14.0"
+  }
 }

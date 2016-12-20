@@ -1,2 +1,3 @@
-import Tabs from './Tabs';
-export default Tabs ;
+export Tabs from './Tabs';
+
+export TabPanel from './TabPanel';

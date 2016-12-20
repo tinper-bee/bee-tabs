@@ -11,30 +11,7 @@ const CARET = <i className="uf uf-chevronarrowdown"></i>;
 const CARETUP = <i className="uf uf-chevronarrowup"></i>;
 
 
-/**
- *
- * @title 基础tab
- * @description 
- *
- */
-
-class Demo1 extends Component {
-    render () {
-        return (
-            <Tabs navtype="slide" contenttype="" defaultActiveKey="2">
-                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
-                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
-                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
-                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
-                <TabPanel tab="Tab 5" key="5">测试测试 5</TabPanel>
-                <TabPanel tab="Tab 6" key="6">测试测试 6</TabPanel>
-                <TabPanel tab="Tab 7" key="7">测试测试 7</TabPanel>
-            </Tabs>
-        )
-    }
-}
-var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description \r\n *\r\n */\r\n\r\nclass Demo1 extends Component {\r\n    render () {\r\n        return (\r\n            <Tabs navtype=\"slide\" contenttype=\"\" defaultActiveKey=\"2\">\r\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\r\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\r\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\r\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\r\n                <TabPanel tab=\"Tab 5\" key=\"5\">测试测试 5</TabPanel>\r\n                <TabPanel tab=\"Tab 6\" key=\"6\">测试测试 6</TabPanel>\r\n                <TabPanel tab=\"Tab 7\" key=\"7\">测试测试 7</TabPanel>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":" "}]
-
+{demolist}
 
 class Demo extends Component {
     constructor(props){
