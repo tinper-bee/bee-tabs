@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/tinper-bee/bee-tabs.svg?branch=master)](https://travis-ci.org/tinper-bee/bee-tabs)[![devDependency Status](https://img.shields.io/david/dev/tinper-bee/bee-tabs.svg)](https://david-dm.org/tinper-bee/bee-tabs#info=devDependencies)
 
 
-react bee-switch component for tinper-bee
+react bee-tabs component for tinper-bee
 
 
 ## 使用方法
