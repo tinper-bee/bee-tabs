@@ -1,33 +1,80 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+$tabs-cls-color: #666;
+$tabs-cls-width: 500px;
+
+$tabs-fontSize:(simple:14px,fill:14px,turn:14px,slide:14px);
+$tabs-lineHeight:(simple:2.5,fill:3.5,turn:3.5,slide:2.5);
+$tabs-marginBottom: -1px;
+
+$tabs-simple-tab:(margin:0,radius:6px 6px 0 0,back:#d2d8d6,padding:0 16px);
+$tabs-simple-tabBorder:1px solid #ccc;
+$tabs-simple-activeBorder:1px solid #d9d9d9;
+$tabs-simple-activeColor:#666;
+$tabs-simple-activeBorBottom:1px solid #fff;;
+$tabs-simple-fontWeight:bold;
+
+$tabs-fill-tab:(width:25%,padding: 0 16px,color:#666,back:#f5f5f5,afterBack:#d2d8d6,activeBack:#2CC185);
+$tabs-fill-after-top:0;
+$tabs-fill-after-left:0;
+$tabs-fill-after-width:100%;
+$tabs-fill-after-height:100%;
+$tabs-fill-fontWeight:bold;
+
+$tabs-turn-tab:(width:25%,padding: 0 16px,color:#666,back:#f5f5f5,afterBack:#f0f0f0,activeBack:#2CC185);
+$tabs-turn-after-top:0;
+$tabs-turn-after-left:0;
+$tabs-turn-after-width:100%;
+$tabs-turn-after-height:100%;
+$tabs-turn-fontWeight:bold;
+
+$tabs-slide-tabs:(width:25%, padding: 0 16px,back:#f5f5f5);
+$tabs-slide-child-bottom:0;
+$tabs-slide-child-left:0;
+$tabs-slide-child-height:4px;
+$tabs-slide-child-back:#2CC185;
+$tabs-slide-fontWeight:bold;
+
+$tabs-moveleft-conHeight:120px;
+
+$tabs-simple-conBorder:1px;
+$tabs-simple-conHeight:120px;
+$tabs-simple-conPad:16px;
+$tabs-simple-conWidth:100%;
+
+$tabs-fade-conBorder:1px;
+$tabs-fade-borderColor:#d9d9d9;
+$tabs-fade-conHeight:120px;
+$tabs-fade-conPad:16px;
+
 .cls {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
     zoom: 1;
-    color: #666;
-    width: 500px; 
+    color:$tabs-cls-color;
+    width: $tabs-cls-width;
 }
 .simple-tabs-nav{
     .bee-tabs-nav {
         overflow: hidden;
-        font-size: 14px;
-        line-height: 2.5;
+        font-size: map_get($tabs-fontSize,simple);
+        line-height: map_get($tabs-lineHeight,simple);
         box-sizing: border-box;
         position: relative;
         white-space: nowrap;
-        margin-bottom: -1px;
+        margin-bottom: $tabs-marginBottom;
         z-index: 1;
-        font-weight: bold;
+        font-weight:$tabs-simple-fontWeight;
         .bee-tabs-tab {
-            margin: 0;
-            border: 1px solid #ccc;
-            border-radius: 6px 6px 0 0;
+            margin: map_get($tabs-simple-tab,margin);
+            border: $tabs-simple-tabBorder;
+            border-radius:map_get($tabs-simple-tab,radius);
             transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-            background: #d2d8d6;
-            color: white;
+            background: map_get($tabs-simple-tab,back);
+            color: #fff;
             // margin-right: 2px;
-            padding: 0 16px;
+            padding:map_get($tabs-simple-tab,padding);
             float: left;
             display: inline-block;
             box-sizing: border-box;
@@ -36,79 +83,46 @@
             text-decoration: none; 
         }
         .bee-tabs-tab-active {
-            border: 1px solid #d9d9d9;
+            border: $tabs-simple-activeBorder;
             background: #fff;
-            color: #666;
-            border-bottom: 1px solid #fff;
-        }
-    }
-}
-.slide-tabs-nav{
-    .bee-tabs-nav{
-        overflow: hidden;
-        font-size: 14px;
-        line-height: 2.5;
-        box-sizing: border-box;
-        position: relative;
-        white-space: nowrap;
-        margin-bottom: -1px;
-        z-index: 1;
-        background: #f5f5f5;
-        font-weight: bold;
-        .bee-tabs-tab{
-            display: inline-block;
-            box-sizing: border-box;
-            position: relative;
-            cursor: pointer;
-            width: 25%;
-            text-align: center;
-            padding: 0 16px;
-            &-child {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                height: 4px;
-                background: #2CC185;
-                content: '';
-                -webkit-transition: -webkit-transform 0.3s;
-                transition: transform 0.3s;
-            }
+            color: $tabs-simple-activeColor;
+            border-bottom: $tabs-simple-activeBorBottom;
         }
     }
 }
 .fill-tabs-nav  {
     .bee-tabs-nav{
         overflow: hidden;
-        font-size: 14px;
-        line-height: 3.5;
+        font-size: map_get($tabs-fontSize,fill);
+        line-height: map_get($tabs-lineHeight,fill);
         box-sizing: border-box;
         position: relative;
         white-space: nowrap;
-        margin-bottom: -1px;
+        margin-bottom: $tabs-marginBottom;
         z-index: 1;
-        background: #f5f5f5;
-        font-weight: bold;
+        background: map_get($tabs-fill-tab,back);
+        font-weight: $tabs-fill-fontWeight;
         .bee-tabs-tab{
             display: inline-block;
             box-sizing: border-box;
             position: relative;
             cursor: pointer;
-            width: 25%;
+            width: map_get($tabs-fill-tab,width);
             text-align: center;
-            padding: 0 16px;
-            color: #666;
+            padding: map_get($tabs-fill-tab,padding);
+            color: map_get($tabs-fill-tab,color);
             transition: color 0.3s;
             // &:hover{
             //  color: #2CC185;
             // }
             &::after{
                 position: absolute;
-                top: 0;
-                left: 0;
+                top: $tabs-fill-after-top;
+                left: $tabs-fill-after-left;
                 z-index: -1;
-                width: 100%;
-                height: 100%;
-                background: #d2d8d6;
+                width: $tabs-fill-after-width;
+                height: $tabs-fill-after-height;
+                background: map_get($tabs-fill-tab,afterBack);
                 content: '';
                 -webkit-transition: background-color 0.3s, -webkit-transform 0.3s;
                 transition: background-color 0.3s, transform 0.3s;
@@ -118,7 +132,7 @@
                 transform: translate3d(0,100%,0) translate3d(0,-3px,0);
             }
             &:hover::after, &:focus::after, &.bee-tabs-tab-active::after{
-                background: #2CC185;
+                background:map_get($tabs-fill-tab,activeBack);
             }
             &.bee-tabs-tab-active::after{
                 -webkit-transform: translate3d(0,0,0);
@@ -133,36 +147,36 @@
 .turn-tabs-nav{
     .bee-tabs-nav {
         overflow: hidden;
-        font-size: 14px;
-        line-height: 3.5;
+        font-size: map_get($tabs-fontSize,turn);
+        line-height: map_get($tabs-lineHeight,turn);
         box-sizing: border-box;
         position: relative;
         white-space: nowrap;
-        margin-bottom: -1px;
+        margin-bottom: $tabs-marginBottom;
         z-index: 1;
-        background: #f5f5f5;
-        font-weight: bold;
+        background: map_get($tabs-turn-tab,back);
+        font-weight: $tabs-turn-fontWeight;
         .bee-tabs-tab{
             display: inline-block;
             box-sizing: border-box;
             position: relative;
             cursor: pointer;
-            width: 25%;
+            width: map_get($tabs-turn-tab,width);
             text-align: center;
-            padding: 0 16px;
-            color: #666;
+            padding: map_get($tabs-turn-tab,padding);
+            color: map_get($tabs-turn-tab,color);
             transition: color 0.3s;
             // &:hover{
-            //     color: #2CC185; 
+            //     color: #2CC185;
             // }
             &::after {
                 position: absolute;
-                top: 0;
-                left: 0;
+                top: $tabs-turn-after-top;
+                left: $tabs-turn-after-left;
                 z-index: -1;
-                width: 100%;
-                height: 100%;
-                background-color: #f0f0f0;
+                width: $tabs-turn-after-width;
+                height: $tabs-turn-after-height;
+                background-color: map_get($tabs-turn-tab,afterBack);
                 content: '';
                 -webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
                 transition: transform 0.3s, background-color 0.3s;
@@ -176,7 +190,7 @@
             &-active{
                 color: #fff;
                 &::after {
-                    background-color: #2CC185;
+                    background-color: map_get($tabs-turn-tab,activeBack);
                     -webkit-transform: perspective(900px) rotate3d(1,0,0,0deg);
                     transform: perspective(900px) rotate3d(1,0,0,0deg);
                 }
@@ -184,45 +198,42 @@
         }
     }
 }
-.simple-tabs-content{
-    .bee-content-list{
-        border: 1px solid #d9d9d9;
-        height: 120px;
-        background: #fff;
-        padding: 16px;
-        .bee-content {
-            width: 100%;
-            display: inline-block;
-            float: left;     
-            display: none; 
-            &-active {
-                display: block; 
-            }
-        }
-    }
-}
-.fade-tabs-content {
-    .bee-content-list {
-        border: 1px solid #d9d9d9;
-        height: 120px;
-        background: #fff;
-        padding: 16px; 
+.slide-tabs-nav{
+    .bee-tabs-nav{
+        overflow: hidden;
+        font-size: map_get($tabs-fontSize,slide);
+        line-height: map_get($tabs-lineHeight,slide);
+        box-sizing: border-box;
         position: relative;
-        .bee-content {
+        white-space: nowrap;
+        margin-bottom: $tabs-marginBottom;
+        z-index: 1;
+        background: map_get($tabs-slide-tabs,back);
+        font-weight: $tabs-slide-fontWeight;
+        .bee-tabs-tab{
             display: inline-block;
-            float: left;     
-            opacity: 0; 
-            transition: opacity 1s ease-in-out;
-            position: absolute;
-            &-active {
-                opacity: 1;
+            box-sizing: border-box;
+            position: relative;
+            cursor: pointer;
+            width: map_get($tabs-slide-tabs,width);
+            text-align: center;
+            padding:map_get($tabs-slide-tabs,padding);
+            &-child {
+                position: absolute;
+                bottom: $tabs-slide-child-bottom;
+                left: $tabs-slide-child-left;
+                height: $tabs-slide-child-height;
+                background: $tabs-slide-child-back;
+                content: '';
+                -webkit-transition: -webkit-transform 0.3s;
+                transition: transform 0.3s;
             }
         }
     }
 }
 .moveleft-tabs-content {
     .bee-content-list{
-        height: 120px;
+        height: $tabs-moveleft-conHeight;
         background: #fff;
         position: relative;
         .bee-content {
@@ -239,6 +250,46 @@
         }
     }
 }
+.simple-tabs-content{
+    .bee-content-list{
+        border: $tabs-simple-conBorder solid #d9d9d9;
+        height: $tabs-simple-conHeight;
+        background: #fff;
+        padding: $tabs-simple-conPad;
+        .bee-content {
+            width: $tabs-simple-conWidth;
+            display: inline-block;
+            float: left;
+            display: none;
+            &-active {
+                display: block;
+            }
+        }
+    }
+}
+
+
+.fade-tabs-content {
+    .bee-content-list {
+        border: $tabs-fade-conBorder solid $tabs-fade-borderColor;
+        height: $tabs-simple-conHeight;
+        background: #fff;
+        padding: $tabs-fade-conPad;
+        position: relative;
+        .bee-content {
+            display: inline-block;
+            float: left;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            &-active {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
 
 
 
