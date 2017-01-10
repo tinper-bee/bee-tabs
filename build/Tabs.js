@@ -38,7 +38,7 @@ var defaultPropsTabs = {
 	navsuffix: '-tabs-nav',
 	contsuffix: '-tabs-content',
 	defaultActiveKey: "1",
-	count: null //记录子节点个数
+	count: null
 };
 
 var Tabs = function (_Component) {
@@ -76,7 +76,8 @@ var Tabs = function (_Component) {
 		var _this2 = this;
 
 		var arr = this.props.children;
-		var width = 100 / Number(this.props.children.length) + '%';
+		//let width = 100/Number(this.props.children.length)+'%';
+		var minWidth = "90px";
 		this.setState({
 			count: arr.length
 		});
@@ -96,7 +97,7 @@ var Tabs = function (_Component) {
 			    cont_active = (0, _classnames2["default"])('bee-content', _defineProperty({}, 'bee-content-active', e.key == stateActiveKey));
 			navArr.push(_react2["default"].createElement(
 				'div',
-				{ style: { width: width }, onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
+				{ style: { minWidth: minWidth }, onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
 				tab
 			));
 			contentArr.push(_react2["default"].createElement(
@@ -112,7 +113,7 @@ var Tabs = function (_Component) {
 				'div',
 				{ className: 'bee-tabs-nav' },
 				navArr,
-				_react2["default"].createElement('div', { style: { width: width }, className: 'bee-tabs-tab-child' })
+				_react2["default"].createElement('div', { style: { minWidth: minWidth }, className: 'bee-tabs-tab-child' })
 			),
 			_react2["default"].createElement(
 				'div',
