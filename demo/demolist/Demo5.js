@@ -1,6 +1,6 @@
 /**
  *
- * @title 基础tab选中背景白色
+ * @title 基础tab选中后背景白色
  * @description
  *
  */

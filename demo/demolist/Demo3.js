@@ -1,6 +1,6 @@
 /**
  *
- * @title 基础tab带有背下划线
+ * @title 基础tab带有下划线
  * @description
  *
  */
