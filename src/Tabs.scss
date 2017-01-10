@@ -10,7 +10,7 @@
   zoom: 1;
   color: $tabs-cls-color;
   width: $tabs-cls-width;
-  background: #f5f5f5;
+  background: $tabs-basic-back;
 }
 
 .simple-tabs-content {
@@ -115,7 +115,7 @@
         transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
       }
       &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
-        background: map_get($tabs-fill-tab, activeBack);
+        background: $brand-primary;
       }
       &.bee-tabs-tab-active::after {
         -webkit-transform: translate3d(0, 0, 0);
@@ -328,7 +328,7 @@
         transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);
       }
       &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
-        background: map_get($tabs-fill-tab, activeBack);
+        background: $brand-primary;
       }
       &.bee-tabs-tab-active::after {
         -webkit-transform: translate3d(0, 0, 0);
@@ -389,7 +389,7 @@
         bottom: $tabs-slide-child-bottom;
         left: $tabs-slide-child-left;
         height: $tabs-slide-child-height;
-        background: $tabs-slide-child-back;
+        background: $brand-primary;
         content: '';
         -webkit-transition: -webkit-transform 0.3s;
         transition: transform 0.3s;
