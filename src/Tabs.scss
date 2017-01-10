@@ -20,7 +20,7 @@ $tabs-simple-activeBorBottom: 1px solid $brand-primary;
 $tabs-simple-activeTopRadius: 5px;
 $tabs-simple-fontWeight: bold;
 
-$tabs-fill-tab: (padding: 0 16px, color:#666, back:#fff, afterBack:#d2d8d6, activeBack:$brand-primary);
+$tabs-fill-tab: (padding: 0 16px, color:#666, back:#fff, afterBack:#d2d8d6);
 $tabs-fill-tab-maright: 5px;
 $tabs-fill-after-top: 0;
 $tabs-fill-after-left: 0;
@@ -28,7 +28,7 @@ $tabs-fill-after-width: 100%;
 $tabs-fill-after-height: 100%;
 $tabs-fill-fontWeight: bold;
 
-$tabs-turn-tab: (padding: 0 16px, color:#fff, back:#f5f5f5, afterBack:$brand-primary, activeBack:$brand-primary);
+$tabs-turn-tab: (padding: 0 16px, color:#fff, back:#f5f5f5, afterBack:$brand-primary);
 $tabs-turn-after-top: 0;
 $tabs-turn-after-left: 0;
 $tabs-turn-after-width: 100%;
@@ -43,7 +43,6 @@ $tabs-slide-tabs: (width:25%, padding: 0 16px, back:#f5f5f5);
 $tabs-slide-child-bottom: 0;
 $tabs-slide-child-left: 0;
 $tabs-slide-child-height: 4px;
-$tabs-slide-child-back: $brand-primary;
 $tabs-slide-fontWeight: bold;
 
 $tabs-fade-tab: (marLeft:5px, marTop:5px, color:#666, padding:0 16px, radius:0 0 0 0);
@@ -67,7 +66,7 @@ $tabs-fadeup-conPad: 16px;
   zoom: 1;
   color: $tabs-cls-color;
   width: $tabs-cls-width;
-  background: #f5f5f5;
+  background: $tabs-basic-back;
 }
 
 .simple-tabs-content {
@@ -174,7 +173,7 @@ $tabs-fadeup-conPad: 16px;
         transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
       }
       &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
-        background: map_get($tabs-fill-tab, activeBack);
+        background: $brand-primary;
       }
       &.bee-tabs-tab-active::after {
         -webkit-transform: translate3d(0, 0, 0);
@@ -390,7 +389,7 @@ $tabs-fadeup-conPad: 16px;
         transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);
       }
       &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
-        background: map_get($tabs-fill-tab, activeBack);
+        background: $brand-primary;
       }
       &.bee-tabs-tab-active::after {
         -webkit-transform: translate3d(0, 0, 0);
@@ -452,7 +451,7 @@ $tabs-fadeup-conPad: 16px;
         bottom: $tabs-slide-child-bottom;
         left: $tabs-slide-child-left;
         height: $tabs-slide-child-height;
-        background: $tabs-slide-child-back;
+        background: $brand-primary;
         content: '';
         -webkit-transition: -webkit-transform 0.3s;
         transition: transform 0.3s;
