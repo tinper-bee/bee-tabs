@@ -1,12 +1,12 @@
 /**
  *
  * @title 基础tab
- * @description 
+ * @description
  *
  */
 
 class Demo2 extends Component {
-    render () {
+    render() {
         return (
             <Tabs navtype="simple" contenttype="" defaultActiveKey="2">
                 <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>

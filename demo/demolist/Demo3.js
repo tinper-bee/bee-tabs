@@ -1,12 +1,12 @@
 /**
  *
- * @title 基础tab
- * @description 
+ * @title 基础tab带有背下划线
+ * @description
  *
  */
 
 class Demo3 extends Component {
-    render () {
+    render() {
         return (
             <Tabs navtype="fill" contenttype="" defaultActiveKey="2">
                 <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
