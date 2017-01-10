@@ -1,293 +1,466 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
-$tabs-cls-color: #666;
-$tabs-cls-width: 500px;
 
-$tabs-fontSize:(simple:14px,fill:14px,turn:14px,slide:14px);
-$tabs-lineHeight:(simple:2.5,fill:3.5,turn:3.5,slide:2.5);
+$tabs-basic-back: #f5f5f5;
+$tabs-cls-color: #666;
+$tabs-cls-width: 900px;
+$tabs-simple-conHeight: 120px;
+$tabs-simple-conPad: 16px;
+$tabs-simple-conWidth: 100%;
+
+$tabs-fontSize: (simple:14px, fill:14px, turn:14px, slide:14px, fade:14px, fadeup:14px);
+$tabs-lineHeight: (simple:2.3, fill:2.3, turn:2.3, slide:2.3, fade:2.3, fadeup:2.3);
 $tabs-marginBottom: -1px;
 
-$tabs-simple-tab:(margin:0,radius:6px 6px 0 0,back:#d2d8d6,padding:0 16px);
-$tabs-simple-tabBorder:1px solid #ccc;
-$tabs-simple-activeBorder:1px solid #d9d9d9;
-$tabs-simple-activeColor:#666;
-$tabs-simple-activeBorBottom:1px solid #fff;;
-$tabs-simple-fontWeight:bold;
+$tabs-simple-tab: (padding:0 16px, margin:5px 0 5px 5px, radius:0 0 0 0, back:#fff);
+$tabs-simple-tabBorder: 1px solid #fff;
+$tabs-simple-activeBorder: 1px solid $brand-primary;
+$tabs-simple-activeColor: #fff;
+$tabs-simple-activeBorBottom: 1px solid $brand-primary;
+$tabs-simple-activeTopRadius: 5px;
+$tabs-simple-fontWeight: bold;
 
-$tabs-fill-tab:(width:25%,padding: 0 16px,color:#666,back:#f5f5f5,afterBack:#d2d8d6,activeBack:#2CC185);
-$tabs-fill-after-top:0;
-$tabs-fill-after-left:0;
-$tabs-fill-after-width:100%;
-$tabs-fill-after-height:100%;
-$tabs-fill-fontWeight:bold;
+$tabs-fill-tab: (padding: 0 16px, color:#666, back:#fff, afterBack:#d2d8d6, activeBack:$brand-primary);
+$tabs-fill-tab-maright: 5px;
+$tabs-fill-after-top: 0;
+$tabs-fill-after-left: 0;
+$tabs-fill-after-width: 100%;
+$tabs-fill-after-height: 100%;
+$tabs-fill-fontWeight: bold;
 
-$tabs-turn-tab:(width:25%,padding: 0 16px,color:#666,back:#f5f5f5,afterBack:#f0f0f0,activeBack:#2CC185);
-$tabs-turn-after-top:0;
-$tabs-turn-after-left:0;
-$tabs-turn-after-width:100%;
-$tabs-turn-after-height:100%;
-$tabs-turn-fontWeight:bold;
+$tabs-turn-tab: (padding: 0 16px, color:#fff, back:#f5f5f5, afterBack:$brand-primary, activeBack:$brand-primary);
+$tabs-turn-after-top: 0;
+$tabs-turn-after-left: 0;
+$tabs-turn-after-width: 100%;
+$tabs-turn-after-height: 100%;
+$tabs-turn-beforeBot: 32px;
+$tabs-turn-beforeRight: 15px;
+$tabs-turn-fontWeight: bold;
+$tabs-moveleft-conHeight: 120px;
+$tabs-moveleft-conPad: 16px;
 
-$tabs-slide-tabs:(width:25%, padding: 0 16px,back:#f5f5f5);
-$tabs-slide-child-bottom:0;
-$tabs-slide-child-left:0;
-$tabs-slide-child-height:4px;
-$tabs-slide-child-back:#2CC185;
-$tabs-slide-fontWeight:bold;
+$tabs-slide-tabs: (width:25%, padding: 0 16px, back:#f5f5f5);
+$tabs-slide-child-bottom: 0;
+$tabs-slide-child-left: 0;
+$tabs-slide-child-height: 4px;
+$tabs-slide-child-back: $brand-primary;
+$tabs-slide-fontWeight: bold;
 
-$tabs-moveleft-conHeight:120px;
+$tabs-fade-tab: (marLeft:5px, marTop:5px, color:#666, padding:0 16px, radius:0 0 0 0);
+$tabs-fade-conPad: 16px;
+$tabs-fade-conBor: 5px;
 
-$tabs-simple-conBorder:1px;
-$tabs-simple-conHeight:120px;
-$tabs-simple-conPad:16px;
-$tabs-simple-conWidth:100%;
+$tabs-fadeup-tab: (marTop:5px, color:#666, padding:0 16px, radius:0 0 0 0);
+$tabs-fadeup-top: -5px;
+$tabs-fadeup-left: 0;
+$tabs-fadeup-width: 100%;
+$tabs-fadeup-height: 100%;
+$tabs-fadeup-color: #666;
+$tabs-fadeup-conHeight: 120px;
+$tabs-fadeup-conPad: 16px;
 
-$tabs-fade-conBorder:1px;
-$tabs-fade-borderColor:#d9d9d9;
-$tabs-fade-conHeight:120px;
-$tabs-fade-conPad:16px;
-
+/*公共属性*/
 .cls {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  zoom: 1;
+  color: $tabs-cls-color;
+  width: $tabs-cls-width;
+  background: #f5f5f5;
+}
+
+.simple-tabs-content {
+  .bee-content-list {
+    height: $tabs-simple-conHeight;
+    background: #fff;
+    padding: $tabs-simple-conPad;
+    .bee-content {
+      width: $tabs-simple-conWidth;
+      display: inline-block;
+      float: left;
+      display: none;
+      &-active {
+        display: block;
+      }
+    }
+  }
+}
+
+/*基础tab1*/
+.simple-tabs-nav {
+  .bee-tabs-nav {
+    overflow: hidden;
+    font-size: map_get($tabs-fontSize, simple);
+    line-height: map_get($tabs-lineHeight, simple);
     box-sizing: border-box;
     position: relative;
+    white-space: nowrap;
+    margin-bottom: $tabs-marginBottom;
+    z-index: 1;
+    font-weight: $tabs-simple-fontWeight;
+    .bee-tabs-tab {
+      margin: map_get($tabs-simple-tab, margin);
+      border: $tabs-simple-tabBorder;
+      border-radius: map_get($tabs-simple-tab, radius);
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      background: map_get($tabs-simple-tab, back);
+      color: #666;
+      // margin-right: 2px;
+      padding: map_get($tabs-simple-tab, padding);
+      text-align: center;
+      float: left;
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+    .bee-tabs-tab-active {
+      border: $tabs-simple-activeBorder;
+      background: $brand-primary;
+      color: $tabs-simple-activeColor;
+      border-bottom: $tabs-simple-activeBorBottom;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+/*基础tab2*/
+.fill-tabs-nav {
+  .bee-tabs-nav {
     overflow: hidden;
-    zoom: 1;
-    color:$tabs-cls-color;
-    width: $tabs-cls-width;
-}
-.simple-tabs-nav{
-    .bee-tabs-nav {
-        overflow: hidden;
-        font-size: map_get($tabs-fontSize,simple);
-        line-height: map_get($tabs-lineHeight,simple);
-        box-sizing: border-box;
-        position: relative;
-        white-space: nowrap;
-        margin-bottom: $tabs-marginBottom;
-        z-index: 1;
-        font-weight:$tabs-simple-fontWeight;
-        .bee-tabs-tab {
-            margin: map_get($tabs-simple-tab,margin);
-            border: $tabs-simple-tabBorder;
-            border-radius:map_get($tabs-simple-tab,radius);
-            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-            background: map_get($tabs-simple-tab,back);
-            color: #fff;
-            // margin-right: 2px;
-            padding:map_get($tabs-simple-tab,padding);
-            float: left;
-            display: inline-block;
-            box-sizing: border-box;
-            position: relative;
-            cursor: pointer;
-            text-decoration: none; 
+    font-size: map_get($tabs-fontSize, fill);
+    line-height: map_get($tabs-lineHeight, fill);
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: $tabs-marginBottom;
+    z-index: 1;
+    background: map_get($tabs-fill-tab, back);
+    font-weight: $tabs-fill-fontWeight;
+    .bee-tabs-tab {
+      margin-right: $tabs-fill-tab-maright;
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      text-align: center;
+      padding: map_get($tabs-fill-tab, padding);
+      color: map_get($tabs-fill-tab, color);
+      transition: color 0.3s;
+      &:hover {
+        color: $brand-primary;
+      }
+      &::after {
+        position: absolute;
+        top: $tabs-fill-after-top;
+        left: $tabs-fill-after-left;
+        z-index: -1;
+        width: $tabs-fill-after-width;
+        height: $tabs-fill-after-height;
+        background: map_get($tabs-fill-tab, afterBack);
+        content: '';
+        -webkit-transition: background-color 0.3s, transform 0.4s;
+        transition: background-color 0.3s, transform 0.4s;
+        -webkit-transition-timing-function: ease, cubic-bezier(0.7, 0, 0.3, 1);
+        transition-timing-function: ease, cubic-bezier(0.7, 0, 0.3, 1);
+        -webkit-transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
+        transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
+      }
+      &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
+        background: map_get($tabs-fill-tab, activeBack);
+      }
+      &.bee-tabs-tab-active::after {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        border-top-left-radius: $tabs-simple-activeTopRadius;
+        border-top-right-radius: $tabs-simple-activeTopRadius;
+      }
+      &-active {
+        color: #fff;
+        &:hover {
+          color: #fff;
         }
-        .bee-tabs-tab-active {
-            border: $tabs-simple-activeBorder;
-            background: #fff;
-            color: $tabs-simple-activeColor;
-            border-bottom: $tabs-simple-activeBorBottom;
-        }
+      }
     }
+  }
+  .bee-content-list {
+    border: none;
+  }
 }
-.fill-tabs-nav  {
-    .bee-tabs-nav{
-        overflow: hidden;
-        font-size: map_get($tabs-fontSize,fill);
-        line-height: map_get($tabs-lineHeight,fill);
-        box-sizing: border-box;
-        position: relative;
-        white-space: nowrap;
-        margin-bottom: $tabs-marginBottom;
-        z-index: 1;
-        background: map_get($tabs-fill-tab,back);
-        font-weight: $tabs-fill-fontWeight;
-        .bee-tabs-tab{
-            display: inline-block;
-            box-sizing: border-box;
-            position: relative;
-            cursor: pointer;
-            width: map_get($tabs-fill-tab,width);
-            text-align: center;
-            padding: map_get($tabs-fill-tab,padding);
-            color: map_get($tabs-fill-tab,color);
-            transition: color 0.3s;
-            // &:hover{
-            //  color: #2CC185;
-            // }
-            &::after{
-                position: absolute;
-                top: $tabs-fill-after-top;
-                left: $tabs-fill-after-left;
-                z-index: -1;
-                width: $tabs-fill-after-width;
-                height: $tabs-fill-after-height;
-                background: map_get($tabs-fill-tab,afterBack);
-                content: '';
-                -webkit-transition: background-color 0.3s, -webkit-transform 0.3s;
-                transition: background-color 0.3s, transform 0.3s;
-                -webkit-transition-timing-function: ease, cubic-bezier(0.7,0,0.3,1);
-                transition-timing-function: ease, cubic-bezier(0.7,0,0.3,1);
-                -webkit-transform: translate3d(0,100%,0) translate3d(0,-3px,0);
-                transform: translate3d(0,100%,0) translate3d(0,-3px,0);
-            }
-            &:hover::after, &:focus::after, &.bee-tabs-tab-active::after{
-                background:map_get($tabs-fill-tab,activeBack);
-            }
-            &.bee-tabs-tab-active::after{
-                -webkit-transform: translate3d(0,0,0);
-                transform: translate3d(0,0,0);
-            }
-            &-active{
-                color: #fff;
-            }
-        }
+
+/*基础tab3*/
+.turn-tabs-nav {
+  .bee-tabs-nav {
+    overflow: hidden;
+    font-size: map_get($tabs-fontSize, turn);
+    line-height: map_get($tabs-lineHeight, turn);
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: $tabs-marginBottom;
+    z-index: 1;
+    background: map_get($tabs-turn-tab, back);
+    font-weight: $tabs-turn-fontWeight;
+    .bee-tabs-tab:first-child {
+      margin-left: 5px;
     }
-}
-.turn-tabs-nav{
-    .bee-tabs-nav {
-        overflow: hidden;
-        font-size: map_get($tabs-fontSize,turn);
-        line-height: map_get($tabs-lineHeight,turn);
-        box-sizing: border-box;
-        position: relative;
-        white-space: nowrap;
-        margin-bottom: $tabs-marginBottom;
-        z-index: 1;
-        background: map_get($tabs-turn-tab,back);
-        font-weight: $tabs-turn-fontWeight;
-        .bee-tabs-tab{
-            display: inline-block;
-            box-sizing: border-box;
-            position: relative;
-            cursor: pointer;
-            width: map_get($tabs-turn-tab,width);
-            text-align: center;
-            padding: map_get($tabs-turn-tab,padding);
-            color: map_get($tabs-turn-tab,color);
-            transition: color 0.3s;
-            // &:hover{
-            //     color: #2CC185;
-            // }
-            &::after {
-                position: absolute;
-                top: $tabs-turn-after-top;
-                left: $tabs-turn-after-left;
-                z-index: -1;
-                width: $tabs-turn-after-width;
-                height: $tabs-turn-after-height;
-                background-color: map_get($tabs-turn-tab,afterBack);
-                content: '';
-                -webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
-                transition: transform 0.3s, background-color 0.3s;
-                -webkit-transform: perspective(900px) rotate3d(1,0,0,90deg);
-                transform: perspective(900px) rotate3d(1,0,0,90deg);
-                -webkit-transform-origin: 50% 100%;
-                transform-origin: 50% 100%;
-                -webkit-perspective-origin: 50% 100%;
-                perspective-origin: 50% 100%;
-            }
-            &-active{
-                color: #fff;
-                &::after {
-                    background-color: map_get($tabs-turn-tab,activeBack);
-                    -webkit-transform: perspective(900px) rotate3d(1,0,0,0deg);
-                    transform: perspective(900px) rotate3d(1,0,0,0deg);
-                }
-            }
+    .bee-tabs-tab {
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      padding: map_get($tabs-turn-tab, padding);
+      color: map_get($tabs-turn-tab, color);
+      transition: color 0.3s;
+      &::before {
+        content: '';
+        position: absolute;
+        top: $tabs-turn-after-top;
+        left: $tabs-turn-after-left;
+        z-index: -1;
+        width: $tabs-turn-after-width;
+        height: $tabs-turn-after-height;
+        border-bottom: $tabs-turn-beforeBot $brand-primary solid;
+        border-right: transparent $tabs-turn-beforeRight solid;
+        border-left: none;
+        z-index: -1;
+      }
+      &::after {
+        position: absolute;
+        top: $tabs-turn-after-top;
+        left: $tabs-turn-after-left;
+        z-index: -1;
+        width: $tabs-turn-after-width;
+        height: $tabs-turn-after-height;
+        background-color: map_get($tabs-turn-tab, afterBack);
+        content: '';
+        -webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
+        transition: transform 0.3s, background-color 0.3s;
+        -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(900px) rotate3d(1, 0, 0, 90deg);
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-perspective-origin: 50% 100%;
+        perspective-origin: 50% 100%;
+        border-bottom: $tabs-turn-beforeBot #fff solid;
+        border-right: $tabs-basic-back $tabs-turn-beforeRight solid;
+        border-left: none;
+      }
+      &-active {
+        color: $brand-primary;
+        margin-top: $tabs-fill-tab-maright;
+        &::after {
+          -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
+          transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
         }
+      }
     }
+  }
 }
-.slide-tabs-nav{
-    .bee-tabs-nav{
-        overflow: hidden;
-        font-size: map_get($tabs-fontSize,slide);
-        line-height: map_get($tabs-lineHeight,slide);
-        box-sizing: border-box;
-        position: relative;
-        white-space: nowrap;
-        margin-bottom: $tabs-marginBottom;
-        z-index: 1;
-        background: map_get($tabs-slide-tabs,back);
-        font-weight: $tabs-slide-fontWeight;
-        .bee-tabs-tab{
-            display: inline-block;
-            box-sizing: border-box;
-            position: relative;
-            cursor: pointer;
-            width: map_get($tabs-slide-tabs,width);
-            text-align: center;
-            padding:map_get($tabs-slide-tabs,padding);
-            &-child {
-                position: absolute;
-                bottom: $tabs-slide-child-bottom;
-                left: $tabs-slide-child-left;
-                height: $tabs-slide-child-height;
-                background: $tabs-slide-child-back;
-                content: '';
-                -webkit-transition: -webkit-transform 0.3s;
-                transition: transform 0.3s;
-            }
-        }
-    }
-}
+
 .moveleft-tabs-content {
-    .bee-content-list{
-        height: $tabs-moveleft-conHeight;
-        background: #fff;
-        position: relative;
-        .bee-content {
-            display: inline-block;
-            transform: translateX(-100%);
-            opacity: 0;
-            position: absolute;
-            transition: all .3s ease-in-out;
-        }
-        .bee-content-active {
-            transform: translateX(0);
-            transition-delay: .3s;
-            opacity: 1;
-        }
+  .bee-content-list {
+    border: $tabs-fill-tab-maright solid $tabs-basic-back;
+    border-top: none;
+    height: $tabs-moveleft-conHeight;
+    padding: $tabs-moveleft-conPad;
+    background: #fff;
+    position: relative;
+    .bee-content {
+      display: inline-block;
+      transform: translateX(-100%);
+      opacity: 0;
+      position: absolute;
+      transition: all .3s ease-in-out;
     }
-}
-.simple-tabs-content{
-    .bee-content-list{
-        border: $tabs-simple-conBorder solid #d9d9d9;
-        height: $tabs-simple-conHeight;
-        background: #fff;
-        padding: $tabs-simple-conPad;
-        .bee-content {
-            width: $tabs-simple-conWidth;
-            display: inline-block;
-            float: left;
-            display: none;
-            &-active {
-                display: block;
-            }
-        }
+    .bee-content-active {
+      transform: translateX(0);
+      transition-delay: .3s;
+      opacity: 1;
     }
+  }
 }
 
-
-.fade-tabs-content {
-    .bee-content-list {
-        border: $tabs-fade-conBorder solid $tabs-fade-borderColor;
-        height: $tabs-simple-conHeight;
-        background: #fff;
-        padding: $tabs-fade-conPad;
-        position: relative;
-        .bee-content {
-            display: inline-block;
-            float: left;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            position: absolute;
-            &-active {
-                opacity: 1;
-            }
-        }
+/*基础tab4 */
+.fade-tabs-nav {
+  .bee-tabs-nav {
+    overflow: hidden;
+    font-size: map_get($tabs-fontSize, fade);
+    line-height: map_get($tabs-lineHeight, fade);
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: $tabs-marginBottom;
+    z-index: 1;
+    font-weight: bold;
+    margin-left: map_get($tabs-fade-tab, marLeft);
+    .bee-tabs-tab {
+      margin-top: map_get($tabs-fade-tab, marTop);
+      border-radius: map_get($tabs-fade-tab, radius);
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      color: map_get($tabs-fade-tab, color);
+      padding: map_get($tabs-fade-tab, padding);
+      text-align: center;
+      float: left;
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      &:hover {
+        color: $brand-primary;
+      }
     }
+    .bee-tabs-tab-active {
+      background: #fff;
+      color: map_get($tabs-fade-tab, color);
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+  }
+  .bee-content-list {
+    border: $tabs-fade-conBor solid $tabs-basic-back;
+    border-top: none;
+    height: $tabs-simple-conHeight;
+    background: #fff;
+    padding: $tabs-fade-conPad;
+    position: relative;
+    .bee-content {
+      display: inline-block;
+      float: left;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      &-active {
+        opacity: 1;
+      }
+    }
+  }
 }
+
+/*基础tab5 */
+.fadeup-tabs-nav {
+  .bee-tabs-nav {
+    overflow: hidden;
+    font-size: map_get($tabs-fontSize, fadeup);
+    line-height: map_get($tabs-lineHeight, fadeup);
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: $tabs-marginBottom;
+    z-index: 1;
+    font-weight: bold;
+    .bee-tabs-tab {
+      margin-top: map_get($tabs-fadeup-tab, marTop);
+      border-radius: map_get($tabs-fadeup-tab, radius);
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      color: map_get($tabs-fadeup-tab, color);
+      padding: map_get($tabs-fadeup-tab, padding);
+      text-align: center;
+      float: left;
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      &:hover {
+        color: $brand-primary;
+      }
+      &::after {
+        position: absolute;
+        top: $tabs-fadeup-top;
+        left: $tabs-fadeup-left;
+        z-index: -1;
+        width: $tabs-fadeup-width;
+        height: $tabs-fadeup-height;
+        content: '';
+        -webkit-transition: background-color 0.3s, -webkit-transform 0.3s;
+        transition: background-color 0.3s, transform 0.3s;
+        -webkit-transition-timing-function: ease, cubic-bezier(0.7, 0, 0.3, 1);
+        transition-timing-function: ease, cubic-bezier(0.7, 0, 0.3, 1);
+        -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);
+        transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);
+      }
+      &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
+        background: map_get($tabs-fill-tab, activeBack);
+      }
+      &.bee-tabs-tab-active::after {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      &-active {
+        color: #fff;
+
+      }
+    }
+    .bee-tabs-tab-active {
+      background: #fff;
+      color: $tabs-fadeup-color;
+      &:hover {
+        color: $tabs-fadeup-color;
+      }
+    }
+  }
+  .bee-content-list {
+    height: $tabs-fadeup-conHeight;
+    background: #fff;
+    padding: $tabs-fadeup-conPad;
+    position: relative;
+    .bee-content {
+      display: inline-block;
+      float: left;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      &-active {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/*基础tab6*/
+.slide-tabs-nav {
+  .bee-tabs-nav {
+    overflow: hidden;
+    font-size: map_get($tabs-fontSize, slide);
+    line-height: map_get($tabs-lineHeight, slide);
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: $tabs-marginBottom;
+    z-index: 1;
+    background: map_get($tabs-slide-tabs, back);
+    font-weight: $tabs-slide-fontWeight;
+    .bee-tabs-tab {
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      text-align: center;
+      padding: map_get($tabs-slide-tabs, padding);
+      &-child {
+        position: absolute;
+        bottom: $tabs-slide-child-bottom;
+        left: $tabs-slide-child-left;
+        height: $tabs-slide-child-height;
+        background: $tabs-slide-child-back;
+        content: '';
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+      }
+    }
+  }
+}
+
 
 
 
