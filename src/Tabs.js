@@ -14,7 +14,7 @@ const defaultPropsTabs = {
 	navsuffix:'-tabs-nav',
 	contsuffix:'-tabs-content',
 	defaultActiveKey:"1",
-	count:null //记录子节点个数
+	count:null
 };
 class Tabs extends Component {
 	constructor(props) {
@@ -40,7 +40,8 @@ class Tabs extends Component {
 	}
 	formatChildren(v){
 		let arr = this.props.children;
-		let width = 100/Number(this.props.children.length)+'%';
+		//let width = 100/Number(this.props.children.length)+'%';
+		let minWidth = "90px";
 		this.setState({
 			count:arr.length
 		})
@@ -58,14 +59,14 @@ class Tabs extends Component {
 				children = e.props.children,
 				tab_active =classNames('bee-tabs-tab',{['bee-tabs-tab-active']:(e.key==stateActiveKey)}),
 				cont_active =classNames('bee-content',{['bee-content-active']:(e.key==stateActiveKey)});
-			navArr.push(<div style={{width:width}} onClick={this.clickHandler} className={tab_active} data-id={key} key={key}>{tab}</div>)	
+			navArr.push(<div style={{minWidth:minWidth}} onClick={this.clickHandler} className={tab_active} data-id={key} key={key}>{tab}</div>)
 			contentArr.push(<div className={cont_active} data-id={key} key={key}>{children}</div>)
 		});
 		const content =  (
 			<div className={clsname}>
 				<div className="bee-tabs-nav">
 					{navArr}
-					<div style={{width:width}} className="bee-tabs-tab-child"></div>
+					<div style={{minWidth:minWidth}} className="bee-tabs-tab-child"></div>
 				</div>
 				<div className="bee-content-list">
 					{contentArr}
