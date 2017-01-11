@@ -30,6 +30,7 @@ react bee-tabs component for tinper-bee
 #### 开发调试
 
 ```sh
+$ npm install -g bee-tools
 $ git clone https://github.com/tinper-bee/bee-tabs
 $ cd bee-tabs
 $ npm install

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 const propTypesTabs = {
-  	cls:React.PropTypes.string,
+  	clsPrefix:React.PropTypes.string,
   	nav:React.PropTypes.string,
   	cont:React.PropTypes.string,
   	suffix:React.PropTypes.string,
   	defaultActiveKey:React.PropTypes.string
 };
 const defaultPropsTabs = {
-	cls:'cls',
+	clsPrefix:'u-tabs',
 	nav:'simple',
 	cont:'simple',
 	navsuffix:'-tabs-nav',
@@ -78,11 +78,11 @@ class Tabs extends Component {
 		})
 	}
 	componentDidMount() {
-		this.formatChildren();		
+		this.formatChildren();
 	}
 	render(){
 		return(
-			<div className={this.props.cls}> 
+			<div className={this.props.clsPrefix}>
 			{this.state.content}
 			</div>
 		)
