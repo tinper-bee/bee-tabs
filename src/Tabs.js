@@ -29,7 +29,7 @@ class Tabs extends Component {
 	}
 	ruleSelector(n) {
 		let count = (n-1)*100+'%';
-        document.querySelector('.bee-tabs-tab-child').style.transform=`translate3d(${count},0,0)`
+        document.querySelector('.u-tabs-tab-child').style.transform=`translate3d(${count},0,0)`
     }
 	clickHandler(e){
 		this.setState({
@@ -57,18 +57,18 @@ class Tabs extends Component {
 			let key  = 	e.key,
 				tab = e.props.tab,
 				children = e.props.children,
-				tab_active =classNames('bee-tabs-tab',{['bee-tabs-tab-active']:(e.key==stateActiveKey)}),
-				cont_active =classNames('bee-content',{['bee-content-active']:(e.key==stateActiveKey)});
+				tab_active =classNames('u-tabs-tab',{['u-tabs-tab-active']:(e.key==stateActiveKey)}),
+				cont_active =classNames('u-content',{['u-content-active']:(e.key==stateActiveKey)});
 			navArr.push(<div style={{minWidth:minWidth}} onClick={this.clickHandler} className={tab_active} data-id={key} key={key}>{tab}</div>)
 			contentArr.push(<div className={cont_active} data-id={key} key={key}>{children}</div>)
 		});
 		const content =  (
 			<div className={clsname}>
-				<div className="bee-tabs-nav">
+				<div className="u-tabs-nav">
 					{navArr}
-					<div style={{minWidth:minWidth}} className="bee-tabs-tab-child"></div>
+					<div style={{minWidth:minWidth}} className="u-tabs-tab-child"></div>
 				</div>
-				<div className="bee-content-list">
+				<div className="u-content-list">
 					{contentArr}
 				</div>
 			</div>

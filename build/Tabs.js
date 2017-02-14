@@ -61,7 +61,7 @@ var Tabs = function (_Component) {
 
 	Tabs.prototype.ruleSelector = function ruleSelector(n) {
 		var count = (n - 1) * 100 + '%';
-		document.querySelector('.bee-tabs-tab-child').style.transform = 'translate3d(' + count + ',0,0)';
+		document.querySelector('.u-tabs-tab-child').style.transform = 'translate3d(' + count + ',0,0)';
 	};
 
 	Tabs.prototype.clickHandler = function clickHandler(e) {
@@ -93,8 +93,8 @@ var Tabs = function (_Component) {
 			var key = e.key,
 			    tab = e.props.tab,
 			    children = e.props.children,
-			    tab_active = (0, _classnames2["default"])('bee-tabs-tab', _defineProperty({}, 'bee-tabs-tab-active', e.key == stateActiveKey)),
-			    cont_active = (0, _classnames2["default"])('bee-content', _defineProperty({}, 'bee-content-active', e.key == stateActiveKey));
+			    tab_active = (0, _classnames2["default"])('u-tabs-tab', _defineProperty({}, 'u-tabs-tab-active', e.key == stateActiveKey)),
+			    cont_active = (0, _classnames2["default"])('u-content', _defineProperty({}, 'u-content-active', e.key == stateActiveKey));
 			navArr.push(_react2["default"].createElement(
 				'div',
 				{ style: { minWidth: minWidth }, onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
@@ -111,13 +111,13 @@ var Tabs = function (_Component) {
 			{ className: clsname },
 			_react2["default"].createElement(
 				'div',
-				{ className: 'bee-tabs-nav' },
+				{ className: 'u-tabs-nav' },
 				navArr,
-				_react2["default"].createElement('div', { style: { minWidth: minWidth }, className: 'bee-tabs-tab-child' })
+				_react2["default"].createElement('div', { style: { minWidth: minWidth }, className: 'u-tabs-tab-child' })
 			),
 			_react2["default"].createElement(
 				'div',
-				{ className: 'bee-content-list' },
+				{ className: 'u-content-list' },
 				contentArr
 			)
 		);

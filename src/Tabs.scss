@@ -12,11 +12,11 @@
   width: $tabs-cls-width;
   background: $tabs-basic-back;
   .simple-tabs-content {
-    .bee-content-list {
+    .u-content-list {
       height: $tabs-simple-conHeight;
       background: #fff;
       padding: $tabs-simple-conPad;
-      .bee-content {
+      .u-content {
         width: $tabs-simple-conWidth;
         display: inline-block;
         float: left;
@@ -30,7 +30,7 @@
 
   /*基础tab1*/
   .simple-tabs-nav {
-    .bee-tabs-nav {
+    .u-tabs-nav {
       overflow: hidden;
       font-size: map_get($tabs-fontSize, simple);
       line-height: map_get($tabs-lineHeight, simple);
@@ -39,7 +39,7 @@
       white-space: nowrap;
       margin-bottom: $tabs-marginBottom;
       z-index: 1;
-      .bee-tabs-tab {
+      .u-tabs-tab {
         margin: map_get($tabs-simple-tab, margin);
         border: $tabs-simple-tabBorder;
         border-radius: map_get($tabs-simple-tab, radius);
@@ -59,7 +59,7 @@
           color: $brand-primary;
         }
       }
-      .bee-tabs-tab-active {
+      .u-tabs-tab-active {
         border: $tabs-simple-activeBorder;
         background: $brand-primary;
         color: $tabs-simple-activeColor;
@@ -73,7 +73,7 @@
 
   /*基础tab2*/
   .fill-tabs-nav {
-    .bee-tabs-nav {
+    .u-tabs-nav {
       overflow: hidden;
       font-size: map_get($tabs-fontSize, fill);
       line-height: map_get($tabs-lineHeight, fill);
@@ -83,7 +83,7 @@
       margin-bottom: $tabs-marginBottom;
       z-index: 1;
       background: map_get($tabs-fill-tab, back);
-      .bee-tabs-tab {
+      .u-tabs-tab {
         margin-right: $tabs-fill-tab-maright;
         display: inline-block;
         box-sizing: border-box;
@@ -112,10 +112,10 @@
           -webkit-transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
           transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
         }
-        &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
+        &:hover::after, &:focus::after, &.u-tabs-tab-active::after {
           background: $brand-primary;
         }
-        &.bee-tabs-tab-active::after {
+        &.u-tabs-tab-active::after {
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
           border-top-left-radius: $tabs-simple-activeTopRadius;
@@ -129,14 +129,14 @@
         }
       }
     }
-    .bee-content-list {
+    .u-content-list {
       border: none;
     }
   }
 
   /*基础tab3*/
   .turn-tabs-nav {
-    .bee-tabs-nav {
+    .u-tabs-nav {
       overflow: hidden;
       font-size: map_get($tabs-fontSize, turn);
       line-height: map_get($tabs-lineHeight, turn);
@@ -146,10 +146,10 @@
       margin-bottom: $tabs-marginBottom;
       z-index: 1;
       background: map_get($tabs-turn-tab, back);
-      .bee-tabs-tab:first-child {
+      .u-tabs-tab:first-child {
         margin-left: 5px;
       }
-      .bee-tabs-tab {
+      .u-tabs-tab {
         display: inline-block;
         box-sizing: border-box;
         position: relative;
@@ -204,21 +204,21 @@
   }
 
   .moveleft-tabs-content {
-    .bee-content-list {
+    .u-content-list {
       border: $tabs-fill-tab-maright solid $tabs-basic-back;
       border-top: none;
       height: $tabs-moveleft-conHeight;
       padding: $tabs-moveleft-conPad;
       background: #fff;
       position: relative;
-      .bee-content {
+      .u-content {
         display: inline-block;
         transform: translateX(-100%);
         opacity: 0;
         position: absolute;
         transition: all .3s ease-in-out;
       }
-      .bee-content-active {
+      .u-content-active {
         transform: translateX(0);
         transition-delay: .3s;
         opacity: 1;
@@ -228,7 +228,7 @@
 
   /*基础tab4 */
   .fade-tabs-nav {
-    .bee-tabs-nav {
+    .u-tabs-nav {
       overflow: hidden;
       font-size: map_get($tabs-fontSize, fade);
       line-height: map_get($tabs-lineHeight, fade);
@@ -238,7 +238,7 @@
       margin-bottom: $tabs-marginBottom;
       z-index: 1;
       margin-left: map_get($tabs-fade-tab, marLeft);
-      .bee-tabs-tab {
+      .u-tabs-tab {
         margin-top: map_get($tabs-fade-tab, marTop);
         border-radius: map_get($tabs-fade-tab, radius);
         transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -255,7 +255,7 @@
           color: $brand-primary;
         }
       }
-      .bee-tabs-tab-active {
+      .u-tabs-tab-active {
         background: #fff;
         color: map_get($tabs-fade-tab, color);
         &:hover {
@@ -263,14 +263,14 @@
         }
       }
     }
-    .bee-content-list {
+    .u-content-list {
       border: $tabs-fade-conBor solid $tabs-basic-back;
       border-top: none;
       height: $tabs-simple-conHeight;
       background: #fff;
       padding: $tabs-fade-conPad;
       position: relative;
-      .bee-content {
+      .u-content {
         display: inline-block;
         float: left;
         opacity: 0;
@@ -285,7 +285,7 @@
 
   /*基础tab5 */
   .fadeup-tabs-nav {
-    .bee-tabs-nav {
+    .u-tabs-nav {
       overflow: hidden;
       font-size: map_get($tabs-fontSize, fadeup);
       line-height: map_get($tabs-lineHeight, fadeup);
@@ -294,7 +294,7 @@
       white-space: nowrap;
       margin-bottom: $tabs-marginBottom;
       z-index: 1;
-      .bee-tabs-tab {
+      .u-tabs-tab {
         margin-top: map_get($tabs-fadeup-tab, marTop);
         border-radius: map_get($tabs-fadeup-tab, radius);
         transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -325,10 +325,10 @@
           -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);
           transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);
         }
-        &:hover::after, &:focus::after, &.bee-tabs-tab-active::after {
+        &:hover::after, &:focus::after, &.u-tabs-tab-active::after {
           background: $brand-primary;
         }
-        &.bee-tabs-tab-active::after {
+        &.u-tabs-tab-active::after {
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
         }
@@ -337,7 +337,7 @@
 
         }
       }
-      .bee-tabs-tab-active {
+      .u-tabs-tab-active {
         background: #fff;
         color: $tabs-fadeup-color;
         &:hover {
@@ -345,12 +345,12 @@
         }
       }
     }
-    .bee-content-list {
+    .u-content-list {
       height: $tabs-fadeup-conHeight;
       background: #fff;
       padding: $tabs-fadeup-conPad;
       position: relative;
-      .bee-content {
+      .u-content {
         display: inline-block;
         float: left;
         opacity: 0;
@@ -365,7 +365,7 @@
 
   /*基础tab6*/
   .slide-tabs-nav {
-    .bee-tabs-nav {
+    .u-tabs-nav {
       overflow: hidden;
       font-size: map_get($tabs-fontSize, slide);
       line-height: map_get($tabs-lineHeight, slide);
@@ -375,7 +375,7 @@
       margin-bottom: $tabs-marginBottom;
       z-index: 1;
       background: map_get($tabs-slide-tabs, back);
-      .bee-tabs-tab {
+      .u-tabs-tab {
         display: inline-block;
         box-sizing: border-box;
         position: relative;
