@@ -75,7 +75,13 @@ var Tabs = function (_Component) {
 	Tabs.prototype.formatChildren = function formatChildren(v) {
 		var _this2 = this;
 
-		var arr = this.props.children;
+		var arr = [];
+		if (!this.props.children[0]) {
+			arr.push(this.props.children);
+		} else {
+			arr = this.props.children;
+		}
+
 		//let width = 100/Number(this.props.children.length)+'%';
 		var minWidth = "90px";
 		this.setState({
@@ -89,6 +95,7 @@ var Tabs = function (_Component) {
 
 		var navArr = [];
 		var contentArr = [];
+
 		arr.forEach(function (e) {
 			var key = e.key,
 			    tab = e.props.tab,
