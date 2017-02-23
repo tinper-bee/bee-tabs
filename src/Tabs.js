@@ -39,7 +39,13 @@ class Tabs extends Component {
 		this.formatChildren(e.currentTarget.dataset.id);
 	}
 	formatChildren(v){
-		let arr = this.props.children;
+		let arr = []
+		if(!this.props.children[0]) {
+			arr.push(this.props.children);
+		}else{
+			arr = this.props.children;
+		}
+
 		//let width = 100/Number(this.props.children.length)+'%';
 		let minWidth = "90px";
 		this.setState({
@@ -53,6 +59,7 @@ class Tabs extends Component {
 
 		const navArr = [];
 		const contentArr = [];
+
 		arr.forEach((e)=>{
 			let key  = 	e.key,
 				tab = e.props.tab,
