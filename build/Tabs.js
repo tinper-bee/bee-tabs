@@ -65,11 +65,17 @@ var Tabs = function (_Component) {
 	};
 
 	Tabs.prototype.clickHandler = function clickHandler(e) {
+		var onChange = this.props.onChange;
+
 		this.setState({
 			activeKey: e.currentTarget.dataset.id
 		});
 		this.ruleSelector(e.currentTarget.dataset.id);
 		this.formatChildren(e.currentTarget.dataset.id);
+
+		if (onChange) {
+			onChange(e.currentTarget.dataset.id);
+		}
 	};
 
 	Tabs.prototype.formatChildren = function formatChildren(v) {
