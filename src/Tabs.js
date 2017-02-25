@@ -32,11 +32,16 @@ class Tabs extends Component {
         document.querySelector('.u-tabs-tab-child').style.transform=`translate3d(${count},0,0)`
     }
 	clickHandler(e){
+		const {onChange} = this.props;
 		this.setState({
 			activeKey:e.currentTarget.dataset.id
 		})
 		this.ruleSelector(e.currentTarget.dataset.id)
 		this.formatChildren(e.currentTarget.dataset.id);
+
+		if(onChange) {
+			onChange(e.currentTarget.dataset.id);
+		}
 	}
 	formatChildren(v){
 		let arr = []
