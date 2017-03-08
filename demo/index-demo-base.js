@@ -4,7 +4,10 @@ import { Panel } from 'bee-panel';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'bee-button';
-import { Tabs, TabPanel } from '../src';
+
+import Tabs, { TabPane } from '../src';
+import TabContent from '../src/TabContent';
+import ScrollableInkTabBar from '../src/ScrollableInkTabBar';
 
 const CARET = <i className="uf uf-chevronarrowdown"></i>;
 

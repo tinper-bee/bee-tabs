@@ -4,7 +4,10 @@ import { Panel } from 'bee-panel';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'bee-button';
-import { Tabs, TabPanel } from '../src';
+
+import Tabs, { TabPane } from '../src';
+import TabContent from '../src/TabContent';
+import ScrollableInkTabBar from '../src/ScrollableInkTabBar';
 
 const CARET = <i className="uf uf-chevronarrowdown"></i>;
 
@@ -18,105 +21,33 @@ const CARETUP = <i className="uf uf-chevronarrowup"></i>;
  *
  */
 
+ var callback = function(key){
+
+ }
+
+
 class Demo1 extends Component {
     constructor(props) {
         super(props)
-        this.state={
-            panelActiveKey:1
-        }
     }
-    handleKey(key) {
-        this.setState({panelActiveKey:key})
-    }
-    render() {
-        
-        return (
-            <Tabs onChange={this.handleKey.bind(this)} navtype="simple" contenttype="" defaultActiveKey="1">
-                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
-                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
-                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
-                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
-            </Tabs>
-        )
-    }
-}
-/**
- *
- * @title 基础tab带有上划线
- * @description
- *
- */
 
-class Demo2 extends Component {
     render() {
-        return (
-            <Tabs navtype="fadeup" contenttype="" defaultActiveKey="2">
-                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
-                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
-                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
-                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
-            </Tabs>
-        )
-    }
-}
-/**
- *
- * @title 基础tab带有下划线
- * @description
- *
- */
 
-class Demo3 extends Component {
-    render() {
         return (
-            <Tabs navtype="fill" contenttype="" defaultActiveKey="2">
-                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
-                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
-                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
-                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
-            </Tabs>
+            <Tabs
+      defaultActiveKey="2"
+      onChange={callback}
+      renderTabBar={()=><ScrollableInkTabBar />}
+      renderTabContent={()=><TabContent />}
+    >
+      <TabPane tab='tab 1' key="1">first</TabPane>
+      <TabPane tab='tab 2' key="2">second</TabPane>
+      <TabPane tab='tab 3' key="3">third</TabPane>
+    </Tabs>
         )
     }
 }
-/**
- *
- * @title 基础tab背景梯形
- * @description
- *
- */
-
-class Demo4 extends Component {
-    render() {
-        return (
-            <Tabs navtype="turn" contenttype="moveleft" defaultActiveKey="2">
-                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
-                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
-                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
-                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
-            </Tabs>
-        )
-    }
-}
-/**
- *
- * @title 基础tab选中后背景白色
- * @description
- *
- */
-
-class Demo5 extends Component {
-    render() {
-        return (
-            <Tabs navtype="fade" contenttype="" defaultActiveKey="2">
-                <TabPanel tab="Tab 1" key="1">测试测试 1</TabPanel>
-                <TabPanel tab="Tab 2" key="2">Content of Tab Pane 2</TabPanel>
-                <TabPanel tab="Tab 3" key="3">测试测试 3</TabPanel>
-                <TabPanel tab="Tab 4" key="4">测试测试 4</TabPanel>
-            </Tabs>
-        )
-    }
-}
-var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\n *\n * @title 基础tab\n * @description\n *\n */\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props)\n        this.state={\n            panelActiveKey:1\n        }\n    }\n    handleKey(key) {\n        this.setState({panelActiveKey:key})\n    }\n    render() {\n        \n        return (\n            <Tabs onChange={this.handleKey.bind(this)} navtype=\"simple\" contenttype=\"\" defaultActiveKey=\"1\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":""},{"example":<Demo2 />,"title":" 基础tab带有上划线","code":"/**\n *\n * @title 基础tab带有上划线\n * @description\n *\n */\n\nclass Demo2 extends Component {\n    render() {\n        return (\n            <Tabs navtype=\"fadeup\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":""},{"example":<Demo3 />,"title":" 基础tab带有下划线","code":"/**\n *\n * @title 基础tab带有下划线\n * @description\n *\n */\n\nclass Demo3 extends Component {\n    render() {\n        return (\n            <Tabs navtype=\"fill\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":""},{"example":<Demo4 />,"title":" 基础tab背景梯形","code":"/**\n *\n * @title 基础tab背景梯形\n * @description\n *\n */\n\nclass Demo4 extends Component {\n    render() {\n        return (\n            <Tabs navtype=\"turn\" contenttype=\"moveleft\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":""},{"example":<Demo5 />,"title":" 基础tab选中后背景白色","code":"/**\n *\n * @title 基础tab选中后背景白色\n * @description\n *\n */\n\nclass Demo5 extends Component {\n    render() {\n        return (\n            <Tabs navtype=\"fade\" contenttype=\"\" defaultActiveKey=\"2\">\n                <TabPanel tab=\"Tab 1\" key=\"1\">测试测试 1</TabPanel>\n                <TabPanel tab=\"Tab 2\" key=\"2\">Content of Tab Pane 2</TabPanel>\n                <TabPanel tab=\"Tab 3\" key=\"3\">测试测试 3</TabPanel>\n                <TabPanel tab=\"Tab 4\" key=\"4\">测试测试 4</TabPanel>\n            </Tabs>\n        )\n    }\n}\n","desc":""}]
+var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description\r\n *\r\n */\r\n\r\n var callback = function(key){\r\n\r\n }\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props)\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <Tabs\r\n      defaultActiveKey=\"2\"\r\n      onChange={callback}\r\n      renderTabBar={()=><ScrollableInkTabBar />}\r\n      renderTabContent={()=><TabContent />}\r\n    >\r\n      <TabPane tab='tab 1' key=\"1\">first</TabPane>\r\n      <TabPane tab='tab 2' key=\"2\">second</TabPane>\r\n      <TabPane tab='tab 3' key=\"3\">third</TabPane>\r\n    </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":""}]
 
 
 class Demo extends Component {
