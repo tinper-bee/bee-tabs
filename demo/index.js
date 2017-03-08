@@ -47,7 +47,75 @@ class Demo1 extends Component {
         )
     }
 }
-var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description\r\n *\r\n */\r\n\r\n var callback = function(key){\r\n\r\n }\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props)\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <Tabs\r\n      defaultActiveKey=\"2\"\r\n      onChange={callback}\r\n      renderTabBar={()=><ScrollableInkTabBar />}\r\n      renderTabContent={()=><TabContent />}\r\n    >\r\n      <TabPane tab='tab 1' key=\"1\">first</TabPane>\r\n      <TabPane tab='tab 2' key=\"2\">second</TabPane>\r\n      <TabPane tab='tab 3' key=\"3\">third</TabPane>\r\n    </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":""}]
+/**
+ *
+ * @title 基础tab
+ * @description
+ *
+ */
+
+ var callback = function(key){
+
+ }
+
+
+class Demo2 extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+
+        return (
+            <Tabs
+      defaultActiveKey="2"
+      tabBarStyle ="fill"
+      onChange={callback}
+      renderTabBar={()=><ScrollableInkTabBar />}
+      renderTabContent={()=><TabContent />}
+    >
+      <TabPane tab='tab 1' key="1">first</TabPane>
+      <TabPane tab='tab 2' key="2">second</TabPane>
+      <TabPane tab='tab 3' key="3">third</TabPane>
+    </Tabs>
+        )
+    }
+}
+/**
+ *
+ * @title 基础tab
+ * @description
+ *
+ */
+
+ var callback = function(key){
+
+ }
+
+
+class Demo3 extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+
+        return (
+            <Tabs
+      defaultActiveKey="2"
+      tabBarStyle ="turn"
+      onChange={callback}
+      renderTabBar={()=><ScrollableInkTabBar />}
+      renderTabContent={()=><TabContent />}
+    >
+      <TabPane tab='tab 1' key="1">first</TabPane>
+      <TabPane tab='tab 2' key="2">second</TabPane>
+      <TabPane tab='tab 3' key="3">third</TabPane>
+    </Tabs>
+        )
+    }
+}
+var DemoArray = [{"example":<Demo1 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description\r\n *\r\n */\r\n\r\n var callback = function(key){\r\n\r\n }\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props)\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <Tabs\r\n      defaultActiveKey=\"2\"\r\n      onChange={callback}\r\n      renderTabBar={()=><ScrollableInkTabBar />}\r\n      renderTabContent={()=><TabContent />}\r\n    >\r\n      <TabPane tab='tab 1' key=\"1\">first</TabPane>\r\n      <TabPane tab='tab 2' key=\"2\">second</TabPane>\r\n      <TabPane tab='tab 3' key=\"3\">third</TabPane>\r\n    </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":""},{"example":<Demo2 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description\r\n *\r\n */\r\n\r\n var callback = function(key){\r\n\r\n }\r\n\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props)\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <Tabs\r\n      defaultActiveKey=\"2\"\r\n      tabBarStyle =\"fill\"\r\n      onChange={callback}\r\n      renderTabBar={()=><ScrollableInkTabBar />}\r\n      renderTabContent={()=><TabContent />}\r\n    >\r\n      <TabPane tab='tab 1' key=\"1\">first</TabPane>\r\n      <TabPane tab='tab 2' key=\"2\">second</TabPane>\r\n      <TabPane tab='tab 3' key=\"3\">third</TabPane>\r\n    </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":""},{"example":<Demo3 />,"title":" 基础tab","code":"/**\r\n *\r\n * @title 基础tab\r\n * @description\r\n *\r\n */\r\n\r\n var callback = function(key){\r\n\r\n }\r\n\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props)\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <Tabs\r\n      defaultActiveKey=\"2\"\r\n      tabBarStyle =\"turn\"\r\n      onChange={callback}\r\n      renderTabBar={()=><ScrollableInkTabBar />}\r\n      renderTabContent={()=><TabContent />}\r\n    >\r\n      <TabPane tab='tab 1' key=\"1\">first</TabPane>\r\n      <TabPane tab='tab 2' key=\"2\">second</TabPane>\r\n      <TabPane tab='tab 3' key=\"3\">third</TabPane>\r\n    </Tabs>\r\n        )\r\n    }\r\n}\r\n","desc":""}]
 
 
 class Demo extends Component {

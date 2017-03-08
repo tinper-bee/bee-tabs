@@ -27,6 +27,7 @@ const Tabs = React.createClass({
     className: PropTypes.string,
     tabBarPosition: PropTypes.string,
     style: PropTypes.object,
+    tabBarStyle: PropTypes.oneOf(['simple','fill','slide','turn','fade','fadeup']),
   },
 
   getDefaultProps() {
@@ -36,6 +37,7 @@ const Tabs = React.createClass({
       onChange: noop,
       tabBarPosition: 'top',
       style: {},
+      tabBarStyle: 'simple'
     };
   },
 
@@ -126,11 +128,13 @@ const Tabs = React.createClass({
       tabBarPosition, className,
       renderTabContent,
       renderTabBar,
+      tabBarStyle,
     } = props;
     const cls = classnames({
       [prefixCls]: 1,
       [`${prefixCls}-${tabBarPosition}`]: 1,
       [className]: !!className,
+      [`${prefixCls}-${tabBarStyle}`]: 1,
     });
 
     this.tabBar = renderTabBar();

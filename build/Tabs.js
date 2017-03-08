@@ -1,160 +1,184 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = require('classnames');
+var _KeyCode = require('./KeyCode');
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _KeyCode2 = _interopRequireDefault(_KeyCode);
+
+var _TabPane = require('./TabPane');
+
+var _TabPane2 = _interopRequireDefault(_TabPane);
+
+var _classnames2 = require('classnames');
+
+var _classnames3 = _interopRequireDefault(_classnames2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function noop() {}
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function getDefaultActiveKey(props) {
+  var activeKey = void 0;
+  _react2["default"].Children.forEach(props.children, function (child) {
+    if (child && !activeKey && !child.props.disabled) {
+      activeKey = child.key;
+    }
+  });
+  return activeKey;
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+var Tabs = _react2["default"].createClass({
+  displayName: 'Tabs',
 
-var propTypesTabs = {
-	clsPrefix: _react2["default"].PropTypes.string,
-	nav: _react2["default"].PropTypes.string,
-	cont: _react2["default"].PropTypes.string,
-	suffix: _react2["default"].PropTypes.string,
-	defaultActiveKey: _react2["default"].PropTypes.string
-};
-var defaultPropsTabs = {
-	clsPrefix: 'u-tabs',
-	nav: 'simple',
-	cont: 'simple',
-	navsuffix: '-tabs-nav',
-	contsuffix: '-tabs-content',
-	defaultActiveKey: "1",
-	count: null
-};
+  propTypes: {
+    destroyInactiveTabPane: _react.PropTypes.bool,
+    renderTabBar: _react.PropTypes.func.isRequired,
+    renderTabContent: _react.PropTypes.func.isRequired,
+    onChange: _react.PropTypes.func,
+    children: _react.PropTypes.any,
+    prefixCls: _react.PropTypes.string,
+    className: _react.PropTypes.string,
+    tabBarPosition: _react.PropTypes.string,
+    style: _react.PropTypes.object
+  },
 
-var Tabs = function (_Component) {
-	_inherits(Tabs, _Component);
+  getDefaultProps: function getDefaultProps() {
+    return {
+      prefixCls: 'u-tabs',
+      destroyInactiveTabPane: false,
+      onChange: noop,
+      tabBarPosition: 'top',
+      style: {}
+    };
+  },
+  getInitialState: function getInitialState() {
+    var props = this.props;
+    var activeKey = void 0;
+    if ('activeKey' in props) {
+      activeKey = props.activeKey;
+    } else if ('defaultActiveKey' in props) {
+      activeKey = props.defaultActiveKey;
+    } else {
+      activeKey = getDefaultActiveKey(props);
+    }
+    return {
+      activeKey: activeKey
+    };
+  },
+  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+    if ('activeKey' in nextProps) {
+      this.setState({
+        activeKey: nextProps.activeKey
+      });
+    }
+  },
+  onTabClick: function onTabClick(activeKey) {
+    if (this.tabBar.props.onTabClick) {
+      this.tabBar.props.onTabClick(activeKey);
+    }
+    this.setActiveKey(activeKey);
+  },
+  onNavKeyDown: function onNavKeyDown(e) {
+    var eventKeyCode = e.keyCode;
+    if (eventKeyCode === _KeyCode2["default"].RIGHT || eventKeyCode === _KeyCode2["default"].DOWN) {
+      e.preventDefault();
+      var nextKey = this.getNextActiveKey(true);
+      this.onTabClick(nextKey);
+    } else if (eventKeyCode === _KeyCode2["default"].LEFT || eventKeyCode === _KeyCode2["default"].UP) {
+      e.preventDefault();
+      var previousKey = this.getNextActiveKey(false);
+      this.onTabClick(previousKey);
+    }
+  },
+  setActiveKey: function setActiveKey(activeKey) {
+    if (this.state.activeKey !== activeKey) {
+      if (!('activeKey' in this.props)) {
+        this.setState({
+          activeKey: activeKey
+        });
+      }
+      this.props.onChange(activeKey);
+    }
+  },
+  getNextActiveKey: function getNextActiveKey(next) {
+    var activeKey = this.state.activeKey;
+    var children = [];
+    _react2["default"].Children.forEach(this.props.children, function (c) {
+      if (c && !c.props.disabled) {
+        if (next) {
+          children.push(c);
+        } else {
+          children.unshift(c);
+        }
+      }
+    });
+    var length = children.length;
+    var ret = length && children[0].key;
+    children.forEach(function (child, i) {
+      if (child.key === activeKey) {
+        if (i === length - 1) {
+          ret = children[0].key;
+        } else {
+          ret = children[i + 1].key;
+        }
+      }
+    });
+    return ret;
+  },
+  render: function render() {
+    var _classnames;
 
-	function Tabs(props) {
-		_classCallCheck(this, Tabs);
+    var props = this.props;
+    var prefixCls = props.prefixCls;
+    var tabBarPosition = props.tabBarPosition;
+    var className = props.className;
+    var renderTabContent = props.renderTabContent;
+    var renderTabBar = props.renderTabBar;
 
-		var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls, 1), _defineProperty(_classnames, prefixCls + '-' + tabBarPosition, 1), _defineProperty(_classnames, className, !!className), _classnames));
 
-		_this.state = {
-			content: '',
-			activeKey: _this.props.defaultActiveKey
-		};
-		_this.formatChildren = _this.formatChildren.bind(_this);
-		_this.clickHandler = _this.clickHandler.bind(_this);
-		_this.ruleSelector = _this.ruleSelector.bind(_this);
-		return _this;
-	}
+    this.tabBar = renderTabBar();
+    var contents = [_react2["default"].cloneElement(this.tabBar, {
+      prefixCls: prefixCls,
+      key: 'tabBar',
+      onKeyDown: this.onNavKeyDown,
+      tabBarPosition: tabBarPosition,
+      onTabClick: this.onTabClick,
+      panels: props.children,
+      activeKey: this.state.activeKey
+    }), _react2["default"].cloneElement(renderTabContent(), {
+      prefixCls: prefixCls,
+      tabBarPosition: tabBarPosition,
+      activeKey: this.state.activeKey,
+      destroyInactiveTabPane: props.destroyInactiveTabPane,
+      children: props.children,
+      onChange: this.setActiveKey,
+      key: 'tabContent'
+    })];
+    if (tabBarPosition === 'bottom') {
+      contents.reverse();
+    }
+    return _react2["default"].createElement(
+      'div',
+      {
+        className: cls,
+        style: props.style
+      },
+      contents
+    );
+  }
+});
 
-	Tabs.prototype.ruleSelector = function ruleSelector(n) {
-		var count = (n - 1) * 100 + '%';
-		document.querySelector('.u-tabs-tab-child').style.transform = 'translate3d(' + count + ',0,0)';
-	};
+Tabs.TabPane = _TabPane2["default"];
 
-	Tabs.prototype.clickHandler = function clickHandler(e) {
-		var onChange = this.props.onChange;
-
-		this.setState({
-			activeKey: e.currentTarget.dataset.id
-		});
-		this.ruleSelector(e.currentTarget.dataset.id);
-		this.formatChildren(e.currentTarget.dataset.id);
-
-		if (onChange) {
-			onChange(e.currentTarget.dataset.id);
-		}
-	};
-
-	Tabs.prototype.formatChildren = function formatChildren(v) {
-		var _this2 = this;
-
-		var arr = [];
-		if (!this.props.children[0]) {
-			arr.push(this.props.children);
-		} else {
-			arr = this.props.children;
-		}
-
-		//let width = 100/Number(this.props.children.length)+'%';
-		var minWidth = "90px";
-		this.setState({
-			count: arr.length
-		});
-		var stateActiveKey = v || this.state.activeKey;
-		var nav = this.props.navtype || this.props.nav,
-		    cont = this.props.contenttype || this.props.cont,
-		    clsname = '';
-		clsname = '' + nav + this.props.navsuffix + ' ' + cont + this.props.contsuffix;
-
-		var navArr = [];
-		var contentArr = [];
-
-		arr.forEach(function (e) {
-			var key = e.key,
-			    tab = e.props.tab,
-			    children = e.props.children,
-			    tab_active = (0, _classnames2["default"])('u-tabs-tab', _defineProperty({}, 'u-tabs-tab-active', e.key == stateActiveKey)),
-			    cont_active = (0, _classnames2["default"])('u-content', _defineProperty({}, 'u-content-active', e.key == stateActiveKey));
-			navArr.push(_react2["default"].createElement(
-				'div',
-				{ style: { minWidth: minWidth }, onClick: _this2.clickHandler, className: tab_active, 'data-id': key, key: key },
-				tab
-			));
-			contentArr.push(_react2["default"].createElement(
-				'div',
-				{ className: cont_active, 'data-id': key, key: key },
-				children
-			));
-		});
-		var content = _react2["default"].createElement(
-			'div',
-			{ className: clsname },
-			_react2["default"].createElement(
-				'div',
-				{ className: 'u-tabs-nav' },
-				navArr,
-				_react2["default"].createElement('div', { style: { minWidth: minWidth }, className: 'u-tabs-tab-child' })
-			),
-			_react2["default"].createElement(
-				'div',
-				{ className: 'u-content-list' },
-				contentArr
-			)
-		);
-		this.setState({
-			content: content
-		});
-	};
-
-	Tabs.prototype.componentDidMount = function componentDidMount() {
-		this.formatChildren();
-	};
-
-	Tabs.prototype.render = function render() {
-		return _react2["default"].createElement(
-			'div',
-			{ className: this.props.clsPrefix },
-			this.state.content
-		);
-	};
-
-	return Tabs;
-}(_react.Component);
-
-Tabs.propTypes = propTypesTabs;
-Tabs.defaultProps = defaultPropsTabs;
 exports["default"] = Tabs;
 module.exports = exports['default'];
