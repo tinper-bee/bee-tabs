@@ -34,10 +34,10 @@ var TabPane = _react2["default"].createClass({
     var _classnames;
 
     var props = this.props;
-    var className = props.className;
-    var destroyInactiveTabPane = props.destroyInactiveTabPane;
-    var active = props.active;
-    var forceRender = props.forceRender;
+    var className = props.className,
+        destroyInactiveTabPane = props.destroyInactiveTabPane,
+        active = props.active,
+        forceRender = props.forceRender;
 
     this._isActived = this._isActived || active;
     var prefixCls = props.rootPrefixCls + '-tabpane';

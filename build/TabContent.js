@@ -62,12 +62,12 @@ var TabContent = _react2["default"].createClass({
     var _classnames;
 
     var props = this.props;
-    var prefixCls = props.prefixCls;
-    var children = props.children;
-    var activeKey = props.activeKey;
-    var tabBarPosition = props.tabBarPosition;
-    var animated = props.animated;
-    var animatedWithMargin = props.animatedWithMargin;
+    var prefixCls = props.prefixCls,
+        children = props.children,
+        activeKey = props.activeKey,
+        tabBarPosition = props.tabBarPosition,
+        animated = props.animated,
+        animatedWithMargin = props.animatedWithMargin;
     var style = props.style;
 
     var classes = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls + '-content', true), _defineProperty(_classnames, animated ? prefixCls + '-content-animated' : prefixCls + '-content-no-animated', true), _classnames));

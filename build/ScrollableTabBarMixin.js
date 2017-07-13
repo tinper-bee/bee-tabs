@@ -62,9 +62,9 @@ exports["default"] = {
     var offset = this.offset;
 
     var minOffset = navWrapNodeWH - navNodeWH;
-    var _state = this.state;
-    var next = _state.next;
-    var prev = _state.prev;
+    var _state = this.state,
+        next = _state.next,
+        prev = _state.prev;
 
     if (minOffset >= 0) {
       next = false;
@@ -168,9 +168,9 @@ exports["default"] = {
     return state.next || state.prev;
   },
   scrollToActiveTab: function scrollToActiveTab() {
-    var _refs = this.refs;
-    var activeTab = _refs.activeTab;
-    var navWrap = _refs.navWrap;
+    var _refs = this.refs,
+        activeTab = _refs.activeTab,
+        navWrap = _refs.navWrap;
 
     if (activeTab) {
       var activeTabWH = this.getOffsetWH(activeTab);
@@ -207,12 +207,12 @@ exports["default"] = {
   getScrollBarNode: function getScrollBarNode(content) {
     var _classnames3, _classnames4;
 
-    var _state2 = this.state;
-    var next = _state2.next;
-    var prev = _state2.prev;
-    var _props = this.props;
-    var prefixCls = _props.prefixCls;
-    var scrollAnimated = _props.scrollAnimated;
+    var _state2 = this.state,
+        next = _state2.next,
+        prev = _state2.prev;
+    var _props = this.props,
+        prefixCls = _props.prefixCls,
+        scrollAnimated = _props.scrollAnimated;
 
     var nextButton = void 0;
     var prevButton = void 0;

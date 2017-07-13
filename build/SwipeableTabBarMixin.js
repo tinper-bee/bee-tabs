@@ -30,10 +30,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 exports["default"] = {
   getInitialState: function getInitialState() {
-    var _checkPaginationByKey = this.checkPaginationByKey(this.props.activeKey);
-
-    var hasPrevPage = _checkPaginationByKey.hasPrevPage;
-    var hasNextPage = _checkPaginationByKey.hasNextPage;
+    var _checkPaginationByKey = this.checkPaginationByKey(this.props.activeKey),
+        hasPrevPage = _checkPaginationByKey.hasPrevPage,
+        hasNextPage = _checkPaginationByKey.hasNextPage;
 
     return {
       hasPrevPage: hasPrevPage,
@@ -44,12 +43,13 @@ exports["default"] = {
     return {
       hammerOptions: {},
       pageSize: 5, // per page show how many tabs
-      speed: 5 };
+      speed: 5 // swipe speed, 1 to 10, more bigger more faster
+    };
   },
   checkPaginationByKey: function checkPaginationByKey(activeKey) {
-    var _props = this.props;
-    var panels = _props.panels;
-    var pageSize = _props.pageSize;
+    var _props = this.props,
+        panels = _props.panels,
+        pageSize = _props.pageSize;
 
     var index = this.getIndexByKey(activeKey);
     var centerTabCount = Math.floor(pageSize / 2);
@@ -87,10 +87,10 @@ exports["default"] = {
     };
   },
   setSwipePositionByKey: function setSwipePositionByKey(activeKey) {
-    var _checkPaginationByKey2 = this.checkPaginationByKey(activeKey);
+    var _checkPaginationByKey2 = this.checkPaginationByKey(activeKey),
+        hasPrevPage = _checkPaginationByKey2.hasPrevPage,
+        hasNextPage = _checkPaginationByKey2.hasNextPage;
 
-    var hasPrevPage = _checkPaginationByKey2.hasPrevPage;
-    var hasNextPage = _checkPaginationByKey2.hasNextPage;
     var totalAvaliableDelta = this.cache.totalAvaliableDelta;
 
     this.setState({
@@ -116,14 +116,14 @@ exports["default"] = {
     (0, _utils.setPxStyle)(this.swipeNode, relativeDirection, value);
   },
   componentDidMount: function componentDidMount() {
-    var _refs = this.refs;
-    var swipe = _refs.swipe;
-    var nav = _refs.nav;
-    var _props2 = this.props;
-    var tabBarPosition = _props2.tabBarPosition;
-    var pageSize = _props2.pageSize;
-    var panels = _props2.panels;
-    var activeKey = _props2.activeKey;
+    var _refs = this.refs,
+        swipe = _refs.swipe,
+        nav = _refs.nav;
+    var _props2 = this.props,
+        tabBarPosition = _props2.tabBarPosition,
+        pageSize = _props2.pageSize,
+        panels = _props2.panels,
+        activeKey = _props2.activeKey;
 
     this.swipeNode = _reactDom2["default"].findDOMNode(swipe); // dom which scroll (9999px)
     this.realNode = _reactDom2["default"].findDOMNode(nav); // dom which visiable in screen (viewport)
@@ -144,9 +144,9 @@ exports["default"] = {
     }
   },
   onPan: function onPan(e) {
-    var _cache = this.cache;
-    var vertical = _cache.vertical;
-    var relativeDirection = _cache.relativeDirection;
+    var _cache = this.cache,
+        vertical = _cache.vertical,
+        relativeDirection = _cache.relativeDirection;
     var speed = this.props.speed;
 
     var nowDelta = vertical ? e.deltaY : e.deltaX;
@@ -154,10 +154,9 @@ exports["default"] = {
     var preDelta = (0, _utils.getStyle)(this.swipeNode, relativeDirection);
     var nextTotalDelta = nowDelta + preDelta;
 
-    var _checkPaginationByDel = this.checkPaginationByDelta(nextTotalDelta);
-
-    var hasPrevPage = _checkPaginationByDel.hasPrevPage;
-    var hasNextPage = _checkPaginationByDel.hasNextPage;
+    var _checkPaginationByDel = this.checkPaginationByDelta(nextTotalDelta),
+        hasPrevPage = _checkPaginationByDel.hasPrevPage,
+        hasNextPage = _checkPaginationByDel.hasNextPage;
 
     this.setState({
       hasPrevPage: hasPrevPage,
@@ -170,13 +169,13 @@ exports["default"] = {
   getSwipeBarNode: function getSwipeBarNode(tabs) {
     var _classnames2;
 
-    var _props3 = this.props;
-    var prefixCls = _props3.prefixCls;
-    var hammerOptions = _props3.hammerOptions;
-    var tabBarPosition = _props3.tabBarPosition;
-    var _state = this.state;
-    var hasPrevPage = _state.hasPrevPage;
-    var hasNextPage = _state.hasNextPage;
+    var _props3 = this.props,
+        prefixCls = _props3.prefixCls,
+        hammerOptions = _props3.hammerOptions,
+        tabBarPosition = _props3.tabBarPosition;
+    var _state = this.state,
+        hasPrevPage = _state.hasPrevPage,
+        hasNextPage = _state.hasNextPage;
 
     var navClassName = prefixCls + '-nav';
     var navClasses = (0, _classnames4["default"])(_defineProperty({}, navClassName, true));

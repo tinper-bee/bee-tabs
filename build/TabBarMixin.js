@@ -78,12 +78,12 @@ exports["default"] = {
   getRootNode: function getRootNode(contents) {
     var _classnames;
 
-    var _props = this.props;
-    var prefixCls = _props.prefixCls;
-    var onKeyDown = _props.onKeyDown;
-    var className = _props.className;
-    var extraContent = _props.extraContent;
-    var style = _props.style;
+    var _props = this.props,
+        prefixCls = _props.prefixCls,
+        onKeyDown = _props.onKeyDown,
+        className = _props.className,
+        extraContent = _props.extraContent,
+        style = _props.style;
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls + '-bar', 1), _defineProperty(_classnames, className, !!className), _classnames));
     return _react2["default"].createElement(

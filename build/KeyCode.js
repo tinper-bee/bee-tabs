@@ -19,5 +19,6 @@ exports["default"] = {
   /**
    * DOWN
    */
-  DOWN: 40 };
+  DOWN: 40 // also NUM_SOUTH
+};
 module.exports = exports["default"];

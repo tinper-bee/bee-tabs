@@ -140,12 +140,12 @@ var Tabs = _react2["default"].createClass({
     var _classnames;
 
     var props = this.props;
-    var prefixCls = props.prefixCls;
-    var tabBarPosition = props.tabBarPosition;
-    var className = props.className;
-    var renderTabContent = props.renderTabContent;
-    var renderTabBar = props.renderTabBar;
-    var tabBarStyle = props.tabBarStyle;
+    var prefixCls = props.prefixCls,
+        tabBarPosition = props.tabBarPosition,
+        className = props.className,
+        renderTabContent = props.renderTabContent,
+        renderTabBar = props.renderTabBar,
+        tabBarStyle = props.tabBarStyle;
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls, 1), _defineProperty(_classnames, prefixCls + '-' + tabBarPosition, 1), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, prefixCls + '-' + tabBarStyle, 1), _classnames));
 
