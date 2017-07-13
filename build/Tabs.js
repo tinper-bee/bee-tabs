@@ -48,7 +48,8 @@ var Tabs = _react2["default"].createClass({
     prefixCls: _react.PropTypes.string,
     className: _react.PropTypes.string,
     tabBarPosition: _react.PropTypes.string,
-    style: _react.PropTypes.object
+    style: _react.PropTypes.object,
+    tabBarStyle: _react.PropTypes.oneOf(['simple', 'fill', 'slide', 'turn', 'fade', 'fadeup'])
   },
 
   getDefaultProps: function getDefaultProps() {
@@ -57,7 +58,8 @@ var Tabs = _react2["default"].createClass({
       destroyInactiveTabPane: false,
       onChange: noop,
       tabBarPosition: 'top',
-      style: {}
+      style: {},
+      tabBarStyle: 'simple'
     };
   },
   getInitialState: function getInitialState() {
@@ -143,8 +145,9 @@ var Tabs = _react2["default"].createClass({
     var className = props.className;
     var renderTabContent = props.renderTabContent;
     var renderTabBar = props.renderTabBar;
+    var tabBarStyle = props.tabBarStyle;
 
-    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls, 1), _defineProperty(_classnames, prefixCls + '-' + tabBarPosition, 1), _defineProperty(_classnames, className, !!className), _classnames));
+    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls, 1), _defineProperty(_classnames, prefixCls + '-' + tabBarPosition, 1), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, prefixCls + '-' + tabBarStyle, 1), _classnames));
 
     this.tabBar = renderTabBar();
     var contents = [_react2["default"].cloneElement(this.tabBar, {
