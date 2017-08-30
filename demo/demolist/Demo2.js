@@ -1,16 +1,21 @@
 /**
  *
- * @title 基础tab1
+ * @title 基础tab2
  * @description
  *
  */
+
+import React, { Component } from 'react';
+import Tabs, { TabPane } from '../../src';
+import TabContent from '../../src/TabContent';
+import ScrollableInkTabBar from '../../src/ScrollableInkTabBar';
 
 var callback = function(key){
 
 }
 
 
-class Demo01 extends Component {
+class Demo2 extends Component {
     constructor(props) {
         super(props)
     }
@@ -21,7 +26,7 @@ class Demo01 extends Component {
             <Tabs
                 defaultActiveKey="2"
                 onChange={callback}
-                tabBarStyle="primary"
+                tabBarStyle="upborder"
                 renderTabBar={()=><ScrollableInkTabBar />}
                 renderTabContent={()=><TabContent />}
                 >
@@ -33,3 +38,5 @@ class Demo01 extends Component {
         )
     }
 }
+
+export default Demo2;

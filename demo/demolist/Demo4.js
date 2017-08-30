@@ -5,12 +5,17 @@
  *
  */
 
+import React, { Component } from 'react';
+import Tabs, { TabPane } from '../../src';
+import TabContent from '../../src/TabContent';
+import ScrollableInkTabBar from '../../src/ScrollableInkTabBar';
+
 var callback = function(key){
 
 }
 
 
-class Demo04 extends Component {
+class Demo4 extends Component {
     constructor(props) {
         super(props)
     }
@@ -34,3 +39,4 @@ class Demo04 extends Component {
     }
 }
 
+export default Demo4;
