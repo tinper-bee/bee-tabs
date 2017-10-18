@@ -1,18 +1,19 @@
-import React, { PropTypes } from 'react';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-const TabPane = React.createClass({
-  propTypes: {
-    className: PropTypes.string,
-    active: PropTypes.bool,
-    style: PropTypes.any,
-    destroyInactiveTabPane: PropTypes.bool,
-    forceRender: PropTypes.bool,
-    placeholder: PropTypes.node,
-  },
-  getDefaultProps() {
-    return { placeholder: null };
-  },
+const propTypes = {
+  className: PropTypes.string,
+  active: PropTypes.bool,
+  style: PropTypes.any,
+  destroyInactiveTabPane: PropTypes.bool,
+  forceRender: PropTypes.bool,
+  placeholder: PropTypes.node
+};
+const defaultProps = {
+  placeholder: null
+};
+class TabPane extends React.Component {
   render() {
     const props = this.props;
     const { className, destroyInactiveTabPane, active, forceRender } = props;
@@ -22,20 +23,22 @@ const TabPane = React.createClass({
       [prefixCls]: 1,
       [`${prefixCls}-inactive`]: !active,
       [`${prefixCls}-active`]: active,
-      [className]: className,
+      [className]: className
     });
     const isRender = destroyInactiveTabPane ? active : this._isActived;
     return (
       <div
         style={props.style}
         role="tabpanel"
-        aria-hidden={props.active ? 'false' : 'true'}
+        aria-hidden={props.active ? "false" : "true"}
         className={cls}
       >
         {isRender || forceRender ? props.children : props.placeholder}
       </div>
     );
-  },
-});
+  }
+}
+TabPane.propTypes = propTypes;
+TabPane.defaultProps = defaultProps;
 
 export default TabPane;

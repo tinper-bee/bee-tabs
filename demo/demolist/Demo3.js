@@ -7,8 +7,6 @@
 
 import React, { Component } from 'react';
 import Tabs, { TabPane } from '../../src';
-import TabContent from '../../src/TabContent';
-import ScrollableInkTabBar from '../../src/ScrollableInkTabBar';
 
 var callback = function(key){
 
@@ -26,9 +24,7 @@ class Demo3 extends Component {
             <Tabs
                 defaultActiveKey="2"
                 onChange={callback}
-                tabBarStyle="downborder"
-                renderTabBar={()=><ScrollableInkTabBar />}
-                renderTabContent={()=><TabContent />}
+                tabBarStyle="primary"
                 >
                 <TabPane tab='tab 1' key="1">1</TabPane>
                 <TabPane tab='tab 2' key="2">2</TabPane>

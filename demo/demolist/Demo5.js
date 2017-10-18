@@ -1,6 +1,6 @@
 /**
  *
- * @title 基础tab2
+ * @title 基础tab5
  * @description
  *
  */
@@ -13,7 +13,7 @@ var callback = function(key){
 }
 
 
-class Demo2 extends Component {
+class Demo5 extends Component {
     constructor(props) {
         super(props)
     }
@@ -24,7 +24,7 @@ class Demo2 extends Component {
             <Tabs
                 defaultActiveKey="2"
                 onChange={callback}
-                tabBarStyle="fill"
+                tabBarStyle="fade"
                 >
                 <TabPane tab='tab 1' key="1">1</TabPane>
                 <TabPane tab='tab 2' key="2">2</TabPane>
@@ -35,4 +35,4 @@ class Demo2 extends Component {
     }
 }
 
-export default Demo2;
+export default Demo5;
