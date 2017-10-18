@@ -1,75 +1,23 @@
-## Tabs 标签页
+
+# Tabs 标签页
 
 分隔内容上有关联但属于不同类别的数据集合。
 
-## 代码演示
-
-### API
+## API
 
 ### Tabs
 
-#### props:
+| 参数                     | 说明                                       | 类型                | 默认值     |
+| :--------------------- | :--------------------------------------- | :---------------- | :------ |
+| activeKey              | 设置当前激活的tabPanel的key                      | String            | -       |
+| tabBarPosition         | tab头的定位，可以是['left','right','top','bottom']中选择 | String            | -       |
+| defaultActiveKey       | 如果activeKey没有设置的时候，当初始化的时候设置当前激活的tabPanel的key | String            | 默认激活第一个 |
+| renderTabBar           | 怎样去渲染tab的头部                              | ():React.Node     | -       |
+| renderTabContent       | 怎样去渲染tab的内容区域                            | ():React.Node     | -       |
+| onChange               | tabPanel改变的时候的回调函数                       | (key:string):void | -       |
+| destroyInactiveTabPane | 是否在更改选项卡时销毁无效标签                          | Boolean           | false   |
+| prefixCls              | 添加到table上的style                          | String            | u-tabs  |
 
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th>default</th>
-        <th>description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>activeKey</td>
-          <td>String</td>
-          <th></th>
-          <td>current active tabPanel's key</td>
-      </tr>
-      <tr>
-          <td>tabBarPosition</td>
-          <td>String</td>
-          <th></th>
-          <td>tab nav 's position. one of ['left','right','top','bottom']</td>
-      </tr>
-      <tr>
-          <td>defaultActiveKey</td>
-          <td>String</td>
-          <th>first active tabPanel's key</th>
-          <td>initial active tabPanel's key if activeKey is absent</td>
-      </tr>
-      <tr>
-         <td>renderTabBar</td>
-         <td>():React.Node</td>
-         <th></th>
-         <td>How to render tab bar</td>
-      </tr>
-      <tr>
-        <td>renderTabContent</td>
-        <td>():React.Node</td>
-        <th></th>
-        <td>How to render tab content</td>
-      </tr>
-      <tr>
-          <td>onChange</td>
-          <td>(key: string): void</td>
-          <th></th>
-          <td>called when tabPanel is changed</td>
-      </tr>
-      <tr>
-          <td>destroyInactiveTabPane</td>
-          <td>Boolean</td>
-          <th>false</th>
-          <td>whether destroy inactive tabpane when change tab</td>
-      </tr>
-      <tr>
-          <td>prefixCls</td>
-          <td>String</td>
-          <th>rc-tabs</th>
-          <td>prefix class name, use to custom style</td>
-      </tr>
-    </tbody>
-</table>
 
 ### TabPane
 
