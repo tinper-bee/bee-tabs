@@ -1,4 +1,3 @@
-
 # Tabs 标签页
 
 分隔内容上有关联但属于不同类别的数据集合。
@@ -17,9 +16,51 @@
 | onChange               | tabPanel改变的时候的回调函数                       | (key:string):void | -       |
 | destroyInactiveTabPane | 是否在更改选项卡时销毁无效标签                          | Boolean           | false   |
 | prefixCls              | 添加到table上的style                          | String            | u-tabs  |
-
+| onTabClick             | tab 被点击的回调                               | fun               | -       |
 
 ### TabPane
+
+| 参数          | 说明                          | 类型                | 默认值   |
+| ----------- | :-------------------------- | ----------------- | ----- |
+| key         | 对应 activeKey                | string            | -     |
+| tab         | 选项卡头显示文字                    | string\|ReactNode | -     |
+| style       | 选项卡样式                       | Object            | -     |
+| forceRender | 在选项卡中强制渲染内容，而不是在单击选项卡后呈现延迟。 | Boolean           | false |
+
+### ScrollableTabBar
+
+| 参数          | 说明        | 类型               | 默认值  |
+| ----------- | --------- | ---------------- | ---- |
+| onPrevClick | 点击前一个按钮回调 | (e: Event): void | -    |
+| onNextClick | 点击下一个按钮回调 | (e: Event): void | -    |
+
+### TabContent
+
+| 参数                 | 说明   | 类型     | 默认值  |
+| ------------------ | ---- | ------ | ---- |
+| style              | 表格样式 | Object | -    |
+| animated           |      |        |      |
+| animatedWithMargin |      |        |      |
+
+
+
+### SwipeableTabContent
+
+
+
+| 参数            | 说明   | 类型     | 默认值  |
+| ------------- | ---- | ------ | ---- |
+| hammerOptions |      | Object |      |
+
+## SwipeableInkTabBar
+
+| 参数            | 说明           | 类型     | 默认值  |
+| ------------- | ------------ | ------ | ---- |
+| pageSize      | 显示一页有多少个标签   | number | 5    |
+| speed         | 速度，1到10，越大越快 | number | 5    |
+| hammerOptions |              |        |      |
+
+
 
 #### props:
 
@@ -116,6 +157,10 @@ tab bar with ink indicator, in addition to tab bar props, extra props:
     </tbody>
 </table>
 
+
+
+
+
 ### src/ScrollableTabBar
 
 scrollable tab bar, in addition to tab bar props, extra props:
@@ -184,6 +229,10 @@ swipeable tab bar with ink indicator, same with tab bar/ink bar props, and below
     </tbody>
 </table>
 
+
+
+
+
 ### src/TabContent
 
 <table class="table table-bordered table-striped">
@@ -222,6 +271,10 @@ swipeable tab bar with ink indicator, same with tab bar/ink bar props, and below
       </tr>
     </tbody>
 </table>
+
+
+
+
 
 ### src/SwipeableTabContent
 
