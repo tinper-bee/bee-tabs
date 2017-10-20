@@ -24,6 +24,14 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _utils = require('./utils');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var RESISTANCE_COEF = 0.6;
@@ -63,16 +71,14 @@ function getIndexByDelta(e) {
   return currentIndex;
 }
 
-var SwipeableTabContent = _react2["default"].createClass({
-  displayName: 'SwipeableTabContent',
-
+var SwipeableTabContent = (0, _createReactClass2["default"])({
   propTypes: {
-    tabBarPosition: _react.PropTypes.string,
-    onChange: _react.PropTypes.func,
-    children: _react.PropTypes.any,
-    hammerOptions: _react.PropTypes.any,
-    animated: _react.PropTypes.bool,
-    activeKey: _react.PropTypes.string
+    tabBarPosition: _propTypes2["default"].string,
+    onChange: _propTypes2["default"].func,
+    children: _propTypes2["default"].any,
+    hammerOptions: _propTypes2["default"].any,
+    animated: _propTypes2["default"].bool,
+    activeKey: _propTypes2["default"].string
   },
 
   getDefaultProps: function getDefaultProps() {

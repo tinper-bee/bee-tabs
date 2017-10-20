@@ -10,8 +10,9 @@ import Tabs, { TabPane } from '../../src';
 import TabContent from '../../src';
 import ScrollableInkTabBar from '../../src';
 import InkTabBar from '../../src';
+import createClass from 'create-react-class';
 
-class PanelContent extends React.Component {
+class PanelContent extends Component {
     constructor(props) {
         super(props);
         console.log(this.props.id, 'constructor');
@@ -34,7 +35,7 @@ class PanelContent extends React.Component {
 
 const defaultTabKey = '2';
 
-const Demo11 = React.createClass({
+const Demo11 = createClass({
     getInitialState() {
         return {
             start: 0,

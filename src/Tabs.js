@@ -1,9 +1,11 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import KeyCode from "./KeyCode";
 import TabPane from "./TabPane";
 import classnames from "classnames";
 import TabContent from "./TabContent";
 import ScrollableInkTabBar from "./ScrollableInkTabBar";
+import PropTypes from 'prop-types';
+import createClass from 'create-react-class';
 
 function noop() {}
 
@@ -17,7 +19,7 @@ function getDefaultActiveKey(props) {
   return activeKey;
 }
 
-const Tabs = React.createClass({
+const Tabs = createClass({
   propTypes: {
     destroyInactiveTabPane: PropTypes.bool,
     renderTabBar: PropTypes.func.isRequired,

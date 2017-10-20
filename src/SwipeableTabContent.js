@@ -1,5 +1,5 @@
 import TabContent from './TabContent';
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Hammer from 'react-hammerjs';
 import ReactDOM from 'react-dom';
 import {
@@ -11,6 +11,8 @@ import {
   toArray,
   setTransition,
 } from './utils';
+import PropTypes from 'prop-types';
+import createClass from 'create-react-class';
 
 const RESISTANCE_COEF = 0.6;
 
@@ -49,7 +51,7 @@ function getIndexByDelta(e) {
   return currentIndex;
 }
 
-const SwipeableTabContent = React.createClass({
+const SwipeableTabContent = createClass({
   propTypes: {
     tabBarPosition: PropTypes.string,
     onChange: PropTypes.func,
