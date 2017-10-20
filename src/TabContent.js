@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import {
   getTransformByIndex,
@@ -6,8 +6,10 @@ import {
   getTransformPropValue,
   getMarginStyle,
 } from './utils';
+import PropTypes from 'prop-types';
+import createClass from 'create-react-class';
 
-const TabContent = React.createClass({
+const TabContent = createClass({
   propTypes: {
     animated: PropTypes.bool,
     animatedWithMargin: PropTypes.bool,

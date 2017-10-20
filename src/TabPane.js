@@ -1,6 +1,7 @@
-import React from "react";
+import React,{Component} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import createClass from 'create-react-class';
 
 const propTypes = {
   className: PropTypes.string,
@@ -13,7 +14,7 @@ const propTypes = {
 const defaultProps = {
   placeholder: null
 };
-class TabPane extends React.Component {
+class TabPane extends Component {
   render() {
     const props = this.props;
     const { className, destroyInactiveTabPane, active, forceRender } = props;
