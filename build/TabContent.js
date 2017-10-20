@@ -16,21 +16,27 @@ var _classnames3 = _interopRequireDefault(_classnames2);
 
 var _utils = require('./utils');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var TabContent = _react2["default"].createClass({
-  displayName: 'TabContent',
-
+var TabContent = (0, _createReactClass2["default"])({
   propTypes: {
-    animated: _react.PropTypes.bool,
-    animatedWithMargin: _react.PropTypes.bool,
-    prefixCls: _react.PropTypes.string,
-    children: _react.PropTypes.any,
-    activeKey: _react.PropTypes.string,
-    style: _react.PropTypes.any,
-    tabBarPosition: _react.PropTypes.string
+    animated: _propTypes2["default"].bool,
+    animatedWithMargin: _propTypes2["default"].bool,
+    prefixCls: _propTypes2["default"].string,
+    children: _propTypes2["default"].any,
+    activeKey: _propTypes2["default"].string,
+    style: _propTypes2["default"].any,
+    tabBarPosition: _propTypes2["default"].string
   },
   getDefaultProps: function getDefaultProps() {
     return {

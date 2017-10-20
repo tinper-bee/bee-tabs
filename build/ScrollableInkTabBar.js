@@ -20,11 +20,13 @@ var _TabBarMixin = require('./TabBarMixin');
 
 var _TabBarMixin2 = _interopRequireDefault(_TabBarMixin);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var ScrollableInkTabBar = _react2["default"].createClass({
-  displayName: 'ScrollableInkTabBar',
-
+var ScrollableInkTabBar = (0, _createReactClass2["default"])({
   mixins: [_TabBarMixin2["default"], _InkTabBarMixin2["default"], _ScrollableTabBarMixin2["default"]],
 
   render: function render() {

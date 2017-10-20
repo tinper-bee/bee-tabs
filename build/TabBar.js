@@ -12,11 +12,13 @@ var _TabBarMixin = require('./TabBarMixin');
 
 var _TabBarMixin2 = _interopRequireDefault(_TabBarMixin);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var TabBar = _react2["default"].createClass({
-  displayName: 'TabBar',
-
+var TabBar = (0, _createReactClass2["default"])({
   mixins: [_TabBarMixin2["default"]],
   render: function render() {
     var tabs = this.getTabs();
