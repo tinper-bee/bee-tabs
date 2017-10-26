@@ -4,11 +4,11 @@
  * @description
  *
  */
-import React, { Component } from 'react';
+
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Tabs, { TabPane } from '../../src';
 import TabContent from '../../src';
-import ScrollableInkTabBar from '../../src';
 import SwipeableInkTabBar from '../../src';
 
 if (process.env.DEMO_ENV === 'preact') {
@@ -90,78 +90,7 @@ const Demo13 = () => (
                 {makeMultiTabPane(7)}
             </Tabs>
         </div>
-        <h4>tabBarPosition='left'</h4>
-        <div>
-            <Tabs
-                tabBarPosition="left"
-                renderTabBar={() =>
-                    <SwipeableInkTabBar
-                        pageSize={3}
-                    />
-                }
-                renderTabContent={() => <TabContent />}
-                defaultActiveKey="2"
-            >
-                {makeMultiTabPane(11)}
-            </Tabs>
-        </div>
-        <h4>tabBarPosition='right'</h4>
-        <div>
-            <Tabs
-                tabBarPosition="right"
-                renderTabBar={() =>
-                    <SwipeableInkTabBar
-                        pageSize={3}
-                    />
-                }
-                renderTabContent={() => <TabContent />}
-                defaultActiveKey="2"
-            >
-                {makeMultiTabPane(11)}
-            </Tabs>
-        </div>
-        <h4>custom inkBar style</h4>
-        <div>
-            <Tabs
-                renderTabBar={() =>
-                    <SwipeableInkTabBar
-                        pageSize={5}
-                        speed={5}
-                        styles={{
-                            inkBar: {
-                                width: '20px',
-                                backgroundColor: 'red',
-                            },
-                        }}
-                    />
-                }
-                renderTabContent={() => <TabContent />}
-                defaultActiveKey="8"
-            >
-                {makeMultiTabPane(11)}
-            </Tabs>
-        </div>
-        <h4>custom inkBar style, tabBarPosition='left'</h4>
-        <div>
-            <Tabs
-                tabBarPosition="left"
-                renderTabBar={() =>
-                    <SwipeableInkTabBar
-                        pageSize={3}
-                        styles={{
-                            inkBar: {
-                                backgroundColor: 'red',
-                                height: '20px',
-                            },
-                        }}
-                    />
-                }
-                renderTabContent={() => <TabContent />}
-                defaultActiveKey="2"
-            >
-                {makeMultiTabPane(11)}
-            </Tabs>
-        </div>
+
     </div>
 );
 export default Demo13;
