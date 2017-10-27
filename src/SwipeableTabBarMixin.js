@@ -116,9 +116,9 @@ export default {
     }
   },
   getSwipeBarNode(tabs) {
-    const { prefixCls, hammerOptions, tabBarPosition } = this.props;
+    const { clsPrefix, hammerOptions, tabBarPosition } = this.props;
     const { hasPrevPage, hasNextPage } = this.state;
-    const navClassName = `${prefixCls}-nav`;
+    const navClassName = `${clsPrefix}-nav`;
     const navClasses = classnames({
       [navClassName]: true,
     });
@@ -134,22 +134,22 @@ export default {
     return (
       <div
         className={classnames({
-          [`${prefixCls}-nav-container`]: 1,
-          [`${prefixCls}-nav-swipe-container`]: 1,
+          [`${clsPrefix}-nav-container`]: 1,
+          [`${clsPrefix}-nav-swipe-container`]: 1,
           // page classname can be used to render special style when there has a prev/next page
-          [`${prefixCls}-prevpage`]: hasPrevPage,
-          [`${prefixCls}-nextpage`]: hasNextPage,
+          [`${clsPrefix}-prevpage`]: hasPrevPage,
+          [`${clsPrefix}-nextpage`]: hasNextPage,
         })}
         key="container"
         ref="container"
       >
-        <div className={`${prefixCls}-nav-wrap`} ref="navWrap">
+        <div className={`${clsPrefix}-nav-wrap`} ref="navWrap">
           <Hammer
             {...events}
             {...direction}
             options={hammerOptions}
           >
-            <div className={`${prefixCls}-nav-swipe`} ref="swipe">
+            <div className={`${clsPrefix}-nav-swipe`} ref="swipe">
               <div className={navClasses} ref="nav">
                 {tabs}
               </div>

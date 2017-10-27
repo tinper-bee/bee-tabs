@@ -19,18 +19,18 @@ export default {
     const children = props.panels;
     const activeKey = props.activeKey;
     const rst = [];
-    const prefixCls = props.prefixCls;
+    const clsPrefix = props.clsPrefix;
 
     React.Children.forEach(children, (child) => {
       if (!child) {
         return;
       }
       const key = child.key;
-      let cls = activeKey === key ? `${prefixCls}-tab-active` : '';
-      cls += ` ${prefixCls}-tab`;
+      let cls = activeKey === key ? `${clsPrefix}-tab-active` : '';
+      cls += ` ${clsPrefix}-tab`;
       let events = {};
       if (child.props.disabled) {
-        cls += ` ${prefixCls}-tab-disabled`;
+        cls += ` ${clsPrefix}-tab-disabled`;
       } else {
         events = {
           onClick: this.onTabClick.bind(this, key),
@@ -56,9 +56,9 @@ export default {
     return rst;
   },
   getRootNode(contents) {
-    const { prefixCls, onKeyDown, className, extraContent, style } = this.props;
+    const { clsPrefix, onKeyDown, className, extraContent, style } = this.props;
     const cls = classnames({
-      [`${prefixCls}-bar`]: 1,
+      [`${clsPrefix}-bar`]: 1,
       [className]: !!className,
     });
     return (

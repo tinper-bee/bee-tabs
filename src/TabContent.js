@@ -13,7 +13,7 @@ const TabContent = createClass({
   propTypes: {
     animated: PropTypes.bool,
     animatedWithMargin: PropTypes.bool,
-    prefixCls: PropTypes.string,
+    clsPrefix: PropTypes.string,
     children: PropTypes.any,
     activeKey: PropTypes.string,
     style: PropTypes.any,
@@ -39,7 +39,7 @@ const TabContent = createClass({
       newChildren.push(React.cloneElement(child, {
         active,
         destroyInactiveTabPane: props.destroyInactiveTabPane,
-        rootPrefixCls: props.prefixCls,
+        rootclsPrefix: props.clsPrefix,
       }));
     });
 
@@ -48,15 +48,15 @@ const TabContent = createClass({
   render() {
     const { props } = this;
     const {
-      prefixCls, children, activeKey,
+      clsPrefix, children, activeKey,
       tabBarPosition, animated, animatedWithMargin,
     } = props;
     let { style } = props;
     const classes = classnames({
-      [`${prefixCls}-content`]: true,
+      [`${clsPrefix}-content`]: true,
       [animated ?
-        `${prefixCls}-content-animated` :
-        `${prefixCls}-content-no-animated`]: true,
+        `${clsPrefix}-content-animated` :
+        `${clsPrefix}-content-no-animated`]: true,
     });
     if (animated) {
       const activeIndex = getActiveIndex(children, activeKey);
