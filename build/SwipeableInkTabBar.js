@@ -38,7 +38,7 @@ var SwipeableInkTabBar = (0, _createReactClass2["default"])({
     var children = props.panels;
     var activeKey = props.activeKey;
     var rst = [];
-    var prefixCls = props.prefixCls;
+    var clsPrefix = props.clsPrefix;
 
     var tabStyle = {
       display: 'flex',
@@ -50,11 +50,11 @@ var SwipeableInkTabBar = (0, _createReactClass2["default"])({
         return;
       }
       var key = child.key;
-      var cls = activeKey === key ? prefixCls + '-tab-active' : '';
-      cls += ' ' + prefixCls + '-tab';
+      var cls = activeKey === key ? clsPrefix + '-tab-active' : '';
+      cls += ' ' + clsPrefix + '-tab';
       var events = {};
       if (child.props.disabled) {
-        cls += ' ' + prefixCls + '-tab-disabled';
+        cls += ' ' + clsPrefix + '-tab-disabled';
       } else {
         events = {
           onClick: _this.onTabClick.bind(_this, key)

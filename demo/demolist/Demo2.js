@@ -1,12 +1,12 @@
 /**
  *
  * @title 竖向的Tab
- * @description 通过tabBarPosition属性可以控制Tab做不同方向展示
+ * @description 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。
  *
  */
 
 import React, { Component } from 'react';
-import Tabs, { TabPane, TabContent, ScrollableInkTabBar } from '../../src';
+import Tabs, { TabPane } from '../../src';
 
 class Demo2 extends Component {
     constructor(props) {
@@ -33,16 +33,15 @@ class Demo2 extends Component {
     }
 
     render() {
-        const start = this.state.start;
+
         return (
             <div style={{ margin: 20 }}>
                 <Tabs
-                    renderTabBar={() => <ScrollableInkTabBar style={{ height: 300 }} onTabClick={this.onTabClick} />}
-                    renderTabContent={() => <TabContent style={{ height: 300 }} />}
                     activeKey={this.state.activeKey}
                     tabBarPosition="left"
                     defaultActiveKey="1"
                     onChange={this.onChange}
+                    style={{ height: 300 }}
                 >
                     <TabPane tab="望庐山瀑布" key="1" >
                         <ul>

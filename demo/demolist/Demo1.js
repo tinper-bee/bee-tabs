@@ -1,3 +1,9 @@
+/**
+ *  @title 基础Tab
+ *  @description 通过Tabs和TabPane配合完成Tab功能
+ *
+ */
+
 import React, {Component} from 'react';
 import Tabs, {TabPane} from '../../src';
 
@@ -11,7 +17,7 @@ class Demo1 extends Component {
             <Tabs
                 defaultActiveKey="1"
                 onChange={callback}
-                tabBarStyle="fill"
+                tabBarStyle="upborder"
                 className="demo-tabs"
             >
                 <TabPane tab='望庐山瀑布' key="1">

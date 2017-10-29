@@ -6,7 +6,7 @@
  */
 
 import React, {Component} from 'react';
-import Tabs, {TabPane, TabContent, ScrollableInkTabBar} from '../../src';
+import Tabs, {TabPane} from '../../src';
 import Icon from 'bee-icon';
 
 let index = 1;
@@ -87,7 +87,8 @@ class Demo3 extends Component {
     clear = () => {
         let { tabs } = this.state;
         this.setState({
-            tabs:  [tabs.shift()]
+            tabs:  [tabs.shift()],
+            activeKey: '摸鱼儿',
         })
     }
 
@@ -105,33 +106,24 @@ class Demo3 extends Component {
         });
     }
 
-    renderTabBar = () => {
-        return (
-            <ScrollableInkTabBar
-                extraContent={
-                    <Icon
-                        type="uf-del"
-                        className="clear-icon"
-                        onClick={this.clear}
-                        title="清空"
-                    />
-                }
-            />
-            )
-
-    }
-
     render() {
 
         return (
             <div style={{margin: 20}}>
 
                 <Tabs
-                    renderTabBar={ this.renderTabBar }
                     activeKey={this.state.activeKey}
                     onChange={this.onTabChange}
-                    tabBarStyle="fade"
+                    tabBarStyle="primary"
                     defaultActiveKey="摸鱼儿"
+                    extraContent={
+                        <Icon
+                            type="uf-del"
+                            className="clear-icon"
+                            onClick={this.clear}
+                            title="清空"
+                        />
+                    }
                 >
                     {this.construct()}
                 </Tabs>

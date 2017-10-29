@@ -116,11 +116,11 @@ exports["default"] = {
     var _classnames;
 
     var _props = this.props,
-        prefixCls = _props.prefixCls,
+        clsPrefix = _props.clsPrefix,
         styles = _props.styles,
         inkBarAnimated = _props.inkBarAnimated;
 
-    var className = prefixCls + '-ink-bar';
+    var className = clsPrefix + '-ink-bar';
     var classes = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, className, true), _defineProperty(_classnames, inkBarAnimated ? className + '-animated' : className + '-no-animated', true), _classnames));
     return _react2["default"].createElement('div', {
       style: styles.inkBar,

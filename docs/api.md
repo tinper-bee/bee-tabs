@@ -18,6 +18,11 @@
 | style                  | 添加到table上的style                          | String            | u-tabs  |
 | onTabClick             | tab 被点击的回调                               | fun               | -       |
 | className              | 在tab组件上添加className                       | fun               | -       |
+| extraContent           | 在导航上添加扩展元素                       |  ():React.Node                | -       |
+| onPrevClick              | 当出现滚动时，点击上一个时的回调函数                       | fun               | -       |
+| onNextClick              | 当出现滚动时，点击下一个时的回调函数                       | fun               | -       |
+| animated              | tab切换时，是否使用动画                       | bool               | true       |
+
 
 ### TabPane
 
@@ -29,20 +34,7 @@
 | forceRender | 在选项卡中强制渲染内容，而不是在单击选项卡后呈现延迟。 | Boolean           | false |
 | placeholder | 懒加载时显示的内容 | React:Node | - |
 
-### ScrollableTabBar
 
-| 参数          | 说明        | 类型               | 默认值  |
-| ----------- | --------- | ---------------- | ---- |
-| onPrevClick | 点击前一个按钮回调 | (e: Event): void | -    |
-| onNextClick | 点击下一个按钮回调 | (e: Event): void | -    |
-
-### TabContent
-
-| 参数                 | 说明   | 类型     | 默认值  |
-| ------------------ | ---- | ------ | ---- |
-| style              | 表格样式 | Object | -    |
-| animated           |      |        |      |
-| animatedWithMargin |      |        |      |
 
 
 

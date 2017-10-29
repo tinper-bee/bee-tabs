@@ -63,8 +63,8 @@ var TabPane = function (_Component) {
         forceRender = props.forceRender;
 
     this._isActived = this._isActived || active;
-    var prefixCls = props.rootPrefixCls + "-tabpane";
-    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls, 1), _defineProperty(_classnames, prefixCls + "-inactive", !active), _defineProperty(_classnames, prefixCls + "-active", active), _defineProperty(_classnames, className, className), _classnames));
+    var clsPrefix = props.rootclsPrefix + "-tabpane";
+    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, 1), _defineProperty(_classnames, clsPrefix + "-inactive", !active), _defineProperty(_classnames, clsPrefix + "-active", active), _defineProperty(_classnames, className, className), _classnames));
     var isRender = destroyInactiveTabPane ? active : this._isActived;
     return _react2["default"].createElement(
       "div",

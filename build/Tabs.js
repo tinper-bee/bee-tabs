@@ -59,7 +59,7 @@ var Tabs = (0, _createReactClass2["default"])({
     renderTabContent: _propTypes2["default"].func.isRequired,
     onChange: _propTypes2["default"].func,
     children: _propTypes2["default"].any,
-    prefixCls: _propTypes2["default"].string,
+    clsPrefix: _propTypes2["default"].string,
     className: _propTypes2["default"].string,
     tabBarPosition: _propTypes2["default"].string,
     style: _propTypes2["default"].object,
@@ -68,7 +68,7 @@ var Tabs = (0, _createReactClass2["default"])({
 
   getDefaultProps: function getDefaultProps() {
     return {
-      prefixCls: "u-tabs",
+      clsPrefix: "u-tabs",
       destroyInactiveTabPane: false,
       onChange: noop,
       tabBarPosition: "top",
@@ -79,7 +79,8 @@ var Tabs = (0, _createReactClass2["default"])({
       renderTabBar: function renderTabBar() {
         return _react2["default"].createElement(_ScrollableInkTabBar2["default"], null);
       },
-      tabBarStyle: "simple"
+      tabBarStyle: "simple",
+      animated: true
     };
   },
   getInitialState: function getInitialState() {
@@ -160,30 +161,36 @@ var Tabs = (0, _createReactClass2["default"])({
     var _classnames;
 
     var props = this.props;
-    var prefixCls = props.prefixCls,
+    var clsPrefix = props.clsPrefix,
         tabBarPosition = props.tabBarPosition,
         className = props.className,
         renderTabContent = props.renderTabContent,
         renderTabBar = props.renderTabBar,
-        tabBarStyle = props.tabBarStyle;
+        tabBarStyle = props.tabBarStyle,
+        extraContent = props.extraContent,
+        animated = props.animated;
 
-    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls, 1), _defineProperty(_classnames, prefixCls + "-" + tabBarPosition, 1), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, prefixCls + "-" + tabBarStyle, 1), _classnames));
+
+    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 
     this.tabBar = renderTabBar();
     var contents = [_react2["default"].cloneElement(this.tabBar, {
-      prefixCls: prefixCls,
+      clsPrefix: clsPrefix,
       key: "tabBar",
       onKeyDown: this.onNavKeyDown,
       tabBarPosition: tabBarPosition,
+      extraContent: extraContent,
       onTabClick: this.onTabClick,
       panels: props.children,
       activeKey: this.state.activeKey
     }), _react2["default"].cloneElement(renderTabContent(), {
-      prefixCls: prefixCls,
+      clsPrefix: clsPrefix,
       tabBarPosition: tabBarPosition,
+      animated: animated,
       activeKey: this.state.activeKey,
       destroyInactiveTabPane: props.destroyInactiveTabPane,
       children: props.children,
+      style: { height: '100%' },
       onChange: this.setActiveKey,
       key: "tabContent"
     })];

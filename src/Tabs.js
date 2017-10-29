@@ -50,7 +50,8 @@ const Tabs = createClass({
       style: {},
       renderTabContent: () => <TabContent />,
       renderTabBar: () => <ScrollableInkTabBar />,
-      tabBarStyle: "simple"
+      tabBarStyle: "simple",
+        animated: true
     };
   },
 
@@ -142,7 +143,9 @@ const Tabs = createClass({
       className,
       renderTabContent,
       renderTabBar,
-      tabBarStyle
+      tabBarStyle,
+        extraContent,
+        animated
     } = props;
 
     const cls = classnames({
@@ -159,6 +162,7 @@ const Tabs = createClass({
         key: "tabBar",
         onKeyDown: this.onNavKeyDown,
         tabBarPosition,
+          extraContent,
         onTabClick: this.onTabClick,
         panels: props.children,
         activeKey: this.state.activeKey
@@ -166,9 +170,11 @@ const Tabs = createClass({
       React.cloneElement(renderTabContent(), {
         clsPrefix,
         tabBarPosition,
+          animated,
         activeKey: this.state.activeKey,
         destroyInactiveTabPane: props.destroyInactiveTabPane,
         children: props.children,
+          style: { height: '100%' },
         onChange: this.setActiveKey,
         key: "tabContent"
       })
@@ -185,7 +191,5 @@ const Tabs = createClass({
 });
 
 Tabs.TabPane = TabPane;
-Tabs.TabContent = TabContent;
-Tabs.ScrollableInkTabBar = ScrollableInkTabBar;
 
 export default Tabs;
