@@ -193,7 +193,7 @@ export default {
 
   getScrollBarNode(content) {
     const { next, prev } = this.state;
-    const { prefixCls, scrollAnimated } = this.props;
+    const { clsPrefix, scrollAnimated } = this.props;
     let nextButton;
     let prevButton;
     const showNextPrev = prev || next;
@@ -204,11 +204,11 @@ export default {
           onClick={prev ? this.prev : null}
           unselectable="unselectable"
           className={classnames({
-            [`${prefixCls}-tab-prev`]: 1,
-            [`${prefixCls}-tab-btn-disabled`]: !prev,
+            [`${clsPrefix}-tab-prev`]: 1,
+            [`${clsPrefix}-tab-btn-disabled`]: !prev,
           })}
         >
-          <span className={`${prefixCls}-tab-prev-icon`} />
+          <span className={`${clsPrefix}-tab-prev-icon`} />
         </span>
       );
 
@@ -217,16 +217,16 @@ export default {
           onClick={next ? this.next : null}
           unselectable="unselectable"
           className={classnames({
-            [`${prefixCls}-tab-next`]: 1,
-            [`${prefixCls}-tab-btn-disabled`]: !next,
+            [`${clsPrefix}-tab-next`]: 1,
+            [`${clsPrefix}-tab-btn-disabled`]: !next,
           })}
         >
-          <span className={`${prefixCls}-tab-next-icon`} />
+          <span className={`${clsPrefix}-tab-next-icon`} />
         </span>
       );
     }
 
-    const navClassName = `${prefixCls}-nav`;
+    const navClassName = `${clsPrefix}-nav`;
     const navClasses = classnames({
       [navClassName]: true,
       [
@@ -239,16 +239,16 @@ export default {
     return (
       <div
         className={classnames({
-          [`${prefixCls}-nav-container`]: 1,
-          [`${prefixCls}-nav-container-scrolling`]: showNextPrev,
+          [`${clsPrefix}-nav-container`]: 1,
+          [`${clsPrefix}-nav-container-scrolling`]: showNextPrev,
         })}
         key="container"
         ref="container"
       >
         {prevButton}
         {nextButton}
-        <div className={`${prefixCls}-nav-wrap`} ref="navWrap">
-          <div className={`${prefixCls}-nav-scroll`}>
+        <div className={`${clsPrefix}-nav-wrap`} ref="navWrap">
+          <div className={`${clsPrefix}-nav-scroll`}>
             <div className={navClasses} ref="nav">
               {content}
             </div>

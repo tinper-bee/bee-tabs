@@ -19,11 +19,11 @@ class TabPane extends Component {
     const props = this.props;
     const { className, destroyInactiveTabPane, active, forceRender } = props;
     this._isActived = this._isActived || active;
-    const prefixCls = `${props.rootPrefixCls}-tabpane`;
+    const clsPrefix = `${props.rootclsPrefix}-tabpane`;
     const cls = classnames({
-      [prefixCls]: 1,
-      [`${prefixCls}-inactive`]: !active,
-      [`${prefixCls}-active`]: active,
+      [clsPrefix]: 1,
+      [`${clsPrefix}-inactive`]: !active,
+      [`${clsPrefix}-active`]: active,
       [className]: className
     });
     const isRender = destroyInactiveTabPane ? active : this._isActived;

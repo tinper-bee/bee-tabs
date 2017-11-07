@@ -99,8 +99,8 @@ export default {
   },
 
   getInkBarNode() {
-    const { prefixCls, styles, inkBarAnimated } = this.props;
-    const className = `${prefixCls}-ink-bar`;
+    const { clsPrefix, styles, inkBarAnimated } = this.props;
+    const className = `${clsPrefix}-ink-bar`;
     const classes = classnames({
       [className]: true,
       [

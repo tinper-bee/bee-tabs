@@ -38,18 +38,18 @@ exports["default"] = {
     var children = props.panels;
     var activeKey = props.activeKey;
     var rst = [];
-    var prefixCls = props.prefixCls;
+    var clsPrefix = props.clsPrefix;
 
     _react2["default"].Children.forEach(children, function (child) {
       if (!child) {
         return;
       }
       var key = child.key;
-      var cls = activeKey === key ? prefixCls + '-tab-active' : '';
-      cls += ' ' + prefixCls + '-tab';
+      var cls = activeKey === key ? clsPrefix + '-tab-active' : '';
+      cls += ' ' + clsPrefix + '-tab';
       var events = {};
       if (child.props.disabled) {
-        cls += ' ' + prefixCls + '-tab-disabled';
+        cls += ' ' + clsPrefix + '-tab-disabled';
       } else {
         events = {
           onClick: _this.onTabClick.bind(_this, key)
@@ -79,13 +79,13 @@ exports["default"] = {
     var _classnames;
 
     var _props = this.props,
-        prefixCls = _props.prefixCls,
+        clsPrefix = _props.clsPrefix,
         onKeyDown = _props.onKeyDown,
         className = _props.className,
         extraContent = _props.extraContent,
         style = _props.style;
 
-    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls + '-bar', 1), _defineProperty(_classnames, className, !!className), _classnames));
+    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix + '-bar', 1), _defineProperty(_classnames, className, !!className), _classnames));
     return _react2["default"].createElement(
       'div',
       {

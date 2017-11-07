@@ -26,7 +26,7 @@ const Tabs = createClass({
     renderTabContent: PropTypes.func.isRequired,
     onChange: PropTypes.func,
     children: PropTypes.any,
-    prefixCls: PropTypes.string,
+    clsPrefix: PropTypes.string,
     className: PropTypes.string,
     tabBarPosition: PropTypes.string,
     style: PropTypes.object,
@@ -43,14 +43,15 @@ const Tabs = createClass({
 
   getDefaultProps() {
     return {
-      prefixCls: "u-tabs",
+      clsPrefix: "u-tabs",
       destroyInactiveTabPane: false,
       onChange: noop,
       tabBarPosition: "top",
       style: {},
       renderTabContent: () => <TabContent />,
       renderTabBar: () => <ScrollableInkTabBar />,
-      tabBarStyle: "simple"
+      tabBarStyle: "simple",
+        animated: true
     };
   },
 
@@ -137,37 +138,43 @@ const Tabs = createClass({
   render() {
     const props = this.props;
     const {
-      prefixCls,
+      clsPrefix,
       tabBarPosition,
       className,
       renderTabContent,
       renderTabBar,
-      tabBarStyle
+      tabBarStyle,
+        extraContent,
+        animated
     } = props;
+
     const cls = classnames({
-      [prefixCls]: 1,
-      [`${prefixCls}-${tabBarPosition}`]: 1,
+      [clsPrefix]: true,
+      [`${clsPrefix}-${tabBarPosition}`]: true,
       [className]: !!className,
-      [`${prefixCls}-${tabBarStyle}`]: 1
+      [`${clsPrefix}-${tabBarStyle}`]: true
     });
 
     this.tabBar = renderTabBar();
     const contents = [
       React.cloneElement(this.tabBar, {
-        prefixCls,
+        clsPrefix,
         key: "tabBar",
         onKeyDown: this.onNavKeyDown,
         tabBarPosition,
+          extraContent,
         onTabClick: this.onTabClick,
         panels: props.children,
         activeKey: this.state.activeKey
       }),
       React.cloneElement(renderTabContent(), {
-        prefixCls,
+        clsPrefix,
         tabBarPosition,
+          animated,
         activeKey: this.state.activeKey,
         destroyInactiveTabPane: props.destroyInactiveTabPane,
         children: props.children,
+          style: { height: '100%' },
         onChange: this.setActiveKey,
         key: "tabContent"
       })

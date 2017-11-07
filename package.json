@@ -1,6 +1,6 @@
 {
  "name": "bee-tabs",
- "version": "1.0.3",
+ "version": "1.0.5",
  "description": "tabs ui component for react",
  "keywords": [
   "react",
@@ -44,6 +44,7 @@
  },
  "devDependencies": {
   "bee-button": "latest",
+  "bee-icon": "^1.0.2",
   "bee-layout": "latest",
   "bee-panel": "latest",
   "chai": "^3.5.0",
@@ -53,6 +54,7 @@
   "es5-shim": "~4.1.10",
   "react": "15.3.2",
   "react-addons-test-utils": "15.3.2",
-  "react-dom": "15.3.2"
+  "react-dom": "15.3.2",
+  "react-router": "^3.0.0"
  }
 }

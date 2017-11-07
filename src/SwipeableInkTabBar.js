@@ -12,7 +12,7 @@ const SwipeableInkTabBar = createClass({
     const children = props.panels;
     const activeKey = props.activeKey;
     const rst = [];
-    const prefixCls = props.prefixCls;
+    const clsPrefix = props.clsPrefix;
 
     const tabStyle = {
       display: 'flex',
@@ -24,11 +24,11 @@ const SwipeableInkTabBar = createClass({
         return;
       }
       const key = child.key;
-      let cls = activeKey === key ? `${prefixCls}-tab-active` : '';
-      cls += ` ${prefixCls}-tab`;
+      let cls = activeKey === key ? `${clsPrefix}-tab-active` : '';
+      cls += ` ${clsPrefix}-tab`;
       let events = {};
       if (child.props.disabled) {
-        cls += ` ${prefixCls}-tab-disabled`;
+        cls += ` ${clsPrefix}-tab-disabled`;
       } else {
         events = {
           onClick: this.onTabClick.bind(this, key),

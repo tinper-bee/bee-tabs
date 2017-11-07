@@ -32,7 +32,7 @@ var TabContent = (0, _createReactClass2["default"])({
   propTypes: {
     animated: _propTypes2["default"].bool,
     animatedWithMargin: _propTypes2["default"].bool,
-    prefixCls: _propTypes2["default"].string,
+    clsPrefix: _propTypes2["default"].string,
     children: _propTypes2["default"].any,
     activeKey: _propTypes2["default"].string,
     style: _propTypes2["default"].any,
@@ -58,7 +58,7 @@ var TabContent = (0, _createReactClass2["default"])({
       newChildren.push(_react2["default"].cloneElement(child, {
         active: active,
         destroyInactiveTabPane: props.destroyInactiveTabPane,
-        rootPrefixCls: props.prefixCls
+        rootclsPrefix: props.clsPrefix
       }));
     });
 
@@ -68,7 +68,7 @@ var TabContent = (0, _createReactClass2["default"])({
     var _classnames;
 
     var props = this.props;
-    var prefixCls = props.prefixCls,
+    var clsPrefix = props.clsPrefix,
         children = props.children,
         activeKey = props.activeKey,
         tabBarPosition = props.tabBarPosition,
@@ -76,7 +76,7 @@ var TabContent = (0, _createReactClass2["default"])({
         animatedWithMargin = props.animatedWithMargin;
     var style = props.style;
 
-    var classes = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls + '-content', true), _defineProperty(_classnames, animated ? prefixCls + '-content-animated' : prefixCls + '-content-no-animated', true), _classnames));
+    var classes = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix + '-content', true), _defineProperty(_classnames, animated ? clsPrefix + '-content-animated' : clsPrefix + '-content-no-animated', true), _classnames));
     if (animated) {
       var activeIndex = (0, _utils.getActiveIndex)(children, activeKey);
       if (activeIndex !== -1) {

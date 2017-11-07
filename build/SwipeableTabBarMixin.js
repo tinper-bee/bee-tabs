@@ -170,14 +170,14 @@ exports["default"] = {
     var _classnames2;
 
     var _props3 = this.props,
-        prefixCls = _props3.prefixCls,
+        clsPrefix = _props3.clsPrefix,
         hammerOptions = _props3.hammerOptions,
         tabBarPosition = _props3.tabBarPosition;
     var _state = this.state,
         hasPrevPage = _state.hasPrevPage,
         hasNextPage = _state.hasNextPage;
 
-    var navClassName = prefixCls + '-nav';
+    var navClassName = clsPrefix + '-nav';
     var navClasses = (0, _classnames4["default"])(_defineProperty({}, navClassName, true));
     var direction = {};
     if ((0, _utils.isVertical)(tabBarPosition)) {
@@ -191,13 +191,13 @@ exports["default"] = {
     return _react2["default"].createElement(
       'div',
       {
-        className: (0, _classnames4["default"])((_classnames2 = {}, _defineProperty(_classnames2, prefixCls + '-nav-container', 1), _defineProperty(_classnames2, prefixCls + '-nav-swipe-container', 1), _defineProperty(_classnames2, prefixCls + '-prevpage', hasPrevPage), _defineProperty(_classnames2, prefixCls + '-nextpage', hasNextPage), _classnames2)),
+        className: (0, _classnames4["default"])((_classnames2 = {}, _defineProperty(_classnames2, clsPrefix + '-nav-container', 1), _defineProperty(_classnames2, clsPrefix + '-nav-swipe-container', 1), _defineProperty(_classnames2, clsPrefix + '-prevpage', hasPrevPage), _defineProperty(_classnames2, clsPrefix + '-nextpage', hasNextPage), _classnames2)),
         key: 'container',
         ref: 'container'
       },
       _react2["default"].createElement(
         'div',
-        { className: prefixCls + '-nav-wrap', ref: 'navWrap' },
+        { className: clsPrefix + '-nav-wrap', ref: 'navWrap' },
         _react2["default"].createElement(
           _reactHammerjs2["default"],
           _extends({}, events, direction, {
@@ -205,7 +205,7 @@ exports["default"] = {
           }),
           _react2["default"].createElement(
             'div',
-            { className: prefixCls + '-nav-swipe', ref: 'swipe' },
+            { className: clsPrefix + '-nav-swipe', ref: 'swipe' },
             _react2["default"].createElement(
               'div',
               { className: navClasses, ref: 'nav' },

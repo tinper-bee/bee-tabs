@@ -211,7 +211,7 @@ exports["default"] = {
         next = _state2.next,
         prev = _state2.prev;
     var _props = this.props,
-        prefixCls = _props.prefixCls,
+        clsPrefix = _props.clsPrefix,
         scrollAnimated = _props.scrollAnimated;
 
     var nextButton = void 0;
@@ -226,9 +226,9 @@ exports["default"] = {
         {
           onClick: prev ? this.prev : null,
           unselectable: 'unselectable',
-          className: (0, _classnames6["default"])((_classnames = {}, _defineProperty(_classnames, prefixCls + '-tab-prev', 1), _defineProperty(_classnames, prefixCls + '-tab-btn-disabled', !prev), _classnames))
+          className: (0, _classnames6["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix + '-tab-prev', 1), _defineProperty(_classnames, clsPrefix + '-tab-btn-disabled', !prev), _classnames))
         },
-        _react2["default"].createElement('span', { className: prefixCls + '-tab-prev-icon' })
+        _react2["default"].createElement('span', { className: clsPrefix + '-tab-prev-icon' })
       );
 
       nextButton = _react2["default"].createElement(
@@ -236,19 +236,19 @@ exports["default"] = {
         {
           onClick: next ? this.next : null,
           unselectable: 'unselectable',
-          className: (0, _classnames6["default"])((_classnames2 = {}, _defineProperty(_classnames2, prefixCls + '-tab-next', 1), _defineProperty(_classnames2, prefixCls + '-tab-btn-disabled', !next), _classnames2))
+          className: (0, _classnames6["default"])((_classnames2 = {}, _defineProperty(_classnames2, clsPrefix + '-tab-next', 1), _defineProperty(_classnames2, clsPrefix + '-tab-btn-disabled', !next), _classnames2))
         },
-        _react2["default"].createElement('span', { className: prefixCls + '-tab-next-icon' })
+        _react2["default"].createElement('span', { className: clsPrefix + '-tab-next-icon' })
       );
     }
 
-    var navClassName = prefixCls + '-nav';
+    var navClassName = clsPrefix + '-nav';
     var navClasses = (0, _classnames6["default"])((_classnames3 = {}, _defineProperty(_classnames3, navClassName, true), _defineProperty(_classnames3, scrollAnimated ? navClassName + '-animated' : navClassName + '-no-animated', true), _classnames3));
 
     return _react2["default"].createElement(
       'div',
       {
-        className: (0, _classnames6["default"])((_classnames4 = {}, _defineProperty(_classnames4, prefixCls + '-nav-container', 1), _defineProperty(_classnames4, prefixCls + '-nav-container-scrolling', showNextPrev), _classnames4)),
+        className: (0, _classnames6["default"])((_classnames4 = {}, _defineProperty(_classnames4, clsPrefix + '-nav-container', 1), _defineProperty(_classnames4, clsPrefix + '-nav-container-scrolling', showNextPrev), _classnames4)),
         key: 'container',
         ref: 'container'
       },
@@ -256,10 +256,10 @@ exports["default"] = {
       nextButton,
       _react2["default"].createElement(
         'div',
-        { className: prefixCls + '-nav-wrap', ref: 'navWrap' },
+        { className: clsPrefix + '-nav-wrap', ref: 'navWrap' },
         _react2["default"].createElement(
           'div',
-          { className: prefixCls + '-nav-scroll' },
+          { className: clsPrefix + '-nav-scroll' },
           _react2["default"].createElement(
             'div',
             { className: navClasses, ref: 'nav' },
