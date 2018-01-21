@@ -50,6 +50,10 @@
 	
 	var _beePanel = __webpack_require__(8);
 	
+	var _beeButton = __webpack_require__(82);
+	
+	var _beeButton2 = _interopRequireDefault(_beeButton);
+	
 	var _react = __webpack_require__(4);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -57,22 +61,6 @@
 	var _reactDom = __webpack_require__(12);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _beeButton = __webpack_require__(82);
-	
-	var _beeButton2 = _interopRequireDefault(_beeButton);
-	
-	var _src = __webpack_require__(84);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	var _TabContent = __webpack_require__(88);
-	
-	var _TabContent2 = _interopRequireDefault(_TabContent);
-	
-	var _ScrollableInkTabBar = __webpack_require__(90);
-	
-	var _ScrollableInkTabBar2 = _interopRequireDefault(_ScrollableInkTabBar);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -84,11 +72,11 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var CARET = _react2['default'].createElement('i', { className: 'uf uf-chevronarrowdown' });
+	var CARET = _react2['default'].createElement('i', { className: 'uf uf-arrow-down' });
 	
-	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-chevronarrowup' });
+	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(94);var Demo2 = __webpack_require__(95);var Demo3 = __webpack_require__(96);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\n *  @title 基础Tab\n *  @description 通过Tabs和TabPane配合完成Tab功能\n *\n */\n\nimport React, {Component} from 'react';\nimport Tabs, {TabPane} from 'bee-tabs';\n\nfunction callback() {\n\n}\n\nclass Demo1 extends Component {\n    render() {\n        return (\n            <Tabs\n                defaultActiveKey=\"1\"\n                onChange={callback}\n                tabBarStyle=\"upborder\"\n                className=\"demo-tabs\"\n            >\n                <TabPane tab='望庐山瀑布' key=\"1\">\n                    <ul>\n                        <li>日照香炉生紫烟，</li>\n                        <li>遥看瀑布挂前川。</li>\n                        <li>飞流直下三千尺，</li>\n                        <li>疑是银河落九天。</li>\n                    </ul>\n\n\n                </TabPane>\n                <TabPane tab='早发白帝城' key=\"2\">\n                    <ul>\n                        <li>朝辞白帝彩云间，</li>\n                        <li>千里江陵一日还。</li>\n                        <li>两岸猿声啼不住，</li>\n                        <li>轻舟已过万重山。</li>\n                    </ul>\n                </TabPane>\n                <TabPane tab='菩萨蛮·平林漠漠烟如织' key=\"3\">\n                    <ul>\n                        <li>平林漠漠烟如织，寒山一带伤心碧。</li>\n                        <li>暝色入高楼，有人楼上愁。</li>\n                        <li>玉阶空伫立，宿鸟归飞急。</li>\n                        <li>何处是归程？长亭连短亭</li>\n                    </ul>\n                </TabPane>\n                <TabPane tab='关山月' key=\"4\">\n                    <ul>\n                        <li>明月出天山，苍茫云海间。</li>\n                        <li>长风几万里，吹度玉门关。</li>\n                        <li>汉下白登道，胡窥青海湾。</li>\n                        <li>由来征战地，不见有人还。</li>\n                    </ul>\n                </TabPane>\n            </Tabs>\n        )\n    }\n}\n\n", "desc": " 通过Tabs和TabPane配合完成Tab功能" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 竖向的Tab", "code": "/**\n *\n * @title 竖向的Tab\n * @description 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。\n *\n */\n\nimport React, { Component } from 'react';\nimport Tabs, { TabPane } from 'bee-tabs';\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = ({\n            activeKey: \"1\",\n            start: 0,\n        })\n    }\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey}o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    onTabClick = (key) => {\n        console.log(`onTabClick ${key}o^o`);\n        if (key === this.state.activeKey) {\n            this.setState({\n                activeKey: '',\n            });\n        }\n    }\n\n    render() {\n\n        return (\n            <div style={{ margin: 20 }}>\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    tabBarPosition=\"left\"\n                    defaultActiveKey=\"1\"\n                    onChange={this.onChange}\n                    style={{ height: 300 }}\n                >\n                    <TabPane tab=\"望庐山瀑布\" key=\"1\" >\n                        <ul>\n                            <li>日照香炉生紫烟，</li>\n                            <li>遥看瀑布挂前川。</li>\n                            <li>飞流直下三千尺，</li>\n                            <li>疑是银河落九天。</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"早发白帝城\" key=\"2\">\n                        <ul>\n                            <li>朝辞白帝彩云间，</li>\n                            <li>千里江陵一日还。</li>\n                            <li>两岸猿声啼不住，</li>\n                            <li>轻舟已过万重山。</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"菩萨蛮·平林漠漠烟如织\" key=\"3\">\n                        <ul>\n                            <li>平林漠漠烟如织，寒山一带伤心碧。</li>\n                            <li>暝色入高楼，有人楼上愁。</li>\n                            <li>玉阶空伫立，宿鸟归飞急。</li>\n                            <li>何处是归程？长亭连短亭</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"关山月\" key=\"4\">\n                        <ul>\n                            <li>明月出天山，苍茫云海间。</li>\n                            <li>长风几万里，吹度玉门关。</li>\n                            <li>汉下白登道，胡窥青海湾。</li>\n                            <li>由来征战地，不见有人还。</li>\n                        </ul>\n                    </TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\n", "desc": " 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 页签Tab", "code": "/**\n *\n * @title 页签Tab\n * @description 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果\n *\n */\n\nimport React, {Component} from 'react';\nimport Tabs, {TabPane} from 'bee-tabs';\nimport Icon from 'bee-icon';\n\nlet index = 1;\nconst content = `问世间、情为何物，只教生死相许？天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，\n就中更有痴儿女。君应有语，渺万里层云，千山暮雪，只影向谁去？横汾路，寂寞当年箫鼓，荒烟依旧平楚。招魂楚些何嗟及，\n山鬼暗谛风雨。天也妒，未信与，莺几燕子俱黄土。千秋万古，为留待骚人，狂歌痛饮，来访雁丘处。`;\n\nclass Demo3 extends Component {\n    state = {\n        tabs: [{\n            title: '摸鱼儿',\n            content: content\n        }],\n        activeKey: '摸鱼儿',\n    };\n\n    onTabChange = (activeKey) => {\n        this.setState({\n            activeKey,\n        });\n    }\n\n    construct() {\n        const disabled = true;\n        return this.state.tabs.map((t) => {\n            return (\n                <TabPane\n                tab={<span>{t.title}\n                    <Icon\n                        type=\"uf-close-c\"\n                        className=\"close-icon\"\n                        onClick={this.remove.bind(this, t.title)}\n                    />\n                </span>}\n                key={t.title}\n            >\n                <div style={{padding: 100}}>\n                    {t.content}\n                </div>\n            </TabPane>);\n        }).concat([\n            <TabPane\n                tab={<a style={{color: 'black', cursor: 'pointer'}} onClick={this.add}> + 添加</a>}\n                disabled={disabled}\n                key={'__add'}\n            />,\n        ]);\n    }\n\n    // 删除\n    remove = (title, e) => {\n        e.stopPropagation();\n        if (this.state.tabs.length === 1) {\n            alert('只剩一个，不能删');\n            return;\n        }\n        let foundIndex = 0;\n        const after = this.state.tabs.filter((t, i) => {\n            if (t.title !== title) {\n                return true;\n            }\n            foundIndex = i;\n            return false;\n        });\n        let activeKey = this.state.activeKey;\n        if (activeKey === title) {\n            if (foundIndex) {\n                foundIndex--;\n            }\n            activeKey = after[foundIndex].title;\n        }\n        this.setState({\n            tabs: after,\n            activeKey,\n        });\n    }\n\n    clear = () => {\n        let { tabs } = this.state;\n        this.setState({\n            tabs:  [tabs.shift()],\n            activeKey: '摸鱼儿',\n        })\n    }\n\n    // 增加\n    add = (e) => {\n        e.stopPropagation();\n        index++;\n        const newTab = {\n            title: `名称: ${index}`,\n            content: `内容: ${content}`,\n        };\n        this.setState({\n            tabs: this.state.tabs.concat(newTab),\n            activeKey: `名称: ${index}`,\n        });\n    }\n\n    render() {\n\n        return (\n            <div style={{margin: 20}}>\n\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    onChange={this.onTabChange}\n                    tabBarStyle=\"primary\"\n                    defaultActiveKey=\"摸鱼儿\"\n                    extraContent={\n                        <Icon\n                            type=\"uf-del\"\n                            className=\"clear-icon\"\n                            onClick={this.clear}\n                            title=\"清空\"\n                        />\n                    }\n                >\n                    {this.construct()}\n                </Tabs>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(95);var Demo3 = __webpack_require__(96);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\n *  @title 基础Tab\n *  @description 通过Tabs和TabPane配合完成Tab功能\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\n\nconst {TabPane} = Tabs;\n\nfunction callback() {\n\n}\n\nclass Demo1 extends Component {\n    render() {\n        return (\n            <Tabs\n                defaultActiveKey=\"1\"\n                onChange={callback}\n                tabBarStyle=\"upborder\"\n                className=\"demo1-tabs\"\n            >\n                <TabPane tab='望庐山瀑布' key=\"1\">\n                    <ul>\n                        <li>日照香炉生紫烟，</li>\n                        <li>遥看瀑布挂前川。</li>\n                        <li>飞流直下三千尺，</li>\n                        <li>疑是银河落九天。</li>\n                    </ul>\n\n\n                </TabPane>\n                <TabPane tab='早发白帝城' key=\"2\">\n                    <ul>\n                        <li>朝辞白帝彩云间，</li>\n                        <li>千里江陵一日还。</li>\n                        <li>两岸猿声啼不住，</li>\n                        <li>轻舟已过万重山。</li>\n                    </ul>\n                </TabPane>\n                <TabPane tab='菩萨蛮·平林漠漠烟如织' key=\"3\">\n                    <ul>\n                        <li>平林漠漠烟如织，寒山一带伤心碧。</li>\n                        <li>暝色入高楼，有人楼上愁。</li>\n                        <li>玉阶空伫立，宿鸟归飞急。</li>\n                        <li>何处是归程？长亭连短亭</li>\n                    </ul>\n                </TabPane>\n                <TabPane tab='关山月' key=\"4\">\n                    <ul>\n                        <li>明月出天山，苍茫云海间。</li>\n                        <li>长风几万里，吹度玉门关。</li>\n                        <li>汉下白登道，胡窥青海湾。</li>\n                        <li>由来征战地，不见有人还。</li>\n                    </ul>\n                </TabPane>\n            </Tabs>\n        )\n    }\n}\n\n", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\n  margin-bottom: 40px;\n  width: 600px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 竖向的Tab", "code": "/**\n *\n * @title 竖向的Tab\n * @description 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Tabs } from 'tinper-bee';\n\nconst {TabPane} = Tabs;\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = ({\n            activeKey: \"1\",\n            start: 0,\n        })\n    }\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey}o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    onTabClick = (key) => {\n        console.log(`onTabClick ${key}o^o`);\n        if (key === this.state.activeKey) {\n            this.setState({\n                activeKey: '',\n            });\n        }\n    }\n\n    render() {\n\n        return (\n            <div style={{ margin: 20 }}>\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    tabBarPosition=\"left\"\n                    defaultActiveKey=\"1\"\n                    onChange={this.onChange}\n                    className=\"demo2-tabs\"\n                >\n                    <TabPane tab=\"望庐山瀑布\" key=\"1\" >\n                        <ul>\n                            <li>日照香炉生紫烟，</li>\n                            <li>遥看瀑布挂前川。</li>\n                            <li>飞流直下三千尺，</li>\n                            <li>疑是银河落九天。</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"早发白帝城\" key=\"2\">\n                        <ul>\n                            <li>朝辞白帝彩云间，</li>\n                            <li>千里江陵一日还。</li>\n                            <li>两岸猿声啼不住，</li>\n                            <li>轻舟已过万重山。</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"菩萨蛮·平林漠漠烟如织\" key=\"3\">\n                        <ul>\n                            <li>平林漠漠烟如织，寒山一带伤心碧。</li>\n                            <li>暝色入高楼，有人楼上愁。</li>\n                            <li>玉阶空伫立，宿鸟归飞急。</li>\n                            <li>何处是归程？长亭连短亭</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"关山月\" key=\"4\">\n                        <ul>\n                            <li>明月出天山，苍茫云海间。</li>\n                            <li>长风几万里，吹度玉门关。</li>\n                            <li>汉下白登道，胡窥青海湾。</li>\n                            <li>由来征战地，不见有人还。</li>\n                        </ul>\n                    </TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\n", "desc": " 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。", "scss_code": ".demo2-tabs{\n  height: 300px;\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 页签Tab", "code": "/**\n *\n * @title 页签Tab\n * @description 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs, Icon } from 'tinper-bee';\n\nconst {TabPane} = Tabs;\n\nlet index = 1;\nconst content = `问世间、情为何物，只教生死相许？天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，\n就中更有痴儿女。君应有语，渺万里层云，千山暮雪，只影向谁去？横汾路，寂寞当年箫鼓，荒烟依旧平楚。招魂楚些何嗟及，\n山鬼暗谛风雨。天也妒，未信与，莺几燕子俱黄土。千秋万古，为留待骚人，狂歌痛饮，来访雁丘处。`;\n\nclass Demo3 extends Component {\n    state = {\n        tabs: [{\n            title: '摸鱼儿',\n            content: content\n        }],\n        activeKey: '摸鱼儿',\n    };\n\n    onTabChange = (activeKey) => {\n        this.setState({\n            activeKey,\n        });\n    }\n\n    construct() {\n        const disabled = true;\n        return this.state.tabs.map((t) => {\n            return (\n                <TabPane\n                tab={<span>{t.title}\n                    <Icon\n                        type=\"uf-close-c\"\n                        className=\"close-icon\"\n                        onClick={this.remove.bind(this, t.title)}\n                    />\n                </span>}\n                key={t.title}\n            >\n                <div style={{padding: 100}}>\n                    {t.content}\n                </div>\n            </TabPane>);\n        }).concat([\n            <TabPane\n                tab={<a style={{color: 'black', cursor: 'pointer'}} onClick={this.add}> + 添加</a>}\n                disabled={disabled}\n                key={'__add'}\n            />,\n        ]);\n    }\n\n    // 删除\n    remove = (title, e) => {\n        e.stopPropagation();\n        if (this.state.tabs.length === 1) {\n            alert('只剩一个，不能删');\n            return;\n        }\n        let foundIndex = 0;\n        const after = this.state.tabs.filter((t, i) => {\n            if (t.title !== title) {\n                return true;\n            }\n            foundIndex = i;\n            return false;\n        });\n        let activeKey = this.state.activeKey;\n        if (activeKey === title) {\n            if (foundIndex) {\n                foundIndex--;\n            }\n            activeKey = after[foundIndex].title;\n        }\n        this.setState({\n            tabs: after,\n            activeKey,\n        });\n    }\n\n    clear = () => {\n        let { tabs } = this.state;\n        this.setState({\n            tabs:  [tabs.shift()],\n            activeKey: '摸鱼儿',\n        })\n    }\n\n    // 增加\n    add = (e) => {\n        e.stopPropagation();\n        index++;\n        const newTab = {\n            title: `名称: ${index}`,\n            content: `内容: ${content}`,\n        };\n        this.setState({\n            tabs: this.state.tabs.concat(newTab),\n            activeKey: `名称: ${index}`,\n        });\n    }\n\n    render() {\n\n        return (\n            <div style={{margin: 20}}>\n\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    onChange={this.onTabChange}\n                    tabBarStyle=\"primary\"\n                    defaultActiveKey=\"摸鱼儿\"\n                    extraContent={\n                        <Icon\n                            type=\"uf-del\"\n                            className=\"clear-icon\"\n                            onClick={this.clear}\n                            title=\"清空\"\n                        />\n                    }\n                >\n                    {this.construct()}\n                </Tabs>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果", "scss_code": ".close-icon{\n  position: relative;\n  right: -15px;\n  top: 1px;\n  color: #adaaaa;\n}\n\n.clear-icon{\n  display: inline-block;\n  margin-top: 8px;\n  margin-right: 10px;\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -114,18 +102,23 @@
 	            title = _props.title,
 	            example = _props.example,
 	            code = _props.code,
-	            desc = _props.desc;
+	            desc = _props.desc,
+	            scss_code = _props.scss_code;
 	
 	        var caret = this.state.open ? CARETUP : CARET;
 	        var text = this.state.open ? "隐藏代码" : "查看代码";
 	
-	        var footer = _react2['default'].createElement(
-	            _beeButton2['default'],
-	            { shape: 'block', onClick: this.handleClick },
-	            caret,
-	            text
+	        var header = _react2['default'].createElement(
+	            'div',
+	            null,
+	            example,
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { style: { "marginTop": "10px" }, shape: 'block', onClick: this.handleClick },
+	                caret,
+	                text
+	            )
 	        );
-	
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
 	            { md: 12 },
@@ -141,7 +134,7 @@
 	            ),
 	            _react2['default'].createElement(
 	                _beePanel.Panel,
-	                { collapsible: true, expanded: this.state.open, colors: 'bordered', header: example, footer: footer, footerStyle: { padding: 0 } },
+	                { collapsible: true, headerContent: true, expanded: this.state.open, colors: 'bordered', header: header, footerStyle: { padding: 0 } },
 	                _react2['default'].createElement(
 	                    'pre',
 	                    null,
@@ -150,7 +143,16 @@
 	                        { className: 'hljs javascript' },
 	                        code
 	                    )
-	                )
+	                ),
+	                !!scss_code ? _react2['default'].createElement(
+	                    'pre',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'code',
+	                        { className: 'hljs css' },
+	                        scss_code
+	                    )
+	                ) : null
 	            )
 	        );
 	    };
@@ -173,7 +175,7 @@
 	            null,
 	            DemoArray.map(function (child, index) {
 	
-	                return _react2['default'].createElement(Demo, { example: child.example, title: child.title, code: child.code, desc: child.desc, key: index });
+	                return _react2['default'].createElement(Demo, { example: child.example, title: child.title, code: child.code, scss_code: child.scss_code, desc: child.desc, key: index });
 	            })
 	        );
 	    };
@@ -7494,13 +7496,189 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(85);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  @title 基础Tab
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  @description 通过Tabs和TabPane配合完成Tab功能
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var TabPane = _src2['default'].TabPane;
+	
+	
+	function callback() {}
+	
+	var Demo1 = function (_Component) {
+	    _inherits(Demo1, _Component);
+	
+	    function Demo1() {
+	        _classCallCheck(this, Demo1);
+	
+	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	    }
+	
+	    Demo1.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            _src2['default'],
+	            {
+	                defaultActiveKey: '1',
+	                onChange: callback,
+	                tabBarStyle: 'upborder',
+	                className: 'demo1-tabs'
+	            },
+	            _react2['default'].createElement(
+	                TabPane,
+	                { tab: '\u671B\u5E90\u5C71\u7011\u5E03', key: '1' },
+	                _react2['default'].createElement(
+	                    'ul',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u65E5\u7167\u9999\u7089\u751F\u7D2B\u70DF\uFF0C'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u9065\u770B\u7011\u5E03\u6302\u524D\u5DDD\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u98DE\u6D41\u76F4\u4E0B\u4E09\u5343\u5C3A\uFF0C'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u7591\u662F\u94F6\u6CB3\u843D\u4E5D\u5929\u3002'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                TabPane,
+	                { tab: '\u65E9\u53D1\u767D\u5E1D\u57CE', key: '2' },
+	                _react2['default'].createElement(
+	                    'ul',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u671D\u8F9E\u767D\u5E1D\u5F69\u4E91\u95F4\uFF0C'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u5343\u91CC\u6C5F\u9675\u4E00\u65E5\u8FD8\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u4E24\u5CB8\u733F\u58F0\u557C\u4E0D\u4F4F\uFF0C'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u8F7B\u821F\u5DF2\u8FC7\u4E07\u91CD\u5C71\u3002'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                TabPane,
+	                { tab: '\u83E9\u8428\u86EE\xB7\u5E73\u6797\u6F20\u6F20\u70DF\u5982\u7EC7', key: '3' },
+	                _react2['default'].createElement(
+	                    'ul',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u5E73\u6797\u6F20\u6F20\u70DF\u5982\u7EC7\uFF0C\u5BD2\u5C71\u4E00\u5E26\u4F24\u5FC3\u78A7\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u669D\u8272\u5165\u9AD8\u697C\uFF0C\u6709\u4EBA\u697C\u4E0A\u6101\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u7389\u9636\u7A7A\u4F2B\u7ACB\uFF0C\u5BBF\u9E1F\u5F52\u98DE\u6025\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u4F55\u5904\u662F\u5F52\u7A0B\uFF1F\u957F\u4EAD\u8FDE\u77ED\u4EAD'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                TabPane,
+	                { tab: '\u5173\u5C71\u6708', key: '4' },
+	                _react2['default'].createElement(
+	                    'ul',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u660E\u6708\u51FA\u5929\u5C71\uFF0C\u82CD\u832B\u4E91\u6D77\u95F4\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u957F\u98CE\u51E0\u4E07\u91CC\uFF0C\u5439\u5EA6\u7389\u95E8\u5173\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u6C49\u4E0B\u767D\u767B\u9053\uFF0C\u80E1\u7AA5\u9752\u6D77\u6E7E\u3002'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'li',
+	                        null,
+	                        '\u7531\u6765\u5F81\u6218\u5730\uFF0C\u4E0D\u89C1\u6709\u4EBA\u8FD8\u3002'
+	                    )
+	                )
+	            )
+	        );
+	    };
+	
+	    return Demo1;
+	}(_react.Component);
+	
+	exports['default'] = Demo1;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports['default'] = undefined;
 
-	var _Tabs = __webpack_require__(85);
+	var _Tabs = __webpack_require__(86);
 
 	var _Tabs2 = _interopRequireDefault(_Tabs);
 
@@ -7510,7 +7688,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7523,11 +7701,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _KeyCode = __webpack_require__(86);
+	var _KeyCode = __webpack_require__(87);
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _TabPane = __webpack_require__(87);
+	var _TabPane = __webpack_require__(88);
 	
 	var _TabPane2 = _interopRequireDefault(_TabPane);
 	
@@ -7535,11 +7713,11 @@
 	
 	var _classnames3 = _interopRequireDefault(_classnames2);
 	
-	var _TabContent = __webpack_require__(88);
+	var _TabContent = __webpack_require__(89);
 	
 	var _TabContent2 = _interopRequireDefault(_TabContent);
 	
-	var _ScrollableInkTabBar = __webpack_require__(90);
+	var _ScrollableInkTabBar = __webpack_require__(91);
 	
 	var _ScrollableInkTabBar2 = _interopRequireDefault(_ScrollableInkTabBar);
 	
@@ -7726,7 +7904,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -7755,7 +7933,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7848,7 +8026,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7867,7 +8045,7 @@
 	
 	var _classnames3 = _interopRequireDefault(_classnames2);
 	
-	var _utils = __webpack_require__(89);
+	var _utils = __webpack_require__(90);
 	
 	var _propTypes = __webpack_require__(5);
 	
@@ -7956,7 +8134,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8057,7 +8235,7 @@
 	}
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8070,15 +8248,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InkTabBarMixin = __webpack_require__(91);
+	var _InkTabBarMixin = __webpack_require__(92);
 	
 	var _InkTabBarMixin2 = _interopRequireDefault(_InkTabBarMixin);
 	
-	var _ScrollableTabBarMixin = __webpack_require__(92);
+	var _ScrollableTabBarMixin = __webpack_require__(93);
 	
 	var _ScrollableTabBarMixin2 = _interopRequireDefault(_ScrollableTabBarMixin);
 	
-	var _TabBarMixin = __webpack_require__(93);
+	var _TabBarMixin = __webpack_require__(94);
 	
 	var _TabBarMixin2 = _interopRequireDefault(_TabBarMixin);
 	
@@ -8103,7 +8281,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8113,7 +8291,7 @@
 	});
 	exports.getScroll = getScroll;
 	
-	var _utils = __webpack_require__(89);
+	var _utils = __webpack_require__(90);
 	
 	var _react = __webpack_require__(4);
 	
@@ -8240,7 +8418,7 @@
 	};
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8253,7 +8431,7 @@
 	
 	var _classnames6 = _interopRequireDefault(_classnames5);
 	
-	var _utils = __webpack_require__(89);
+	var _utils = __webpack_require__(90);
 	
 	var _react = __webpack_require__(4);
 	
@@ -8518,7 +8696,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8634,179 +8812,6 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _src = __webpack_require__(84);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  @title 基础Tab
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *  @description 通过Tabs和TabPane配合完成Tab功能
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	function callback() {}
-	
-	var Demo1 = function (_Component) {
-	    _inherits(Demo1, _Component);
-	
-	    function Demo1() {
-	        _classCallCheck(this, Demo1);
-	
-	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-	    }
-	
-	    Demo1.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            _src2['default'],
-	            {
-	                defaultActiveKey: '1',
-	                onChange: callback,
-	                tabBarStyle: 'upborder',
-	                className: 'demo-tabs'
-	            },
-	            _react2['default'].createElement(
-	                _src.TabPane,
-	                { tab: '\u671B\u5E90\u5C71\u7011\u5E03', key: '1' },
-	                _react2['default'].createElement(
-	                    'ul',
-	                    null,
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u65E5\u7167\u9999\u7089\u751F\u7D2B\u70DF\uFF0C'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u9065\u770B\u7011\u5E03\u6302\u524D\u5DDD\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u98DE\u6D41\u76F4\u4E0B\u4E09\u5343\u5C3A\uFF0C'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u7591\u662F\u94F6\u6CB3\u843D\u4E5D\u5929\u3002'
-	                    )
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                _src.TabPane,
-	                { tab: '\u65E9\u53D1\u767D\u5E1D\u57CE', key: '2' },
-	                _react2['default'].createElement(
-	                    'ul',
-	                    null,
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u671D\u8F9E\u767D\u5E1D\u5F69\u4E91\u95F4\uFF0C'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u5343\u91CC\u6C5F\u9675\u4E00\u65E5\u8FD8\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u4E24\u5CB8\u733F\u58F0\u557C\u4E0D\u4F4F\uFF0C'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u8F7B\u821F\u5DF2\u8FC7\u4E07\u91CD\u5C71\u3002'
-	                    )
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                _src.TabPane,
-	                { tab: '\u83E9\u8428\u86EE\xB7\u5E73\u6797\u6F20\u6F20\u70DF\u5982\u7EC7', key: '3' },
-	                _react2['default'].createElement(
-	                    'ul',
-	                    null,
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u5E73\u6797\u6F20\u6F20\u70DF\u5982\u7EC7\uFF0C\u5BD2\u5C71\u4E00\u5E26\u4F24\u5FC3\u78A7\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u669D\u8272\u5165\u9AD8\u697C\uFF0C\u6709\u4EBA\u697C\u4E0A\u6101\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u7389\u9636\u7A7A\u4F2B\u7ACB\uFF0C\u5BBF\u9E1F\u5F52\u98DE\u6025\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u4F55\u5904\u662F\u5F52\u7A0B\uFF1F\u957F\u4EAD\u8FDE\u77ED\u4EAD'
-	                    )
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                _src.TabPane,
-	                { tab: '\u5173\u5C71\u6708', key: '4' },
-	                _react2['default'].createElement(
-	                    'ul',
-	                    null,
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u660E\u6708\u51FA\u5929\u5C71\uFF0C\u82CD\u832B\u4E91\u6D77\u95F4\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u957F\u98CE\u51E0\u4E07\u91CC\uFF0C\u5439\u5EA6\u7389\u95E8\u5173\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u6C49\u4E0B\u767D\u767B\u9053\uFF0C\u80E1\u7AA5\u9752\u6D77\u6E7E\u3002'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        '\u7531\u6765\u5F81\u6218\u5730\uFF0C\u4E0D\u89C1\u6709\u4EBA\u8FD8\u3002'
-	                    )
-	                )
-	            )
-	        );
-	    };
-	
-	    return Demo1;
-	}(_react.Component);
-	
-	exports['default'] = Demo1;
-	module.exports = exports['default'];
-
-/***/ }),
 /* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8820,7 +8825,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(84);
+	var _src = __webpack_require__(85);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -8838,6 +8843,8 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var TabPane = _src2['default'].TabPane;
 	
 	var Demo2 = function (_Component) {
 	    _inherits(Demo2, _Component);
@@ -8882,10 +8889,10 @@
 	                    tabBarPosition: 'left',
 	                    defaultActiveKey: '1',
 	                    onChange: this.onChange,
-	                    style: { height: 300 }
+	                    className: 'demo2-tabs'
 	                },
 	                _react2['default'].createElement(
-	                    _src.TabPane,
+	                    TabPane,
 	                    { tab: '\u671B\u5E90\u5C71\u7011\u5E03', key: '1' },
 	                    _react2['default'].createElement(
 	                        'ul',
@@ -8913,7 +8920,7 @@
 	                    )
 	                ),
 	                _react2['default'].createElement(
-	                    _src.TabPane,
+	                    TabPane,
 	                    { tab: '\u65E9\u53D1\u767D\u5E1D\u57CE', key: '2' },
 	                    _react2['default'].createElement(
 	                        'ul',
@@ -8941,7 +8948,7 @@
 	                    )
 	                ),
 	                _react2['default'].createElement(
-	                    _src.TabPane,
+	                    TabPane,
 	                    { tab: '\u83E9\u8428\u86EE\xB7\u5E73\u6797\u6F20\u6F20\u70DF\u5982\u7EC7', key: '3' },
 	                    _react2['default'].createElement(
 	                        'ul',
@@ -8969,7 +8976,7 @@
 	                    )
 	                ),
 	                _react2['default'].createElement(
-	                    _src.TabPane,
+	                    TabPane,
 	                    { tab: '\u5173\u5C71\u6708', key: '4' },
 	                    _react2['default'].createElement(
 	                        'ul',
@@ -9020,7 +9027,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(84);
+	var _src = __webpack_require__(85);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -9042,6 +9049,9 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var TabPane = _src2['default'].TabPane;
+	
 	
 	var index = 1;
 	var content = '\u95EE\u4E16\u95F4\u3001\u60C5\u4E3A\u4F55\u7269\uFF0C\u53EA\u6559\u751F\u6B7B\u76F8\u8BB8\uFF1F\u5929\u5357\u5730\u5317\u53CC\u98DE\u5BA2\uFF0C\u8001\u7FC5\u51E0\u56DE\u5BD2\u6691\u3002\u6B22\u4E50\u8DA3\uFF0C\u79BB\u522B\u82E6\uFF0C\n\u5C31\u4E2D\u66F4\u6709\u75F4\u513F\u5973\u3002\u541B\u5E94\u6709\u8BED\uFF0C\u6E3A\u4E07\u91CC\u5C42\u4E91\uFF0C\u5343\u5C71\u66AE\u96EA\uFF0C\u53EA\u5F71\u5411\u8C01\u53BB\uFF1F\u6A2A\u6C7E\u8DEF\uFF0C\u5BC2\u5BDE\u5F53\u5E74\u7BAB\u9F13\uFF0C\u8352\u70DF\u4F9D\u65E7\u5E73\u695A\u3002\u62DB\u9B42\u695A\u4E9B\u4F55\u55DF\u53CA\uFF0C\n\u5C71\u9B3C\u6697\u8C1B\u98CE\u96E8\u3002\u5929\u4E5F\u5992\uFF0C\u672A\u4FE1\u4E0E\uFF0C\u83BA\u51E0\u71D5\u5B50\u4FF1\u9EC4\u571F\u3002\u5343\u79CB\u4E07\u53E4\uFF0C\u4E3A\u7559\u5F85\u9A9A\u4EBA\uFF0C\u72C2\u6B4C\u75DB\u996E\uFF0C\u6765\u8BBF\u96C1\u4E18\u5904\u3002';
@@ -9120,7 +9130,7 @@
 	        var disabled = true;
 	        return this.state.tabs.map(function (t) {
 	            return _react2['default'].createElement(
-	                _src.TabPane,
+	                TabPane,
 	                {
 	                    tab: _react2['default'].createElement(
 	                        'span',
@@ -9140,7 +9150,7 @@
 	                    t.content
 	                )
 	            );
-	        }).concat([_react2['default'].createElement(_src.TabPane, {
+	        }).concat([_react2['default'].createElement(TabPane, {
 	            tab: _react2['default'].createElement(
 	                'a',
 	                { style: { color: 'black', cursor: 'pointer' }, onClick: this.add },

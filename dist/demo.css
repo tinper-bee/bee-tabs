@@ -6990,12 +6990,15 @@ input.u-button[type="submit"] {
       content: '';
       transition: transform 0.3s; }
 
-.demo-tabs {
+ul, li {
+  list-style: none; }
+
+.demo1-tabs {
   margin-bottom: 40px;
   width: 600px; }
 
-ul, li {
-  list-style: none; }
+.demo2-tabs {
+  height: 300px; }
 
 .close-icon {
   position: relative;

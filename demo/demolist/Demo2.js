@@ -6,7 +6,9 @@
  */
 
 import React, { Component } from 'react';
-import Tabs, { TabPane } from '../../src';
+import Tabs from '../../src';
+
+const {TabPane} = Tabs;
 
 class Demo2 extends Component {
     constructor(props) {
@@ -41,7 +43,7 @@ class Demo2 extends Component {
                     tabBarPosition="left"
                     defaultActiveKey="1"
                     onChange={this.onChange}
-                    style={{ height: 300 }}
+                    className="demo2-tabs"
                 >
                     <TabPane tab="望庐山瀑布" key="1" >
                         <ul>

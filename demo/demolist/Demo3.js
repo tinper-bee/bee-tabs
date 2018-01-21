@@ -6,8 +6,10 @@
  */
 
 import React, {Component} from 'react';
-import Tabs, {TabPane} from '../../src';
+import Tabs from '../../src';
 import Icon from 'bee-icon';
+
+const {TabPane} = Tabs;
 
 let index = 1;
 const content = `问世间、情为何物，只教生死相许？天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，

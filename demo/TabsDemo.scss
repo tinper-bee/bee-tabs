@@ -4,23 +4,8 @@
 @import "../node_modules/bee-button/src/Button.scss";
 @import "../src/Tabs.scss";
 
-.demo-tabs{
-  margin-bottom: 40px;
-  width: 600px;
-}
+
 
 ul,li{
   list-style: none;
-}
-.close-icon{
-  position: relative;
-  right: -15px;
-  top: 1px;
-  color: #adaaaa;
-}
-
-.clear-icon{
-  display: inline-block;
-  margin-top: 8px;
-  margin-right: 10px;
 }

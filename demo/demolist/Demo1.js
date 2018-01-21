@@ -5,7 +5,9 @@
  */
 
 import React, {Component} from 'react';
-import Tabs, {TabPane} from '../../src';
+import Tabs from '../../src';
+
+const {TabPane} = Tabs;
 
 function callback() {
 
@@ -18,7 +20,7 @@ class Demo1 extends Component {
                 defaultActiveKey="1"
                 onChange={callback}
                 tabBarStyle="upborder"
-                className="demo-tabs"
+                className="demo1-tabs"
             >
                 <TabPane tab='望庐山瀑布' key="1">
                     <ul>
