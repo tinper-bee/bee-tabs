@@ -6206,7 +6206,7 @@ input.u-button[type="submit"] {
   font-weight: normal;
   font-variant: normal;
   line-height: inherit;
-  vertical-align: baseline;
+  vertical-align: sub;
   text-align: center;
   text-transform: none;
   font-smoothing: antialiased;
@@ -7008,7 +7008,7 @@ ul, li {
 
 .clear-icon {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 11px;
   margin-right: 10px; }
 
 /*# sourceMappingURL=demo.css.map */
