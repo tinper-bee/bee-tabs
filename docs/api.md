@@ -19,7 +19,7 @@
 | destroyInactiveTabPane | 是否在更改选项卡时销毁无效标签                          | Boolean           | false   |
 | style                  | 添加到table上的style                          | String            | u-tabs  |
 | onTabClick             | tab 被点击的回调                               | fun               | -       |
-| className              | 在tab组件上添加className                       | fun               | -       |
+| className              | 在tab组件上添加className                       | String               | -       |
 | extraContent           | 在导航上添加扩展元素                       |  ():React.Node                | -       |
 | onPrevClick              | 当出现滚动时，点击上一个时的回调函数                       | fun               | -       |
 | onNextClick              | 当出现滚动时，点击下一个时的回调函数                       | fun               | -       |
