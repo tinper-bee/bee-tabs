@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Tabs = undefined;
 
 var _react = require("react");
 
@@ -207,5 +208,4 @@ var Tabs = (0, _createReactClass2["default"])({
 
 Tabs.TabPane = _TabPane2["default"];
 
-exports["default"] = Tabs;
-module.exports = exports["default"];
+exports.Tabs = Tabs;

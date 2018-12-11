@@ -192,4 +192,4 @@ const Tabs = createClass({
 
 Tabs.TabPane = TabPane;
 
-export default Tabs;
+export  {Tabs};

@@ -3478,6 +3478,33 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
 .uf-treeline-copy:before {
   content: "\e994"; }
 
+.uf-listwithdots:before {
+  content: "\e9cd"; }
+
+.uf-gridlogo:before {
+  content: "\e900"; }
+
+.uf-magnifyingglass:before {
+  content: "\e9ce"; }
+
+.uf-anglearrowdown:before {
+  content: "\e9cf"; }
+
+.uf-yongyouyunchnen:before {
+  content: "\e98d"; }
+
+.uf-yycloud:before {
+  content: "\e68f"; }
+
+.uf-funnel-o:before {
+  content: "\e63c"; }
+
+.uf-filter:before {
+  content: "\e9d0"; }
+
+.uf-filterno:before {
+  content: "\e9d1"; }
+
 /* FormGroup */
 /*  Navlayout  */
 .vertical-align {
@@ -5866,6 +5893,18 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   .u-panel .u-panel-body {
     padding: 15px 15px;
     position: relative; }
+    .u-panel .u-panel-body .u-panel-copy {
+      position: absolute;
+      right: 25px;
+      top: 30px;
+      color: #fff;
+      font-size: 20px;
+      padding: 2px 8px;
+      margin: 8px;
+      border-radius: 4px;
+      cursor: pointer; }
+      .u-panel .u-panel-body .u-panel-copy:hover {
+        color: #a8a7a7; }
 
 .u-panel-default {
   border-color: #ddd; }
@@ -6261,7 +6300,7 @@ input.u-button[type="submit"] {
     -ms-flex-negative: 0;
     flex-shrink: 0; }
   .u-tabs .no-flexbox .u-tabs-content {
-    transform: none !important;
+    transform: none;
     overflow: auto; }
   .u-tabs .no-csstransitions .u-tabs-tabpane-inactive,
   .u-tabs .no-flexbox .u-tabs-tabpane-inactive,
