@@ -8112,19 +8112,24 @@
 	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // export default from './Tabs';
+	// 20181211animated，scrollAnimated（ScrollableTabBarMixin），inkBarAnimated（InkTabBarMixin）都是默认为true的
+	// 针对ie9等不支持transform等需要animated，scrollAnimated,inkBarAnimated设置为false
 	
-	var _Tabs = __webpack_require__(86);
 	
-	var _createReactClass = __webpack_require__(89);
+	var _createReactClass = __webpack_require__(86);
 	
 	var _createReactClass2 = _interopRequireDefault(_createReactClass);
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Tabs = __webpack_require__(92);
 	
 	var _utils = __webpack_require__(96);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	// 之前animated，scrollAnimated（ScrollableTabBarMixin），inkBarAnimated（InkTabBarMixin）都是默认为true的
-	// 针对ie9等不支持transform等需要设置为false
 	var Tabs = (0, _createReactClass2['default'])({
 	    render: function render() {
 	        var disableProps = {
@@ -8133,18 +8138,10 @@
 	            inkBarAnimated: false
 	        };
 	        if ((0, _utils.isTransformSupported)(document.documentElement.style)) {
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(_Tabs.Tabs, this.props)
-	            );
+	            return _react2['default'].createElement(_Tabs.Tabs, this.props);
 	        } else {
 	            // 不支持transform和translate3d的就讓animated是false
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(_Tabs.Tabs, _extends({}, this.props, disableProps))
-	            );
+	            return _react2['default'].createElement(_Tabs.Tabs, _extends({}, this.props, disableProps));
 	        }
 	    }
 	});
@@ -8154,344 +8151,6 @@
 
 /***/ }),
 /* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Tabs = undefined;
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _KeyCode = __webpack_require__(87);
-	
-	var _KeyCode2 = _interopRequireDefault(_KeyCode);
-	
-	var _TabPane = __webpack_require__(88);
-	
-	var _TabPane2 = _interopRequireDefault(_TabPane);
-	
-	var _classnames2 = __webpack_require__(3);
-	
-	var _classnames3 = _interopRequireDefault(_classnames2);
-	
-	var _TabContent = __webpack_require__(95);
-	
-	var _TabContent2 = _interopRequireDefault(_TabContent);
-	
-	var _ScrollableInkTabBar = __webpack_require__(97);
-	
-	var _ScrollableInkTabBar2 = _interopRequireDefault(_ScrollableInkTabBar);
-	
-	var _propTypes = __webpack_require__(5);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _createReactClass = __webpack_require__(89);
-	
-	var _createReactClass2 = _interopRequireDefault(_createReactClass);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	function noop() {}
-	
-	function getDefaultActiveKey(props) {
-	  var activeKey = void 0;
-	  _react2["default"].Children.forEach(props.children, function (child) {
-	    if (child && !activeKey && !child.props.disabled) {
-	      activeKey = child.key;
-	    }
-	  });
-	  return activeKey;
-	}
-	
-	var Tabs = (0, _createReactClass2["default"])({
-	  propTypes: {
-	    destroyInactiveTabPane: _propTypes2["default"].bool,
-	    renderTabBar: _propTypes2["default"].func.isRequired,
-	    renderTabContent: _propTypes2["default"].func.isRequired,
-	    onChange: _propTypes2["default"].func,
-	    children: _propTypes2["default"].any,
-	    clsPrefix: _propTypes2["default"].string,
-	    className: _propTypes2["default"].string,
-	    tabBarPosition: _propTypes2["default"].string,
-	    style: _propTypes2["default"].object,
-	    tabBarStyle: _propTypes2["default"].oneOf(["simple", "fill", "primary", "upborder", "fade", "downborder", "trapezoid"])
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      clsPrefix: "u-tabs",
-	      destroyInactiveTabPane: false,
-	      onChange: noop,
-	      tabBarPosition: "top",
-	      style: {},
-	      renderTabContent: function renderTabContent() {
-	        return _react2["default"].createElement(_TabContent2["default"], null);
-	      },
-	      renderTabBar: function renderTabBar() {
-	        return _react2["default"].createElement(_ScrollableInkTabBar2["default"], null);
-	      },
-	      tabBarStyle: "simple",
-	      animated: true
-	    };
-	  },
-	  getInitialState: function getInitialState() {
-	    var props = this.props;
-	    var activeKey = void 0;
-	    if ("activeKey" in props) {
-	      activeKey = props.activeKey;
-	    } else if ("defaultActiveKey" in props) {
-	      activeKey = props.defaultActiveKey;
-	    } else {
-	      activeKey = getDefaultActiveKey(props);
-	    }
-	    return {
-	      activeKey: activeKey
-	    };
-	  },
-	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    if ("activeKey" in nextProps) {
-	      this.setState({
-	        activeKey: nextProps.activeKey
-	      });
-	    }
-	  },
-	  onTabClick: function onTabClick(activeKey) {
-	    if (this.tabBar.props.onTabClick) {
-	      this.tabBar.props.onTabClick(activeKey);
-	    }
-	    this.setActiveKey(activeKey);
-	  },
-	  onNavKeyDown: function onNavKeyDown(e) {
-	    var eventKeyCode = e.keyCode;
-	    if (eventKeyCode === _KeyCode2["default"].RIGHT || eventKeyCode === _KeyCode2["default"].DOWN) {
-	      e.preventDefault();
-	      var nextKey = this.getNextActiveKey(true);
-	      this.onTabClick(nextKey);
-	    } else if (eventKeyCode === _KeyCode2["default"].LEFT || eventKeyCode === _KeyCode2["default"].UP) {
-	      e.preventDefault();
-	      var previousKey = this.getNextActiveKey(false);
-	      this.onTabClick(previousKey);
-	    }
-	  },
-	  setActiveKey: function setActiveKey(activeKey) {
-	    if (this.state.activeKey !== activeKey) {
-	      if (!("activeKey" in this.props)) {
-	        this.setState({
-	          activeKey: activeKey
-	        });
-	      }
-	      this.props.onChange(activeKey);
-	    }
-	  },
-	  getNextActiveKey: function getNextActiveKey(next) {
-	    var activeKey = this.state.activeKey;
-	    var children = [];
-	    _react2["default"].Children.forEach(this.props.children, function (c) {
-	      if (c && !c.props.disabled) {
-	        if (next) {
-	          children.push(c);
-	        } else {
-	          children.unshift(c);
-	        }
-	      }
-	    });
-	    var length = children.length;
-	    var ret = length && children[0].key;
-	    children.forEach(function (child, i) {
-	      if (child.key === activeKey) {
-	        if (i === length - 1) {
-	          ret = children[0].key;
-	        } else {
-	          ret = children[i + 1].key;
-	        }
-	      }
-	    });
-	    return ret;
-	  },
-	  render: function render() {
-	    var _classnames;
-	
-	    var props = this.props;
-	    var clsPrefix = props.clsPrefix,
-	        tabBarPosition = props.tabBarPosition,
-	        className = props.className,
-	        renderTabContent = props.renderTabContent,
-	        renderTabBar = props.renderTabBar,
-	        tabBarStyle = props.tabBarStyle,
-	        extraContent = props.extraContent,
-	        animated = props.animated;
-	
-	
-	    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
-	
-	    this.tabBar = renderTabBar();
-	    var contents = [_react2["default"].cloneElement(this.tabBar, {
-	      clsPrefix: clsPrefix,
-	      key: "tabBar",
-	      onKeyDown: this.onNavKeyDown,
-	      tabBarPosition: tabBarPosition,
-	      extraContent: extraContent,
-	      onTabClick: this.onTabClick,
-	      panels: props.children,
-	      activeKey: this.state.activeKey
-	    }), _react2["default"].cloneElement(renderTabContent(), {
-	      clsPrefix: clsPrefix,
-	      tabBarPosition: tabBarPosition,
-	      animated: animated,
-	      activeKey: this.state.activeKey,
-	      destroyInactiveTabPane: props.destroyInactiveTabPane,
-	      children: props.children,
-	      style: { height: '100%' },
-	      onChange: this.setActiveKey,
-	      key: "tabContent"
-	    })];
-	    if (tabBarPosition === "bottom") {
-	      contents.reverse();
-	    }
-	    return _react2["default"].createElement(
-	      "div",
-	      { className: cls, style: props.style },
-	      contents
-	    );
-	  }
-	});
-	
-	Tabs.TabPane = _TabPane2["default"];
-	
-	exports.Tabs = Tabs;
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = {
-	  /**
-	   * LEFT
-	   */
-	  LEFT: 37, // also NUM_WEST
-	  /**
-	   * UP
-	   */
-	  UP: 38, // also NUM_NORTH
-	  /**
-	   * RIGHT
-	   */
-	  RIGHT: 39, // also NUM_EAST
-	  /**
-	   * DOWN
-	   */
-	  DOWN: 40 // also NUM_SOUTH
-	};
-	module.exports = exports["default"];
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(5);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _classnames2 = __webpack_require__(3);
-	
-	var _classnames3 = _interopRequireDefault(_classnames2);
-	
-	var _createReactClass = __webpack_require__(89);
-	
-	var _createReactClass2 = _interopRequireDefault(_createReactClass);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-	  className: _propTypes2["default"].string,
-	  active: _propTypes2["default"].bool,
-	  style: _propTypes2["default"].any,
-	  destroyInactiveTabPane: _propTypes2["default"].bool,
-	  forceRender: _propTypes2["default"].bool,
-	  placeholder: _propTypes2["default"].node
-	};
-	var defaultProps = {
-	  placeholder: null
-	};
-	
-	var TabPane = function (_Component) {
-	  _inherits(TabPane, _Component);
-	
-	  function TabPane() {
-	    _classCallCheck(this, TabPane);
-	
-	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-	  }
-	
-	  TabPane.prototype.render = function render() {
-	    var _classnames;
-	
-	    var props = this.props;
-	    var className = props.className,
-	        destroyInactiveTabPane = props.destroyInactiveTabPane,
-	        active = props.active,
-	        forceRender = props.forceRender;
-	
-	    this._isActived = this._isActived || active;
-	    var clsPrefix = props.rootclsPrefix + "-tabpane";
-	    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, 1), _defineProperty(_classnames, clsPrefix + "-inactive", !active), _defineProperty(_classnames, clsPrefix + "-active", active), _defineProperty(_classnames, className, className), _classnames));
-	    var isRender = destroyInactiveTabPane ? active : this._isActived;
-	    return _react2["default"].createElement(
-	      "div",
-	      {
-	        style: props.style,
-	        role: "tabpanel",
-	        "aria-hidden": props.active ? "false" : "true",
-	        className: cls
-	      },
-	      isRender || forceRender ? props.children : props.placeholder
-	    );
-	  };
-	
-	  return TabPane;
-	}(_react.Component);
-	
-	TabPane.propTypes = propTypes;
-	TabPane.defaultProps = defaultProps;
-	
-	exports["default"] = TabPane;
-	module.exports = exports["default"];
-
-/***/ }),
-/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -8505,7 +8164,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(4);
-	var factory = __webpack_require__(90);
+	var factory = __webpack_require__(87);
 	
 	if (typeof React === 'undefined') {
 	  throw Error(
@@ -8525,7 +8184,7 @@
 
 
 /***/ }),
-/* 90 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -8540,11 +8199,11 @@
 	
 	var _assign = __webpack_require__(44);
 	
-	var emptyObject = __webpack_require__(91);
-	var _invariant = __webpack_require__(92);
+	var emptyObject = __webpack_require__(88);
+	var _invariant = __webpack_require__(89);
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var warning = __webpack_require__(93);
+	  var warning = __webpack_require__(90);
 	}
 	
 	var MIXINS_KEY = 'mixins';
@@ -9458,7 +9117,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 91 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -9481,7 +9140,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 92 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -9540,7 +9199,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 93 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -9553,7 +9212,7 @@
 	
 	'use strict';
 	
-	var emptyFunction = __webpack_require__(94);
+	var emptyFunction = __webpack_require__(91);
 	
 	/**
 	 * Similar to invariant but only logs a warning if the condition is not met.
@@ -9608,7 +9267,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 94 */
+/* 91 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -9649,6 +9308,344 @@
 	module.exports = emptyFunction;
 
 /***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Tabs = undefined;
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _KeyCode = __webpack_require__(93);
+	
+	var _KeyCode2 = _interopRequireDefault(_KeyCode);
+	
+	var _TabPane = __webpack_require__(94);
+	
+	var _TabPane2 = _interopRequireDefault(_TabPane);
+	
+	var _classnames2 = __webpack_require__(3);
+	
+	var _classnames3 = _interopRequireDefault(_classnames2);
+	
+	var _TabContent = __webpack_require__(95);
+	
+	var _TabContent2 = _interopRequireDefault(_TabContent);
+	
+	var _ScrollableInkTabBar = __webpack_require__(97);
+	
+	var _ScrollableInkTabBar2 = _interopRequireDefault(_ScrollableInkTabBar);
+	
+	var _propTypes = __webpack_require__(5);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _createReactClass = __webpack_require__(86);
+	
+	var _createReactClass2 = _interopRequireDefault(_createReactClass);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function noop() {}
+	
+	function getDefaultActiveKey(props) {
+	  var activeKey = void 0;
+	  _react2["default"].Children.forEach(props.children, function (child) {
+	    if (child && !activeKey && !child.props.disabled) {
+	      activeKey = child.key;
+	    }
+	  });
+	  return activeKey;
+	}
+	
+	var Tabs = (0, _createReactClass2["default"])({
+	  propTypes: {
+	    destroyInactiveTabPane: _propTypes2["default"].bool,
+	    renderTabBar: _propTypes2["default"].func.isRequired,
+	    renderTabContent: _propTypes2["default"].func.isRequired,
+	    onChange: _propTypes2["default"].func,
+	    children: _propTypes2["default"].any,
+	    clsPrefix: _propTypes2["default"].string,
+	    className: _propTypes2["default"].string,
+	    tabBarPosition: _propTypes2["default"].string,
+	    style: _propTypes2["default"].object,
+	    tabBarStyle: _propTypes2["default"].oneOf(["simple", "fill", "primary", "upborder", "fade", "downborder", "trapezoid"])
+	  },
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      clsPrefix: "u-tabs",
+	      destroyInactiveTabPane: false,
+	      onChange: noop,
+	      tabBarPosition: "top",
+	      style: {},
+	      renderTabContent: function renderTabContent() {
+	        return _react2["default"].createElement(_TabContent2["default"], null);
+	      },
+	      renderTabBar: function renderTabBar() {
+	        return _react2["default"].createElement(_ScrollableInkTabBar2["default"], null);
+	      },
+	      tabBarStyle: "simple",
+	      animated: true
+	    };
+	  },
+	  getInitialState: function getInitialState() {
+	    var props = this.props;
+	    var activeKey = void 0;
+	    if ("activeKey" in props) {
+	      activeKey = props.activeKey;
+	    } else if ("defaultActiveKey" in props) {
+	      activeKey = props.defaultActiveKey;
+	    } else {
+	      activeKey = getDefaultActiveKey(props);
+	    }
+	    return {
+	      activeKey: activeKey
+	    };
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    if ("activeKey" in nextProps) {
+	      this.setState({
+	        activeKey: nextProps.activeKey
+	      });
+	    }
+	  },
+	  onTabClick: function onTabClick(activeKey) {
+	    if (this.tabBar.props.onTabClick) {
+	      this.tabBar.props.onTabClick(activeKey);
+	    }
+	    this.setActiveKey(activeKey);
+	  },
+	  onNavKeyDown: function onNavKeyDown(e) {
+	    var eventKeyCode = e.keyCode;
+	    if (eventKeyCode === _KeyCode2["default"].RIGHT || eventKeyCode === _KeyCode2["default"].DOWN) {
+	      e.preventDefault();
+	      var nextKey = this.getNextActiveKey(true);
+	      this.onTabClick(nextKey);
+	    } else if (eventKeyCode === _KeyCode2["default"].LEFT || eventKeyCode === _KeyCode2["default"].UP) {
+	      e.preventDefault();
+	      var previousKey = this.getNextActiveKey(false);
+	      this.onTabClick(previousKey);
+	    }
+	  },
+	  setActiveKey: function setActiveKey(activeKey) {
+	    if (this.state.activeKey !== activeKey) {
+	      if (!("activeKey" in this.props)) {
+	        this.setState({
+	          activeKey: activeKey
+	        });
+	      }
+	      this.props.onChange(activeKey);
+	    }
+	  },
+	  getNextActiveKey: function getNextActiveKey(next) {
+	    var activeKey = this.state.activeKey;
+	    var children = [];
+	    _react2["default"].Children.forEach(this.props.children, function (c) {
+	      if (c && !c.props.disabled) {
+	        if (next) {
+	          children.push(c);
+	        } else {
+	          children.unshift(c);
+	        }
+	      }
+	    });
+	    var length = children.length;
+	    var ret = length && children[0].key;
+	    children.forEach(function (child, i) {
+	      if (child.key === activeKey) {
+	        if (i === length - 1) {
+	          ret = children[0].key;
+	        } else {
+	          ret = children[i + 1].key;
+	        }
+	      }
+	    });
+	    return ret;
+	  },
+	  render: function render() {
+	    var _classnames;
+	
+	    var props = this.props;
+	    var clsPrefix = props.clsPrefix,
+	        tabBarPosition = props.tabBarPosition,
+	        className = props.className,
+	        renderTabContent = props.renderTabContent,
+	        renderTabBar = props.renderTabBar,
+	        tabBarStyle = props.tabBarStyle,
+	        extraContent = props.extraContent,
+	        animated = props.animated;
+	
+	
+	    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
+	
+	    this.tabBar = renderTabBar();
+	    var contents = [_react2["default"].cloneElement(this.tabBar, {
+	      clsPrefix: clsPrefix,
+	      key: "tabBar",
+	      onKeyDown: this.onNavKeyDown,
+	      tabBarPosition: tabBarPosition,
+	      extraContent: extraContent,
+	      onTabClick: this.onTabClick,
+	      panels: props.children,
+	      activeKey: this.state.activeKey
+	    }), _react2["default"].cloneElement(renderTabContent(), {
+	      clsPrefix: clsPrefix,
+	      tabBarPosition: tabBarPosition,
+	      animated: animated,
+	      activeKey: this.state.activeKey,
+	      destroyInactiveTabPane: props.destroyInactiveTabPane,
+	      children: props.children,
+	      style: { height: '100%' },
+	      onChange: this.setActiveKey,
+	      key: "tabContent"
+	    })];
+	    if (tabBarPosition === "bottom") {
+	      contents.reverse();
+	    }
+	    return _react2["default"].createElement(
+	      "div",
+	      { className: cls, style: props.style },
+	      contents
+	    );
+	  }
+	});
+	
+	Tabs.TabPane = _TabPane2["default"];
+	
+	exports.Tabs = Tabs;
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = {
+	  /**
+	   * LEFT
+	   */
+	  LEFT: 37, // also NUM_WEST
+	  /**
+	   * UP
+	   */
+	  UP: 38, // also NUM_NORTH
+	  /**
+	   * RIGHT
+	   */
+	  RIGHT: 39, // also NUM_EAST
+	  /**
+	   * DOWN
+	   */
+	  DOWN: 40 // also NUM_SOUTH
+	};
+	module.exports = exports["default"];
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(5);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _classnames2 = __webpack_require__(3);
+	
+	var _classnames3 = _interopRequireDefault(_classnames2);
+	
+	var _createReactClass = __webpack_require__(86);
+	
+	var _createReactClass2 = _interopRequireDefault(_createReactClass);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+	  className: _propTypes2["default"].string,
+	  active: _propTypes2["default"].bool,
+	  style: _propTypes2["default"].any,
+	  destroyInactiveTabPane: _propTypes2["default"].bool,
+	  forceRender: _propTypes2["default"].bool,
+	  placeholder: _propTypes2["default"].node
+	};
+	var defaultProps = {
+	  placeholder: null
+	};
+	
+	var TabPane = function (_Component) {
+	  _inherits(TabPane, _Component);
+	
+	  function TabPane() {
+	    _classCallCheck(this, TabPane);
+	
+	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	  }
+	
+	  TabPane.prototype.render = function render() {
+	    var _classnames;
+	
+	    var props = this.props;
+	    var className = props.className,
+	        destroyInactiveTabPane = props.destroyInactiveTabPane,
+	        active = props.active,
+	        forceRender = props.forceRender;
+	
+	    this._isActived = this._isActived || active;
+	    var clsPrefix = props.rootclsPrefix + "-tabpane";
+	    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, 1), _defineProperty(_classnames, clsPrefix + "-inactive", !active), _defineProperty(_classnames, clsPrefix + "-active", active), _defineProperty(_classnames, className, className), _classnames));
+	    var isRender = destroyInactiveTabPane ? active : this._isActived;
+	    return _react2["default"].createElement(
+	      "div",
+	      {
+	        style: props.style,
+	        role: "tabpanel",
+	        "aria-hidden": props.active ? "false" : "true",
+	        className: cls
+	      },
+	      isRender || forceRender ? props.children : props.placeholder
+	    );
+	  };
+	
+	  return TabPane;
+	}(_react.Component);
+	
+	TabPane.propTypes = propTypes;
+	TabPane.defaultProps = defaultProps;
+	
+	exports["default"] = TabPane;
+	module.exports = exports["default"];
+
+/***/ }),
 /* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9674,7 +9671,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _createReactClass = __webpack_require__(89);
+	var _createReactClass = __webpack_require__(86);
 	
 	var _createReactClass2 = _interopRequireDefault(_createReactClass);
 	
@@ -9883,7 +9880,7 @@
 	
 	var _TabBarMixin2 = _interopRequireDefault(_TabBarMixin);
 	
-	var _createReactClass = __webpack_require__(89);
+	var _createReactClass = __webpack_require__(86);
 	
 	var _createReactClass2 = _interopRequireDefault(_createReactClass);
 	

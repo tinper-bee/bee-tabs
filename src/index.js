@@ -3,7 +3,7 @@
 // 针对ie9等不支持transform等需要animated，scrollAnimated,inkBarAnimated设置为false
 import createClass from 'create-react-class';
 import React from "react";
-import {Tabs as TabsInner} from './Tabs';
+import { Tabs as TabsInner } from './Tabs';
 import { isTransformSupported } from './utils';
 
 const Tabs = createClass({
@@ -15,17 +15,17 @@ const Tabs = createClass({
         };
         if (isTransformSupported(document.documentElement.style)) {
             return (
-                <div><TabsInner  {...this.props}/></div>
+                <TabsInner  {...this.props} />
             )
         } else {
             // 不支持transform和translate3d的就讓animated是false
             return (
-                <div><TabsInner  {...this.props} {...disableProps} /></div>
+                <TabsInner  {...this.props} {...disableProps} />
             )
         }
 
     }
 });
-Tabs.TabPane = TabsInner.TabPane ;
+Tabs.TabPane = TabsInner.TabPane;
 export default Tabs;
 
