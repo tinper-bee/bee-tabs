@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // export default from './Tabs';
 // 20181211animated，scrollAnimated（ScrollableTabBarMixin），inkBarAnimated（InkTabBarMixin）都是默认为true的
-// 针对ie9等不支持transform等需要animated，scrollAnimated,inkBarAnimated设置为false
+// 去掉所有的动画
 
 
 var _createReactClass = require('create-react-class');
@@ -19,23 +19,18 @@ var _react2 = _interopRequireDefault(_react);
 
 var _Tabs = require('./Tabs');
 
-var _utils = require('./utils');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var Tabs = (0, _createReactClass2["default"])({
     render: function render() {
         var disableProps = {
             animated: false,
-            scrollAnimated: false,
-            inkBarAnimated: false
+            scrollAnimated: false, // scrollableBar的class
+            inkBarAnimated: false, // inkBar的class
+            useTransform3d: false //是否使用translate3d來实现线条
         };
-        if ((0, _utils.isTransformSupported)(document.documentElement.style)) {
-            return _react2["default"].createElement(_Tabs.Tabs, this.props);
-        } else {
-            // 不支持transform和translate3d的就讓animated是false
-            return _react2["default"].createElement(_Tabs.Tabs, _extends({}, this.props, disableProps));
-        }
+        // var obj = Object.assign(this.props,disableProps)
+        return _react2["default"].createElement(_Tabs.Tabs, _extends({}, this.props, disableProps));
     }
 });
 Tabs.TabPane = _Tabs.Tabs.TabPane;

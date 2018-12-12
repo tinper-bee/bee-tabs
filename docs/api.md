@@ -21,10 +21,10 @@
 | onTabClick             | tab 被点击的回调                               | fun               | -       |
 | className              | 在tab组件上添加className                       | String               | -       |
 | extraContent           | 在导航上添加扩展元素                       |  ():React.Node                | -       |
-| onPrevClick              | 当出现滚动时，点击上一个时的回调函数                       | fun               | -       |
-| onNextClick              | 当出现滚动时，点击下一个时的回调函数                       | fun               | -       |
-| animated              | tab切换时，是否使用动画                       | bool               | true       |
-
+| onPrevClick            | 当出现滚动时，点击上一个时的回调函数                       | fun               | -       |
+| onNextClick            | 当出现滚动时，点击下一个时的回调函数                       | fun               | -       |
+| animated               | tab切换时，是否使用动画(1.0.8版本及其以后弃用，动画全部去掉) | bool               | true       |
+| tabBarStyle            | tabBar样式选择，可以是['primary','simple','upborder']中选择| String | 'simple'|
 
 ### TabPane
 

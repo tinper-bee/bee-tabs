@@ -56,7 +56,7 @@ function componentDidUpdate(component, init) {
     if (tabBarPosition === 'top' || tabBarPosition === 'bottom') {
       const left = tabOffset.left - containerOffset.left;
       // use 3d gpu to optimize render
-      if (transformSupported) {
+      if (transformSupported && component.props.useTransform3d) {
         setTransform(inkBarNodeStyle, `translate3d(${left}px,0,0)`);
         inkBarNodeStyle.width = `${tabNode.offsetWidth}px`;
         inkBarNodeStyle.height = '';
@@ -68,7 +68,7 @@ function componentDidUpdate(component, init) {
       }
     } else {
       const top = tabOffset.top - containerOffset.top;
-      if (transformSupported) {
+      if (transformSupported && component.props.useTransform3d) {
         setTransform(inkBarNodeStyle, `translate3d(0,${top}px,0)`);
         inkBarNodeStyle.height = `${tabNode.offsetHeight}px`;
         inkBarNodeStyle.width = '';

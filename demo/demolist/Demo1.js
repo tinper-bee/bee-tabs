@@ -21,6 +21,7 @@ class Demo1 extends Component {
                 onChange={callback}
                 tabBarStyle="upborder"
                 className="demo1-tabs"
+                style={{width:'500px'}}
             >
                 <TabPane tab='望庐山瀑布' key="1">
                     <ul>
@@ -28,6 +29,16 @@ class Demo1 extends Component {
                         <li>遥看瀑布挂前川。</li>
                         <li>飞流直下三千尺，</li>
                         <li>疑是银河落九天。</li>
+                    </ul>
+
+
+                </TabPane>
+                <TabPane tab='望庐山瀑2布' key="1-2">
+                    <ul>
+                        <li>日照香炉生紫烟，</li>
+                        <li>遥看瀑布挂前2川。</li>
+                        <li>飞流直下三千尺，</li>
+                        <li>疑是银河落九2天。</li>
                     </ul>
 
 

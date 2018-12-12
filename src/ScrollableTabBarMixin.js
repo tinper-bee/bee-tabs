@@ -101,10 +101,11 @@ export default {
       this.offset = target;
       let navOffset = {};
       const tabBarPosition = this.props.tabBarPosition;
+      const useTransform3d = this.props.useTransform3d;
       const navStyle = this.refs.nav.style;
       const transformSupported = isTransformSupported(navStyle);
       if (tabBarPosition === 'left' || tabBarPosition === 'right') {
-        if (transformSupported) {
+        if (transformSupported && useTransform3d) {
           navOffset = {
             value: `translate3d(0,${target}px,0)`,
           };
@@ -115,7 +116,7 @@ export default {
           };
         }
       } else {
-        if (transformSupported) {
+        if (transformSupported && useTransform3d) {
           navOffset = {
             value: `translate3d(${target}px,0,0)`,
           };
@@ -126,7 +127,7 @@ export default {
           };
         }
       }
-      if (transformSupported) {
+      if (transformSupported && useTransform3d) {
         setTransform(navStyle, navOffset.value);
       } else {
         navStyle[navOffset.name] = navOffset.value;
