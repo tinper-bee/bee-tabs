@@ -6277,7 +6277,8 @@ input.u-button[type="submit"] {
   .u-tabs .u-tabs-tab-active:hover {
     color: #3fc7fa;
     cursor: default;
-    transform: translateZ(0); }
+    transform: translateZ(0);
+    z-index: 0; }
   .u-tabs .u-tabs-tab-disabled {
     cursor: default;
     color: #ccc; }
@@ -6547,6 +6548,7 @@ input.u-button[type="submit"] {
     height: 0;
     overflow: visible; }
 
+/*基础tab1*/
 /*基础table01*/
 .u-tabs-primary .u-tabs-ink-bar {
   background-color: transparent;

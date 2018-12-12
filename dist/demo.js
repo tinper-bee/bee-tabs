@@ -8161,11 +8161,10 @@
 	    render: function render() {
 	        var disableProps = {
 	            animated: false,
-	            scrollAnimated: false,
-	            inkBarAnimated: false,
-	            useTransform3d: false
+	            scrollAnimated: false, // scrollableBar的class
+	            inkBarAnimated: false, // inkBar的class
+	            useTransform3d: false //是否使用translate3d來实现线条
 	        };
-	        // var obj = Object.assign(this.props,disableProps)
 	        return _react2['default'].createElement(_Tabs.Tabs, _extends({}, this.props, disableProps));
 	    }
 	});

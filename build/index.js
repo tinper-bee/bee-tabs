@@ -29,7 +29,6 @@ var Tabs = (0, _createReactClass2["default"])({
             inkBarAnimated: false, // inkBar的class
             useTransform3d: false //是否使用translate3d來实现线条
         };
-        // var obj = Object.assign(this.props,disableProps)
         return _react2["default"].createElement(_Tabs.Tabs, _extends({}, this.props, disableProps));
     }
 });
