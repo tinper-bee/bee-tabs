@@ -161,6 +161,7 @@ var Tabs = (0, _createReactClass2["default"])({
   render: function render() {
     var _classnames;
 
+    console.log('______', this.props);
     var props = this.props;
     var clsPrefix = props.clsPrefix,
         tabBarPosition = props.tabBarPosition,
@@ -169,7 +170,8 @@ var Tabs = (0, _createReactClass2["default"])({
         renderTabBar = props.renderTabBar,
         tabBarStyle = props.tabBarStyle,
         extraContent = props.extraContent,
-        animated = props.animated;
+        animated = props.animated,
+        tabIndex = props.tabIndex;
 
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
@@ -183,7 +185,8 @@ var Tabs = (0, _createReactClass2["default"])({
       extraContent: extraContent,
       onTabClick: this.onTabClick,
       panels: props.children,
-      activeKey: this.state.activeKey
+      activeKey: this.state.activeKey,
+      tabIndex: tabIndex
     }), _react2["default"].cloneElement(renderTabContent(), {
       clsPrefix: clsPrefix,
       tabBarPosition: tabBarPosition,

@@ -9,6 +9,7 @@ export default {
   getDefaultProps() {
     return {
       styles: {},
+      tabIndex:'0'
     };
   },
   onTabClick(key) {
@@ -56,7 +57,8 @@ export default {
     return rst;
   },
   getRootNode(contents) {
-    const { clsPrefix, onKeyDown, className, extraContent, style } = this.props;
+    console.log(this.props)
+    const { clsPrefix, onKeyDown, className, extraContent, style, tabIndex } = this.props;
     const cls = classnames({
       [`${clsPrefix}-bar`]: 1,
       [className]: !!className,
@@ -65,7 +67,7 @@ export default {
       <div
         role="tablist"
         className={cls}
-        tabIndex="0"
+        tabIndex={tabIndex}
         ref="root"
         onKeyDown={onKeyDown}
         style={style}

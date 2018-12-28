@@ -25,7 +25,8 @@ var tabBarExtraContentStyle = {
 exports["default"] = {
   getDefaultProps: function getDefaultProps() {
     return {
-      styles: {}
+      styles: {},
+      tabIndex: '0'
     };
   },
   onTabClick: function onTabClick(key) {
@@ -78,12 +79,14 @@ exports["default"] = {
   getRootNode: function getRootNode(contents) {
     var _classnames;
 
+    console.log(this.props);
     var _props = this.props,
         clsPrefix = _props.clsPrefix,
         onKeyDown = _props.onKeyDown,
         className = _props.className,
         extraContent = _props.extraContent,
-        style = _props.style;
+        style = _props.style,
+        tabIndex = _props.tabIndex;
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix + '-bar', 1), _defineProperty(_classnames, className, !!className), _classnames));
     return _react2["default"].createElement(
@@ -91,7 +94,7 @@ exports["default"] = {
       {
         role: 'tablist',
         className: cls,
-        tabIndex: '0',
+        tabIndex: tabIndex,
         ref: 'root',
         onKeyDown: onKeyDown,
         style: style

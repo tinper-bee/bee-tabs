@@ -136,6 +136,7 @@ const Tabs = createClass({
   },
 
   render() {
+    console.log('______',this.props)
     const props = this.props;
     const {
       clsPrefix,
@@ -145,7 +146,8 @@ const Tabs = createClass({
       renderTabBar,
       tabBarStyle,
         extraContent,
-        animated
+        animated,
+        tabIndex,
     } = props;
 
     const cls = classnames({
@@ -165,7 +167,8 @@ const Tabs = createClass({
           extraContent,
         onTabClick: this.onTabClick,
         panels: props.children,
-        activeKey: this.state.activeKey
+        activeKey: this.state.activeKey,
+        tabIndex
       }),
       React.cloneElement(renderTabContent(), {
         clsPrefix,
@@ -183,7 +186,7 @@ const Tabs = createClass({
       contents.reverse();
     }
     return (
-      <div className={cls} style={props.style}>
+      <div className={cls} style={props.style} >
         {contents}
       </div>
     );
