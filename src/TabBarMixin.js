@@ -57,7 +57,6 @@ export default {
     return rst;
   },
   getRootNode(contents) {
-    console.log(this.props)
     const { clsPrefix, onKeyDown, className, extraContent, style, tabIndex } = this.props;
     const cls = classnames({
       [`${clsPrefix}-bar`]: 1,

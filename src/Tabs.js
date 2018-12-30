@@ -136,7 +136,6 @@ const Tabs = createClass({
   },
 
   render() {
-    console.log('______',this.props)
     const props = this.props;
     const {
       clsPrefix,

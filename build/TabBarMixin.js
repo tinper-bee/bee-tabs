@@ -79,7 +79,6 @@ exports["default"] = {
   getRootNode: function getRootNode(contents) {
     var _classnames;
 
-    console.log(this.props);
     var _props = this.props,
         clsPrefix = _props.clsPrefix,
         onKeyDown = _props.onKeyDown,

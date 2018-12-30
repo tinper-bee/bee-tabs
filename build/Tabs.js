@@ -161,7 +161,6 @@ var Tabs = (0, _createReactClass2["default"])({
   render: function render() {
     var _classnames;
 
-    console.log('______', this.props);
     var props = this.props;
     var clsPrefix = props.clsPrefix,
         tabBarPosition = props.tabBarPosition,
