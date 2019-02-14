@@ -1,3 +1,7 @@
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 import classnames from 'classnames';
 import { setTransform, isTransformSupported } from './utils';
 import React from 'react';

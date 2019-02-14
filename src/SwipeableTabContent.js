@@ -1,3 +1,7 @@
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 import TabContent from './TabContent';
 import React from 'react';
 import Hammer from 'react-hammerjs';

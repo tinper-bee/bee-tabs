@@ -1,3 +1,7 @@
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 import React from "react";
 import KeyCode from "./KeyCode";
 import TabPane from "./TabPane";

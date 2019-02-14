@@ -1,3 +1,7 @@
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 import React,{Component} from 'react';
 import ScrollableTabBarMixin from './ScrollableTabBarMixin';
 import TabBarMixin from './TabBarMixin';

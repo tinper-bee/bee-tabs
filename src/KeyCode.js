@@ -1,5 +1,8 @@
 
-
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 export default {
   /**
    * LEFT
