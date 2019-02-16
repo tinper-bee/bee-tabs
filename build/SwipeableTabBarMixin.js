@@ -26,7 +26,11 @@ var _utils = require('./utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
+                                                                                                                                                                                                                  * This source code is quoted from rc-tabs.
+                                                                                                                                                                                                                  * homepage: https://github.com/react-component/tabs
+                                                                                                                                                                                                                  */
+
 
 exports["default"] = {
   getInitialState: function getInitialState() {

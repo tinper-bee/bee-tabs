@@ -35,7 +35,9 @@ var ScrollableInkTabBar = (0, _createReactClass2["default"])({
     var scrollbarNode = this.getScrollBarNode([inkBarNode, tabs]);
     return this.getRootNode(scrollbarNode);
   }
-});
-
+}); /**
+    * This source code is quoted from rc-tabs.
+    * homepage: https://github.com/react-component/tabs
+    */
 exports["default"] = ScrollableInkTabBar;
 module.exports = exports['default'];

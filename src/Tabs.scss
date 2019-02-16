@@ -21,7 +21,7 @@
     position: absolute;
     box-sizing: border-box;
     margin-top: -3px;
-    background-color: #3fc7fa;
+    background-color: $brand-primary;
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
   }
@@ -118,12 +118,12 @@
   }
 
   .u-tabs-tab:hover {
-    color: #23c0fa;
+    color: $brand-primary;
   }
 
   .u-tabs-tab-active,
   .u-tabs-tab-active:hover {
-    color: #3fc7fa;
+    color: $brand-primary;
     cursor: default;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -692,7 +692,7 @@
       }
     }
     .u-tabs-tab-active {
-      background: #1e88e5;
+      background: $brand-primary;
       color: #fff;
       &:hover {
         color: #fff;
@@ -737,7 +737,7 @@
         z-index: -1;
         width: $tabs-turn-after-width;
         height: $tabs-turn-after-height;
-        background-color: #1e88e5;
+        background-color: $brand-primary;
         content: '';
         // transition-timing-function: ease, cubic-bezier(0.7, 0, 0.3, 1);
         // transform: translate3d(0, 100%, 0) translate3d(0, 6px, 0);

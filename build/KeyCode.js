@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 exports["default"] = {
   /**
    * LEFT

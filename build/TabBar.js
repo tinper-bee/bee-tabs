@@ -24,7 +24,9 @@ var TabBar = (0, _createReactClass2["default"])({
     var tabs = this.getTabs();
     return this.getRootNode(tabs);
   }
-});
-
+}); /**
+    * This source code is quoted from rc-tabs.
+    * homepage: https://github.com/react-component/tabs
+    */
 exports["default"] = TabBar;
 module.exports = exports['default'];

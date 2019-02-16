@@ -22,6 +22,10 @@ var _createReactClass2 = _interopRequireDefault(_createReactClass);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+/**
+* This source code is quoted from rc-tabs.
+* homepage: https://github.com/react-component/tabs
+*/
 var InkTabBar = (0, _createReactClass2["default"])({
   mixins: [_TabBarMixin2["default"], _InkTabBarMixin2["default"]],
   render: function render() {
