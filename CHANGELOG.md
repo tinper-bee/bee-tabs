@@ -1,3 +1,8 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-tabs/compare/v1.0.10...v2.0.0) (2019-02-16)
+
+
+
 <a name="1.0.10"></a>
 ## [1.0.10](https://github.com/tinper-bee/bee-tabs/compare/v1.0.9...v1.0.10) (2018-12-30)
 
