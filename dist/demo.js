@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(101);var Demo3 = __webpack_require__(102);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\r\n *  @title 基础Tab\r\n *  @description 通过Tabs和TabPane配合完成Tab功能\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\r\nimport { Tabs } from 'tinper-bee';\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nfunction callback() {\r\n\r\n}\r\n\r\nclass Demo1 extends Component {\r\n    render() {\r\n        return (\r\n            <Tabs\r\n                defaultActiveKey=\"1\"\r\n                onChange={callback}\r\n                tabBarStyle=\"upborder\"\r\n                className=\"demo1-tabs\"\r\n                style={{width:'500px'}}\r\n            >\r\n                <TabPane tab='望庐山瀑布' key=\"1\">\r\n                    <ul>\r\n                        <li>日照香炉生紫烟，</li>\r\n                        <li>遥看瀑布挂前川。</li>\r\n                        <li>飞流直下三千尺，</li>\r\n                        <li>疑是银河落九天。</li>\r\n                    </ul>\r\n\r\n\r\n                </TabPane>\r\n                <TabPane tab='望庐山瀑2布' key=\"1-2\">\r\n                    <ul>\r\n                        <li>日照香炉生紫烟，</li>\r\n                        <li>遥看瀑布挂前2川。</li>\r\n                        <li>飞流直下三千尺，</li>\r\n                        <li>疑是银河落九2天。</li>\r\n                    </ul>\r\n\r\n\r\n                </TabPane>\r\n                <TabPane tab='早发白帝城' key=\"2\">\r\n                    <ul>\r\n                        <li>朝辞白帝彩云间，</li>\r\n                        <li>千里江陵一日还。</li>\r\n                        <li>两岸猿声啼不住，</li>\r\n                        <li>轻舟已过万重山。</li>\r\n                    </ul>\r\n                </TabPane>\r\n                <TabPane tab='菩萨蛮·平林漠漠烟如织' key=\"3\">\r\n                    <ul>\r\n                        <li>平林漠漠烟如织，寒山一带伤心碧。</li>\r\n                        <li>暝色入高楼，有人楼上愁。</li>\r\n                        <li>玉阶空伫立，宿鸟归飞急。</li>\r\n                        <li>何处是归程？长亭连短亭</li>\r\n                    </ul>\r\n                </TabPane>\r\n                <TabPane tab='关山月' key=\"4\">\r\n                    <ul>\r\n                        <li>明月出天山，苍茫云海间。</li>\r\n                        <li>长风几万里，吹度玉门关。</li>\r\n                        <li>汉下白登道，胡窥青海湾。</li>\r\n                        <li>由来征战地，不见有人还。</li>\r\n                    </ul>\r\n                </TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\r\n  margin-bottom: 40px;\r\n  width: 600px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 竖向的Tab", "code": "/**\r\n *\r\n * @title 竖向的Tab\r\n * @description 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Tabs } from 'tinper-bee';\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = ({\r\n            activeKey: \"1\",\r\n            start: 0,\r\n        })\r\n    }\r\n    onChange = (activeKey) => {\r\n        console.log(`onChange ${activeKey}o-^-o`);\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    onTabClick = (key) => {\r\n        console.log(`onTabClick ${key}o^o`);\r\n        if (key === this.state.activeKey) {\r\n            this.setState({\r\n                activeKey: '',\r\n            });\r\n        }\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div style={{ margin: 20 }}>\r\n                <Tabs\r\n                    activeKey={this.state.activeKey}\r\n                    tabBarPosition=\"left\"\r\n                    defaultActiveKey=\"1\"\r\n                    onChange={this.onChange}\r\n                    className=\"demo2-tabs\"\r\n                >\r\n                    <TabPane tab=\"望庐山瀑布\" key=\"1\" >\r\n                        <ul>\r\n                            <li>日照香炉生紫烟，</li>\r\n                            <li>遥看瀑布挂前川。</li>\r\n                            <li>飞流直下三千尺，</li>\r\n                            <li>疑是银河落九天。</li>\r\n                        </ul>\r\n                    </TabPane>\r\n                    <TabPane tab=\"早发白帝城\" key=\"2\">\r\n                        <ul>\r\n                            <li>朝辞白帝彩云间，</li>\r\n                            <li>千里江陵一日还。</li>\r\n                            <li>两岸猿声啼不住，</li>\r\n                            <li>轻舟已过万重山。</li>\r\n                        </ul>\r\n                    </TabPane>\r\n                    <TabPane tab=\"菩萨蛮·平林漠漠烟如织\" key=\"3\">\r\n                        <ul>\r\n                            <li>平林漠漠烟如织，寒山一带伤心碧。</li>\r\n                            <li>暝色入高楼，有人楼上愁。</li>\r\n                            <li>玉阶空伫立，宿鸟归飞急。</li>\r\n                            <li>何处是归程？长亭连短亭</li>\r\n                        </ul>\r\n                    </TabPane>\r\n                    <TabPane tab=\"关山月\" key=\"4\">\r\n                        <ul>\r\n                            <li>明月出天山，苍茫云海间。</li>\r\n                            <li>长风几万里，吹度玉门关。</li>\r\n                            <li>汉下白登道，胡窥青海湾。</li>\r\n                            <li>由来征战地，不见有人还。</li>\r\n                        </ul>\r\n                    </TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。", "scss_code": ".demo2-tabs{\r\n  height: 300px;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 页签Tab", "code": "/**\r\n *\r\n * @title 页签Tab\r\n * @description 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\r\nimport { Tabs, Icon } from 'tinper-bee';\r\n\n\r\nconst {TabPane} = Tabs;\r\n\r\nlet index = 1;\r\nconst content = `问世间、情为何物，只教生死相许？天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，\r\n就中更有痴儿女。君应有语，渺万里层云，千山暮雪，只影向谁去？横汾路，寂寞当年箫鼓，荒烟依旧平楚。招魂楚些何嗟及，\r\n山鬼暗谛风雨。天也妒，未信与，莺几燕子俱黄土。千秋万古，为留待骚人，狂歌痛饮，来访雁丘处。`;\r\n\r\nclass Demo3 extends Component {\r\n    state = {\r\n        tabs: [{\r\n            title: '摸鱼儿',\r\n            content: content\r\n        }],\r\n        activeKey: '摸鱼儿',\r\n    };\r\n\r\n    onTabChange = (activeKey) => {\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    construct() {\r\n        const disabled = true;\r\n        return this.state.tabs.map((t) => {\r\n            return (\r\n                <TabPane\r\n                tab={<span>{t.title}\r\n                    <Icon\r\n                        type=\"uf-close-c\"\r\n                        className=\"close-icon\"\r\n                        onClick={this.remove.bind(this, t.title)}\r\n                    />\r\n                </span>}\r\n                key={t.title}\r\n            >\r\n                <div style={{padding: 100}}>\r\n                    {t.content}\r\n                </div>\r\n            </TabPane>);\r\n        }).concat([\r\n            <TabPane\r\n                tab={<a style={{color: 'black', cursor: 'pointer'}} onClick={this.add}> + 添加</a>}\r\n                disabled={disabled}\r\n                key={'__add'}\r\n            />,\r\n        ]);\r\n    }\r\n\r\n    // 删除\r\n    remove = (title, e) => {\r\n        e.stopPropagation();\r\n        if (this.state.tabs.length === 1) {\r\n            alert('只剩一个，不能删');\r\n            return;\r\n        }\r\n        let foundIndex = 0;\r\n        const after = this.state.tabs.filter((t, i) => {\r\n            if (t.title !== title) {\r\n                return true;\r\n            }\r\n            foundIndex = i;\r\n            return false;\r\n        });\r\n        let activeKey = this.state.activeKey;\r\n        if (activeKey === title) {\r\n            if (foundIndex) {\r\n                foundIndex--;\r\n            }\r\n            activeKey = after[foundIndex].title;\r\n        }\r\n        this.setState({\r\n            tabs: after,\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    clear = () => {\r\n        let { tabs } = this.state;\r\n        this.setState({\r\n            tabs:  [tabs.shift()],\r\n            activeKey: '摸鱼儿',\r\n        })\r\n    }\r\n\r\n    // 增加\r\n    add = (e) => {\r\n        e.stopPropagation();\r\n        index++;\r\n        const newTab = {\r\n            title: `名称: ${index}`,\r\n            content: `内容: ${content}`,\r\n        };\r\n        this.setState({\r\n            tabs: this.state.tabs.concat(newTab),\r\n            activeKey: `名称: ${index}`,\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div style={{margin: 20}}>\r\n\r\n                <Tabs\r\n                    activeKey={this.state.activeKey}\r\n                    onChange={this.onTabChange}\r\n                    tabBarStyle=\"primary\"\r\n                    defaultActiveKey=\"摸鱼儿\"\r\n                    extraContent={\r\n                        <Icon\r\n                            type=\"uf-del\"\r\n                            className=\"clear-icon\"\r\n                            onClick={this.clear}\r\n                            title=\"清空\"\r\n                        />\r\n                    }\r\n                >\r\n                    {this.construct()}\r\n                </Tabs>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果", "scss_code": ".close-icon{\r\n  position: relative;\r\n  right: -15px;\r\n  top: 1px;\r\n  color: #adaaaa;\r\n}\r\n\r\n.clear-icon{\r\n  display: inline-block;\r\n  margin-top: 11px;\r\n  margin-right: 10px;\r\n}" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(101);var Demo3 = __webpack_require__(102);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\n *  @title 基础Tab\n *  @description 通过Tabs和TabPane配合完成Tab功能\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\n\nconst {TabPane} = Tabs;\n\nfunction callback() {\n\n}\n\nclass Demo1 extends Component {\n    render() {\n        return (\n            <Tabs\n                defaultActiveKey=\"1\"\n                onChange={callback}\n                tabBarStyle=\"upborder\"\n                className=\"demo1-tabs\"\n                style={{width:'500px'}}\n            >\n                <TabPane tab='望庐山瀑布' key=\"1\">\n                    <ul>\n                        <li>日照香炉生紫烟，</li>\n                        <li>遥看瀑布挂前川。</li>\n                        <li>飞流直下三千尺，</li>\n                        <li>疑是银河落九天。</li>\n                    </ul>\n\n\n                </TabPane>\n                <TabPane tab='望庐山瀑2布' key=\"1-2\">\n                    <ul>\n                        <li>日照香炉生紫烟，</li>\n                        <li>遥看瀑布挂前2川。</li>\n                        <li>飞流直下三千尺，</li>\n                        <li>疑是银河落九2天。</li>\n                    </ul>\n\n\n                </TabPane>\n                <TabPane tab='早发白帝城' key=\"2\">\n                    <ul>\n                        <li>朝辞白帝彩云间，</li>\n                        <li>千里江陵一日还。</li>\n                        <li>两岸猿声啼不住，</li>\n                        <li>轻舟已过万重山。</li>\n                    </ul>\n                </TabPane>\n                <TabPane tab='菩萨蛮·平林漠漠烟如织' key=\"3\">\n                    <ul>\n                        <li>平林漠漠烟如织，寒山一带伤心碧。</li>\n                        <li>暝色入高楼，有人楼上愁。</li>\n                        <li>玉阶空伫立，宿鸟归飞急。</li>\n                        <li>何处是归程？长亭连短亭</li>\n                    </ul>\n                </TabPane>\n                <TabPane tab='关山月' key=\"4\">\n                    <ul>\n                        <li>明月出天山，苍茫云海间。</li>\n                        <li>长风几万里，吹度玉门关。</li>\n                        <li>汉下白登道，胡窥青海湾。</li>\n                        <li>由来征战地，不见有人还。</li>\n                    </ul>\n                </TabPane>\n            </Tabs>\n        )\n    }\n}\n\n", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\n  margin-bottom: 40px;\n  width: 600px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 竖向的Tab", "code": "/**\n *\n * @title 竖向的Tab\n * @description 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Tabs } from 'tinper-bee';\n\nconst {TabPane} = Tabs;\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = ({\n            activeKey: \"1\",\n            start: 0,\n        })\n    }\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey}o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    onTabClick = (key) => {\n        console.log(`onTabClick ${key}o^o`);\n        if (key === this.state.activeKey) {\n            this.setState({\n                activeKey: '',\n            });\n        }\n    }\n\n    render() {\n\n        return (\n            <div style={{ margin: 20 }}>\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    tabBarPosition=\"left\"\n                    defaultActiveKey=\"1\"\n                    onChange={this.onChange}\n                    className=\"demo2-tabs\"\n                >\n                    <TabPane tab=\"望庐山瀑布\" key=\"1\" >\n                        <ul>\n                            <li>日照香炉生紫烟，</li>\n                            <li>遥看瀑布挂前川。</li>\n                            <li>飞流直下三千尺，</li>\n                            <li>疑是银河落九天。</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"早发白帝城\" key=\"2\">\n                        <ul>\n                            <li>朝辞白帝彩云间，</li>\n                            <li>千里江陵一日还。</li>\n                            <li>两岸猿声啼不住，</li>\n                            <li>轻舟已过万重山。</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"菩萨蛮·平林漠漠烟如织\" key=\"3\">\n                        <ul>\n                            <li>平林漠漠烟如织，寒山一带伤心碧。</li>\n                            <li>暝色入高楼，有人楼上愁。</li>\n                            <li>玉阶空伫立，宿鸟归飞急。</li>\n                            <li>何处是归程？长亭连短亭</li>\n                        </ul>\n                    </TabPane>\n                    <TabPane tab=\"关山月\" key=\"4\">\n                        <ul>\n                            <li>明月出天山，苍茫云海间。</li>\n                            <li>长风几万里，吹度玉门关。</li>\n                            <li>汉下白登道，胡窥青海湾。</li>\n                            <li>由来征战地，不见有人还。</li>\n                        </ul>\n                    </TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\n", "desc": " 通过tabBarPosition属性可以控制Tab做不同方向展示,当设置为`left`和`right`时，要为Tabs设置高度。", "scss_code": ".demo2-tabs{\n  height: 300px;\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 页签Tab", "code": "/**\n *\n * @title 页签Tab\n * @description 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs, Icon } from 'tinper-bee';\n\nconst {TabPane} = Tabs;\n\nlet index = 1;\nconst content = `问世间、情为何物，只教生死相许？天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，\n就中更有痴儿女。君应有语，渺万里层云，千山暮雪，只影向谁去？横汾路，寂寞当年箫鼓，荒烟依旧平楚。招魂楚些何嗟及，\n山鬼暗谛风雨。天也妒，未信与，莺几燕子俱黄土。千秋万古，为留待骚人，狂歌痛饮，来访雁丘处。`;\n\nclass Demo3 extends Component {\n    state = {\n        tabs: [{\n            title: '摸鱼儿',\n            content: content\n        }],\n        activeKey: '摸鱼儿',\n    };\n\n    onTabChange = (activeKey) => {\n        this.setState({\n            activeKey,\n        });\n    }\n\n    construct() {\n        const disabled = true;\n        return this.state.tabs.map((t) => {\n            return (\n                <TabPane\n                tab={<span>{t.title}\n                    <Icon\n                        type=\"uf-close-c\"\n                        className=\"close-icon\"\n                        onClick={this.remove.bind(this, t.title)}\n                    />\n                </span>}\n                key={t.title}\n            >\n                <div style={{padding: 100}}>\n                    {t.content}\n                </div>\n            </TabPane>);\n        }).concat([\n            <TabPane\n                tab={<a style={{color: 'black', cursor: 'pointer'}} onClick={this.add}> + 添加</a>}\n                disabled={disabled}\n                key={'__add'}\n            />,\n        ]);\n    }\n\n    // 删除\n    remove = (title, e) => {\n        e.stopPropagation();\n        if (this.state.tabs.length === 1) {\n            alert('只剩一个，不能删');\n            return;\n        }\n        let foundIndex = 0;\n        const after = this.state.tabs.filter((t, i) => {\n            if (t.title !== title) {\n                return true;\n            }\n            foundIndex = i;\n            return false;\n        });\n        let activeKey = this.state.activeKey;\n        if (activeKey === title) {\n            if (foundIndex) {\n                foundIndex--;\n            }\n            activeKey = after[foundIndex].title;\n        }\n        this.setState({\n            tabs: after,\n            activeKey,\n        });\n    }\n\n    clear = () => {\n        let { tabs } = this.state;\n        this.setState({\n            tabs:  [tabs.shift()],\n            activeKey: '摸鱼儿',\n        })\n    }\n\n    // 增加\n    add = (e) => {\n        e.stopPropagation();\n        index++;\n        const newTab = {\n            title: `名称: ${index}`,\n            content: `内容: ${content}`,\n        };\n        this.setState({\n            tabs: this.state.tabs.concat(newTab),\n            activeKey: `名称: ${index}`,\n        });\n    }\n\n    render() {\n\n        return (\n            <div style={{margin: 20}}>\n\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    onChange={this.onTabChange}\n                    tabBarStyle=\"primary\"\n                    defaultActiveKey=\"摸鱼儿\"\n                    extraContent={\n                        <Icon\n                            type=\"uf-del\"\n                            className=\"clear-icon\"\n                            onClick={this.clear}\n                            title=\"清空\"\n                        />\n                    }\n                >\n                    {this.construct()}\n                </Tabs>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " 通过扩展TabPane和ScrollableInkTabBar的方式，可以完成模拟页签的效果", "scss_code": ".close-icon{\n  position: relative;\n  right: -15px;\n  top: 1px;\n  color: #adaaaa;\n}\n\n.clear-icon{\n  display: inline-block;\n  margin-top: 11px;\n  margin-right: 10px;\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -2119,7 +2119,10 @@
 	  }
 	
 	  return (0, _createChainableTypeChecker2.default)(allPropTypes);
-	}
+	} /**
+	   * This source code is quoted from rc-util.
+	   * homepage: https://github.com/react-component/util
+	   */
 
 /***/ }),
 /* 29 */
@@ -2139,6 +2142,10 @@
 	 */
 	
 	// Mostly taken from ReactPropTypes.
+	
+	/* This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	
 	function createChainableTypeChecker(validate) {
 	  function checkType(isRequired, props, propName, componentName, location, propFullName) {
@@ -2174,7 +2181,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _react = __webpack_require__(4);
 	
@@ -2218,8 +2229,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var warned = {};
-	
+	var warned = {}; /**
+	                  * This source code is quoted from rc-util.
+	                  * homepage: https://github.com/react-component/util
+	                  */
 	function deprecated(validator, reason) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2516,7 +2529,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _react = __webpack_require__(4);
 	
@@ -2553,6 +2570,10 @@
 	
 	exports.__esModule = true;
 	exports.default = isRequiredForA11y;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function isRequiredForA11y(validator) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2578,6 +2599,10 @@
 	
 	exports.__esModule = true;
 	exports.default = splitComponentProps;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function _objectEntries(obj) {
 	  var entries = [];
 	  var keys = Object.keys(obj);
@@ -2620,6 +2645,10 @@
 	'use strict';
 	
 	exports.__esModule = true;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function createChainedFunction() {
 	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
 	    funcs[_key] = arguments[_key];
@@ -2652,6 +2681,10 @@
 /* 38 */
 /***/ (function(module, exports) {
 
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	'use strict';
 	
 	/**
@@ -3181,6 +3214,10 @@
 	
 	exports.__esModule = true;
 	exports.default = contains;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function contains(root, n) {
 	  var node = n;
 	  while (node) {
@@ -3212,6 +3249,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function addEventListenerWrap(target, eventType, cb) {
 	  /* eslint camelcase: 2 */
 	  var callback = _reactDom2.default.unstable_batchedUpdates ? function run(e) {
@@ -3731,7 +3772,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _Event = __webpack_require__(46);
 	
@@ -3922,6 +3967,10 @@
 	'use strict';
 	
 	exports.__esModule = true;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	var EVENT_NAME_MAP = {
 	  transitionend: {
 	    transition: 'transitionend',
@@ -4235,7 +4284,10 @@
 	    ret.push(c);
 	  });
 	  return ret;
-	}
+	} /**
+	   * This source code is quoted from rc-util.
+	   * homepage: https://github.com/react-component/util
+	   */
 
 /***/ }),
 /* 50 */
@@ -4271,7 +4323,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
 	
 	//import isWindow from './isWindow';
 	
@@ -5525,6 +5581,16 @@
 	  var viewportHeight = _utils2['default'].viewportHeight(win);
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
+	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
 	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
@@ -7801,7 +7867,7 @@
 	    /**
 	     * @title 尺寸
 	     */
-	    size: _propTypes2["default"].oneOf(['sm', 'xg', 'lg']),
+	    size: _propTypes2["default"].oneOf(['sm', 'md', 'xg', 'lg']),
 	    /**
 	     * @title 样式
 	     */
@@ -7845,6 +7911,7 @@
 	
 	var sizeMap = {
 	    sm: 'sm',
+	    md: 'md',
 	    xg: 'xg',
 	    lg: 'lg'
 	},
