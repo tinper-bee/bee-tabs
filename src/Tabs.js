@@ -179,6 +179,7 @@ const Tabs = createClass({
       tabIndex,
       children,
       hideAdd,
+      ...others
     } = props;
 
     const cls = classnames({
@@ -259,7 +260,7 @@ const Tabs = createClass({
       contents.reverse();
     }
     return (
-      <div className={cls} style={props.style} >
+      <div className={cls} style={props.style} {...others}>
         {contents}
       </div>
     );
