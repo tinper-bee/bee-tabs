@@ -34919,7 +34919,9 @@
 	
 	    var props = this.props;
 	
-	    var clsPrefix = props.clsPrefix,
+	    var activeKey = props.activeKey,
+	        defaultActiveKey = props.defaultActiveKey,
+	        clsPrefix = props.clsPrefix,
 	        tabBarPosition = props.tabBarPosition,
 	        className = props.className,
 	        renderTabContent = props.renderTabContent,
@@ -34930,7 +34932,7 @@
 	        tabIndex = props.tabIndex,
 	        children = props.children,
 	        hideAdd = props.hideAdd,
-	        others = _objectWithoutProperties(props, ["clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd"]);
+	        others = _objectWithoutProperties(props, ["activeKey", "defaultActiveKey", "clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd"]);
 	
 	    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 	

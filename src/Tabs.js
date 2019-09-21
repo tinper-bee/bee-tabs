@@ -168,6 +168,8 @@ const Tabs = createClass({
   render() {
     const props = this.props;
     const {
+      activeKey,
+      defaultActiveKey,
       clsPrefix,
       tabBarPosition,
       className,
