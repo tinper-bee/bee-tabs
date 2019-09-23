@@ -181,6 +181,14 @@ const Tabs = createClass({
       tabIndex,
       children,
       hideAdd,
+      scrollAnimated,
+      inkBarAnimated,
+      useTransform3d,
+      destroyInactiveTabPane,
+      onTabClick,
+      onEdit,
+      onNextClick,
+      onPrevClick,
       ...others
     } = props;
 

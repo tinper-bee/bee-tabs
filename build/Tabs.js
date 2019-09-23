@@ -215,7 +215,15 @@ var Tabs = (0, _createReactClass2["default"])({
         tabIndex = props.tabIndex,
         children = props.children,
         hideAdd = props.hideAdd,
-        others = _objectWithoutProperties(props, ["activeKey", "defaultActiveKey", "clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd"]);
+        scrollAnimated = props.scrollAnimated,
+        inkBarAnimated = props.inkBarAnimated,
+        useTransform3d = props.useTransform3d,
+        destroyInactiveTabPane = props.destroyInactiveTabPane,
+        onTabClick = props.onTabClick,
+        onEdit = props.onEdit,
+        onNextClick = props.onNextClick,
+        onPrevClick = props.onPrevClick,
+        others = _objectWithoutProperties(props, ["activeKey", "defaultActiveKey", "clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd", "scrollAnimated", "inkBarAnimated", "useTransform3d", "destroyInactiveTabPane", "onTabClick", "onEdit", "onNextClick", "onPrevClick"]);
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 
