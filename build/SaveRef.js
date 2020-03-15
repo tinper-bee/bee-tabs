@@ -4,23 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TabBarRootNode = require('./TabBarRootNode');
+var _propTypes = require('prop-types');
 
-var _TabBarRootNode2 = _interopRequireDefault(_TabBarRootNode);
-
-var _TabBarTabsNode = require('./TabBarTabsNode');
-
-var _TabBarTabsNode2 = _interopRequireDefault(_TabBarTabsNode);
-
-var _SaveRef = require('./SaveRef');
-
-var _SaveRef2 = _interopRequireDefault(_SaveRef);
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -34,36 +24,48 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-tabs.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/tabs
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-/* eslint-disable react/prefer-stateless-function */
 
 
-var TabBar = function (_React$Component) {
-  _inherits(TabBar, _React$Component);
+var SaveRef = function (_React$Component) {
+  _inherits(SaveRef, _React$Component);
 
-  function TabBar() {
-    _classCallCheck(this, TabBar);
+  function SaveRef() {
+    var _temp, _this, _ret;
 
-    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    _classCallCheck(this, SaveRef);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.getRef = function (name) {
+      return _this[name];
+    }, _this.saveRef = function (name) {
+      return function (node) {
+        if (node) {
+          _this[name] = node;
+        }
+      };
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  TabBar.prototype.render = function render() {
-    var _this2 = this;
-
-    return _react2["default"].createElement(
-      _SaveRef2["default"],
-      null,
-      function (saveRef) {
-        return _react2["default"].createElement(
-          _TabBarRootNode2["default"],
-          _extends({ saveRef: saveRef }, _this2.props),
-          _react2["default"].createElement(_TabBarTabsNode2["default"], _extends({ saveRef: saveRef }, _this2.props))
-        );
-      }
-    );
+  SaveRef.prototype.render = function render() {
+    return this.props.children(this.saveRef, this.getRef);
   };
 
-  return TabBar;
+  return SaveRef;
 }(_react2["default"].Component);
 
-exports["default"] = TabBar;
+exports["default"] = SaveRef;
+
+
+SaveRef.propTypes = {
+  children: _propTypes2["default"].func
+};
+
+SaveRef.defaultProps = {
+  children: function children() {
+    return null;
+  }
+};
 module.exports = exports['default'];

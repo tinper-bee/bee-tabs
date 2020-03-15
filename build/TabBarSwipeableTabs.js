@@ -10,21 +10,19 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TabBarRootNode = require('./TabBarRootNode');
+var _propTypes = require('prop-types');
 
-var _TabBarRootNode2 = _interopRequireDefault(_TabBarRootNode);
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _TabBarTabsNode = require('./TabBarTabsNode');
+var _classnames2 = require('classnames');
 
-var _TabBarTabsNode2 = _interopRequireDefault(_TabBarTabsNode);
-
-var _SaveRef = require('./SaveRef');
-
-var _SaveRef2 = _interopRequireDefault(_SaveRef);
+var _classnames3 = _interopRequireDefault(_classnames2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34,36 +32,87 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-tabs.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/tabs
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-/* eslint-disable react/prefer-stateless-function */
 
 
-var TabBar = function (_React$Component) {
-  _inherits(TabBar, _React$Component);
+var TabBarSwipeableTabs = function (_React$Component) {
+  _inherits(TabBarSwipeableTabs, _React$Component);
 
-  function TabBar() {
-    _classCallCheck(this, TabBar);
+  function TabBarSwipeableTabs() {
+    _classCallCheck(this, TabBarSwipeableTabs);
 
     return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
   }
 
-  TabBar.prototype.render = function render() {
+  TabBarSwipeableTabs.prototype.render = function render() {
     var _this2 = this;
 
-    return _react2["default"].createElement(
-      _SaveRef2["default"],
-      null,
-      function (saveRef) {
-        return _react2["default"].createElement(
-          _TabBarRootNode2["default"],
-          _extends({ saveRef: saveRef }, _this2.props),
-          _react2["default"].createElement(_TabBarTabsNode2["default"], _extends({ saveRef: saveRef }, _this2.props))
-        );
+    var props = this.props;
+    var children = props.panels;
+    var activeKey = props.activeKey;
+    var rst = [];
+    var clsPrefix = props.clsPrefix;
+
+    var _flexWidth = 1 / props.pageSize * 100 + '%';
+    var tabStyle = {
+      WebkitFlexBasis: _flexWidth,
+      flexBasis: _flexWidth
+    };
+
+    _react2["default"].Children.forEach(children, function (child) {
+      var _classnames;
+
+      if (!child) {
+        return;
       }
-    );
+      var key = child.key;
+      var cls = (0, _classnames3["default"])(clsPrefix + '-tab', (_classnames = {}, _defineProperty(_classnames, clsPrefix + '-tab-active', activeKey === key), _defineProperty(_classnames, clsPrefix + '-tab-disabled', child.props.disabled), _classnames));
+      var events = {};
+      if (!child.props.disabled) {
+        events = {
+          onClick: _this2.props.onTabClick.bind(_this2, key)
+        };
+      }
+      var refProps = {};
+      if (activeKey === key) {
+        refProps.ref = _this2.props.saveRef('activeTab');
+      }
+      rst.push(_react2["default"].createElement(
+        'div',
+        _extends({
+          role: 'tab',
+          style: tabStyle,
+          'aria-disabled': child.props.disabled ? 'true' : 'false',
+          'aria-selected': activeKey === key ? 'true' : 'false'
+        }, events, {
+          className: cls,
+          key: key
+        }, refProps),
+        child.props.tab
+      ));
+    });
+
+    return rst;
   };
 
-  return TabBar;
+  return TabBarSwipeableTabs;
 }(_react2["default"].Component);
 
-exports["default"] = TabBar;
+exports["default"] = TabBarSwipeableTabs;
+
+
+TabBarSwipeableTabs.propTypes = {
+  pageSize: _propTypes2["default"].number,
+  onTabClick: _propTypes2["default"].func,
+  saveRef: _propTypes2["default"].func,
+  destroyInactiveTabPane: _propTypes2["default"].bool,
+  clsPrefix: _propTypes2["default"].string,
+  activeKey: _propTypes2["default"].string,
+  panels: _propTypes2["default"].node
+};
+
+TabBarSwipeableTabs.defaultProps = {
+  pageSize: 5,
+  onTabClick: function onTabClick() {},
+  saveRef: function saveRef() {}
+};
 module.exports = exports['default'];
