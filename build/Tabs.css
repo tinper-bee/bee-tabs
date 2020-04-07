@@ -795,3 +795,14 @@
   margin: 0 15px;
   color: #555;
   font-size: 12px; }
+
+.u-tabs-top .u-tabs-left .u-tabs-nav-scroll {
+  width: auto; }
+
+.u-tabs-top .u-tabs-left .u-tabs-tab {
+  float: none; }
+
+.u-tabs-top .u-tabs-left .u-tabs-ink-bar {
+  width: 2px;
+  height: auto;
+  left: auto; }

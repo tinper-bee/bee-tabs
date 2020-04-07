@@ -1241,3 +1241,8 @@ $tabs-border-color: rgb(233,233,233);
       font-size: 12px;
   }
 }
+.u-tabs-top .u-tabs-left {
+  .u-tabs-nav-scroll { width: auto; }
+  .u-tabs-tab { float: none; }
+  .u-tabs-ink-bar { width: 2px; height: auto; left: auto; }
+}
