@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/tinper-bee/bee-tabs/compare/v3.0.0...v3.0.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([5a10b84](https://github.com/tinper-bee/bee-tabs/commit/5a10b84441072e317c0217210abf4ec192c15067))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/tinper-bee/bee-tabs/compare/v2.1.6...v3.0.0) (2020-03-20)
 
