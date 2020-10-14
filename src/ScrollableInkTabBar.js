@@ -15,14 +15,14 @@ export default class ScrollableInkTabBar extends React.Component {
   componentDidMount(){
     ReactDOM.findDOMNode(this).addEventListener('DNDclick', (e) => {
       if(e && e.detail && e.detail.key){
-        this.onTabClick.call(this, e.detail.key)
+        this.props.onTabClick.call(this, e.detail.key)
       }
     });
   }
   componentWillUnmount(){
     ReactDOM.findDOMNode(this).removeEventListener('DNDclick',(e) => {
       if(e && e.detail && e.detail.key){
-        this.onTabClick.call(this, e.detail.key)
+        this.props.onTabClick.call(this, e.detail.key)
       }
     });
   }
