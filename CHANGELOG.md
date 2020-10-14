@@ -1,3 +1,12 @@
+## [3.0.4](https://github.com/tinper-bee/bee-tabs/compare/v3.0.3...v3.0.4) (2020-10-14)
+
+
+### Bug Fixes
+
+* #DDMPT-20964 ScrollableInkTabBar onTabClick为undefined ([9631901](https://github.com/tinper-bee/bee-tabs/commit/9631901b4c9517605972a1cc8a8dae8fc841a067)), closes [#DDMPT-20964](https://github.com/tinper-bee/bee-tabs/issues/DDMPT-20964)
+
+
+
 ## [3.0.3](https://github.com/tinper-bee/bee-tabs/compare/v3.0.2...v3.0.3) (2020-08-13)
 
 
