@@ -39093,6 +39093,7 @@
 	exports.getLeft = getLeft;
 	exports.getTop = getTop;
 	exports.getDataAttr = getDataAttr;
+	exports.requestAnimationFrame = requestAnimationFrame;
 	
 	var _react = __webpack_require__(1);
 	
@@ -39228,6 +39229,14 @@
 	    }
 	    return prev;
 	  }, {});
+	}
+	
+	function requestAnimationFrame(callback) {
+	  if (window.requestAnimationFrame) {
+	    window.requestAnimationFrame(callback);
+	  } else {
+	    window.setTimeout(callback, 1000 / 60);
+	  }
 	}
 
 /***/ }),
@@ -39488,7 +39497,11 @@
 	  };
 	
 	  InkTabBarNode.prototype.componentDidUpdate = function componentDidUpdate() {
-	    _componentDidUpdate(this);
+	    var _this3 = this;
+	
+	    (0, _utils.requestAnimationFrame)(function () {
+	      return _componentDidUpdate(_this3);
+	    });
 	  };
 	
 	  InkTabBarNode.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -39954,20 +39967,24 @@
 	  };
 	
 	  ScrollableTabBarNode.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var props = this.props;
-	    if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
-	      this.setOffset(0);
-	      return;
-	    }
-	    var nextPrev = this.setNextPrev();
-	    // wait next, prev show hide
-	    /* eslint react/no-did-update-set-state:0 */
-	    if (this.isNextPrevShown(this.state) !== this.isNextPrevShown(nextPrev)) {
-	      this.setState({}, this.scrollToActiveTab);
-	    } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
-	      // can not use props.activeKey
-	      this.scrollToActiveTab();
-	    }
+	    var _this3 = this;
+	
+	    (0, _utils.requestAnimationFrame)(function () {
+	      var props = _this3.props;
+	      if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
+	        _this3.setOffset(0);
+	        return;
+	      }
+	      var nextPrev = _this3.setNextPrev();
+	      // wait next, prev show hide
+	      /* eslint react/no-did-update-set-state:0 */
+	      if (_this3.isNextPrevShown(_this3.state) !== _this3.isNextPrevShown(nextPrev)) {
+	        _this3.setState({}, _this3.scrollToActiveTab);
+	      } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
+	        // can not use props.activeKey
+	        _this3.scrollToActiveTab();
+	      }
+	    });
 	  };
 	
 	  ScrollableTabBarNode.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -42557,7 +42574,8 @@
 	  onChange: _propTypes2["default"].func,
 	  scrollToEnd: _propTypes2["default"].func,
 	  onKeyDown: _propTypes2["default"].func,
-	  enterKeyDown: _propTypes2["default"].bool //是否启用 enter 和 space 键
+	  enterKeyDown: _propTypes2["default"].bool, //是否启用 enter 和 space 键
+	  userSelectText: _propTypes2["default"].bool
 	};
 	
 	var Select = function (_Component) {
@@ -42886,6 +42904,9 @@
 	  // combobox ignore
 	
 	
+	  // 选择下拉列表内容时调用
+	
+	
 	  Select.prototype.focus = function focus() {
 	    if ((0, _util.isSingleMode)(this.props)) {
 	      this.selectionRef.focus();
@@ -42905,6 +42926,9 @@
 	  /**
 	   * noCheck 判断输入的值是否不需要匹配option
 	   */
+	
+	
+	  // 超出长度时hover "+n" 显示的option的名称
 	
 	
 	  Select.prototype.renderClear = function renderClear() {
@@ -42963,7 +42987,7 @@
 	    var realOpen = this.getRealOpenState();
 	    var options = this._options || [];
 	    var dataOrAriaAttributeProps = {};
-	    var customProps = _extends({}, (0, _omit2["default"])(props, ['transitionName', 'choiceTransitionName', 'optionLabelProp', 'notFoundContent', 'clsPrefix', 'prefixCls', 'placeholder', 'dropdownStyle', 'dropdownMenuStyle', 'optionFilterProp', 'showAction', 'tokenSeparators', 'showSearch', 'allowClear', 'enterKeyDown', 'defaultOpen', 'labelInValue', 'defaultActiveFirstOption', 'onSearch', 'onDeselect', 'onInputKeyDown', 'showArrow', 'dropdownMatchSelectWidth', 'autoClearSearchValue', 'searchPlaceholder', 'scrollToEnd', 'filterOption', 'backfill', 'tags', 'combobox', 'supportWrite', 'onChange', 'onFocus', 'onBlur', 'onSelect', 'onSearch', 'onDeselect', 'onInputKeyDown', 'onKeyDown']));
+	    var customProps = _extends({}, (0, _omit2["default"])(props, ['transitionName', 'choiceTransitionName', 'optionLabelProp', 'notFoundContent', 'clsPrefix', 'prefixCls', 'placeholder', 'dropdownStyle', 'dropdownMenuStyle', 'optionFilterProp', 'showAction', 'tokenSeparators', 'showSearch', 'allowClear', 'enterKeyDown', 'defaultOpen', 'labelInValue', 'defaultActiveFirstOption', 'onSearch', 'onDeselect', 'onInputKeyDown', 'showArrow', 'dropdownMatchSelectWidth', 'autoClearSearchValue', 'searchPlaceholder', 'scrollToEnd', 'filterOption', 'backfill', 'tags', 'combobox', 'supportWrite', 'onChange', 'onFocus', 'onBlur', 'onSelect', 'onSearch', 'onDeselect', 'onInputKeyDown', 'onKeyDown', 'userSelectText']));
 	    for (var key in props) {
 	      if (Object.prototype.hasOwnProperty.call(props, key) && (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role')) {
 	        dataOrAriaAttributeProps[key] = props[key];
@@ -43249,13 +43273,49 @@
 	    if (open && !_this2.getInputDOMNode()) {
 	      _this2.onInputKeyDown(event);
 	    } else if (keyCode === _tinperBeeCore.KeyCode.DOWN) {
-	      if (!open) _this2.setOpenState(true);
+	      if (!open) {
+	        _this2.setOpenState(true);
+	        event.target._dataTransfer = {
+	          _cancelBubble: true
+	        };
+	      } else {
+	        _this2.appendDataTransferToEvent(event);
+	      }
+	      event.preventDefault();
+	    } else if (keyCode === _tinperBeeCore.KeyCode.UP) {
+	      if (open) {
+	        _this2.appendDataTransferToEvent(event);
+	      }
 	      event.preventDefault();
 	    } else if (keyCode === _tinperBeeCore.KeyCode.ENTER || keyCode === _tinperBeeCore.KeyCode.SPACE) {
 	      if (!open && enterKeyDown) _this2.setOpenState(true);
 	      event.preventDefault();
 	    }
 	    onKeyDown(event); //sp
+	  };
+	
+	  this.appendDataTransferToEvent = function (event) {
+	    var _props3 = _this2.props,
+	        eventKey = _props3.eventKey,
+	        children = _props3.children;
+	
+	    var _eventKey = eventKey || '0-menu-';
+	    var keyCode = event.keyCode;
+	    var activeKeyKey = _this2.refs.menuItemRef.store.getState().activeKey[_eventKey];
+	    var activeIndex = children.findIndex(function (data) {
+	      return data.key == activeKeyKey;
+	    });
+	    var activeIndexOld = children.findIndex(function (data) {
+	      return data.key == _this2.old_activeKeyKey;
+	    });
+	    // console.log('activeIndex', activeIndex, activeIndexOld);
+	    if (keyCode === _tinperBeeCore.KeyCode.DOWN && activeIndex > activeIndexOld || keyCode === _tinperBeeCore.KeyCode.UP && (activeIndex < activeIndexOld || activeIndexOld == -1)) {
+	      event.target._dataTransfer = {
+	        _cancelBubble: true
+	      };
+	    }
+	    _this2.old_activeKeyKey = activeKeyKey;
+	    return activeIndex;
 	  };
 	
 	  this.onInputKeyDown = function (event) {
@@ -43287,7 +43347,11 @@
 	      event.preventDefault();
 	    } else if (keyCode === _tinperBeeCore.KeyCode.ESC) {
 	      if (state.open) {
-	        _this2.setOpenState(false);
+	        if (_this2.props.needFocusAfterSetOpenState) {
+	          _this2.setOpenState(false, true);
+	        } else {
+	          _this2.setOpenState(false);
+	        }
 	        event.preventDefault();
 	        event.stopPropagation();
 	      }
@@ -43698,9 +43762,9 @@
 	  };
 	
 	  this.getValueByInput = function (string) {
-	    var _props3 = _this2.props,
-	        multiple = _props3.multiple,
-	        tokenSeparators = _props3.tokenSeparators;
+	    var _props4 = _this2.props,
+	        multiple = _props4.multiple,
+	        tokenSeparators = _props4.tokenSeparators;
 	
 	    var nextValue = _this2.state.value;
 	    var hasNewValue = false;
@@ -43909,6 +43973,18 @@
 	    });
 	  };
 	
+	  this.getOptionName = function (optionsInfo, maxTagCount, value) {
+	    var titleArr = [];
+	    var arr = value.slice(maxTagCount);
+	    Object.keys(optionsInfo).forEach(function (key, index) {
+	      var optionItem = optionsInfo[key];
+	      if (arr.includes(optionItem.value)) {
+	        titleArr.push(optionItem.label);
+	      }
+	    });
+	    return titleArr;
+	  };
+	
 	  this.forcePopupAlign = function () {
 	    if (!_this2.state.open) {
 	      return;
@@ -43922,11 +43998,11 @@
 	
 	  this.renderFilterOptions = function () {
 	    var inputValue = _this2.state.inputValue;
-	    var _props4 = _this2.props,
-	        children = _props4.children,
-	        tags = _props4.tags,
-	        filterOption = _props4.filterOption,
-	        notFoundContent = _props4.notFoundContent;
+	    var _props5 = _this2.props,
+	        children = _props5.children,
+	        tags = _props5.tags,
+	        filterOption = _props5.filterOption,
+	        notFoundContent = _props5.notFoundContent;
 	
 	    var menuItems = [];
 	    var childrenKeys = [];
@@ -44037,6 +44113,7 @@
 	
 	      if (_this2.filterOption(inputValue, child)) {
 	        var menuItem = _react2["default"].createElement(_MenuItem2["default"], _extends({
+	          ref: 'menuItemRef',
 	          style: _util.UNSELECTABLE_STYLE,
 	          attribute: _util.UNSELECTABLE_ATTRIBUTE,
 	          value: childValue,
@@ -44059,7 +44136,8 @@
 	    var _state2 = _this2.state,
 	        value = _state2.value,
 	        open = _state2.open,
-	        inputValue = _state2.inputValue;
+	        inputValue = _state2.inputValue,
+	        optionsInfo = _state2.optionsInfo;
 	
 	    var props = _this2.props;
 	    var choiceTransitionName = props.choiceTransitionName,
@@ -44068,7 +44146,8 @@
 	        maxTagCount = props.maxTagCount,
 	        maxTagPlaceholder = props.maxTagPlaceholder,
 	        showSearch = props.showSearch,
-	        removeIcon = props.removeIcon;
+	        removeIcon = props.removeIcon,
+	        userSelectText = props.userSelectText;
 	
 	    var className = prefixCls + '-selection-rendered';
 	    // search input is inside topControlNode in single, multiple & combobox. 2016/04/13
@@ -44129,11 +44208,13 @@
 	      var maxTagPlaceholderEl = void 0;
 	      if (maxTagCount !== undefined && value.length > maxTagCount) {
 	        limitedCountValue = limitedCountValue.slice(0, maxTagCount);
-	        var omittedValues = _this2.getVLForOnChange(value.slice(maxTagCount, value.length));
+	        var _title = _this2.getOptionName(optionsInfo, maxTagCount, value); // 获取option的中文名
+	        // const omittedValues = this.getVLForOnChange(title.slice(maxTagCount, value.length)); // 截取hover时需要显示的数组
 	        var content = '+ ' + (value.length - maxTagCount) + ' ...';
 	        if (maxTagPlaceholder) {
-	          content = typeof maxTagPlaceholder === 'function' ? maxTagPlaceholder(omittedValues) : maxTagPlaceholder;
+	          content = typeof maxTagPlaceholder === 'function' ? maxTagPlaceholder(_title) : maxTagPlaceholder;
 	        }
+	        //超过最大长度显示的内容
 	        maxTagPlaceholderEl = _react2["default"].createElement(
 	          'li',
 	          _extends({
@@ -44142,7 +44223,7 @@
 	            onMouseDown: _util.preventDefaultEvent,
 	            className: prefixCls + '-selection-choice ' + prefixCls + '-selection-choice-disabled',
 	            key: 'maxTagPlaceholder',
-	            title: (0, _util.toTitle)(content)
+	            title: (0, _util.toTitle)(_title)
 	          }),
 	          _react2["default"].createElement(
 	            'div',
@@ -44226,7 +44307,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: className, ref: _this2.saveTopCtrlRef },
+	      { className: className, ref: _this2.saveTopCtrlRef, style: { userSelect: userSelectText ? "text" : null } },
 	      _this2.getPlaceholderElement(),
 	      innerNode
 	    );
@@ -52540,6 +52621,10 @@
 	function toTitle(title) {
 	  if (typeof title === 'string') {
 	    return title;
+	  }
+	  //如果是超出数量长度隐藏起来的选项
+	  if (Array.isArray(title)) {
+	    return title.join();
 	  }
 	  return null;
 	}

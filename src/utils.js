@@ -130,3 +130,11 @@ export function getDataAttr(props) {
     return prev;
   }, {});
 }
+
+export function requestAnimationFrame(callback) {
+  if (window.requestAnimationFrame) {
+    window.requestAnimationFrame(callback)
+  } else {
+    window.setTimeout(callback, 1000 / 60);
+  }
+}

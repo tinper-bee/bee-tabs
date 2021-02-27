@@ -18,6 +18,7 @@ exports.setPxStyle = setPxStyle;
 exports.getLeft = getLeft;
 exports.getTop = getTop;
 exports.getDataAttr = getDataAttr;
+exports.requestAnimationFrame = requestAnimationFrame;
 
 var _react = require('react');
 
@@ -153,4 +154,12 @@ function getDataAttr(props) {
     }
     return prev;
   }, {});
+}
+
+function requestAnimationFrame(callback) {
+  if (window.requestAnimationFrame) {
+    window.requestAnimationFrame(callback);
+  } else {
+    window.setTimeout(callback, 1000 / 60);
+  }
 }

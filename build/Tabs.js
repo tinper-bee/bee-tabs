@@ -111,7 +111,7 @@ var Tabs = (0, _createReactClass2["default"])({
     };
   },
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    if ("activeKey" in nextProps) {
+    if ("activeKey" in nextProps && nextProps.activeKey != this.state.activeKey) {
       this.setState({
         activeKey: nextProps.activeKey
       });

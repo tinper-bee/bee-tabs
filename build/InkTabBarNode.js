@@ -129,7 +129,11 @@ var InkTabBarNode = function (_React$Component) {
   };
 
   InkTabBarNode.prototype.componentDidUpdate = function componentDidUpdate() {
-    _componentDidUpdate(this);
+    var _this3 = this;
+
+    (0, _utils.requestAnimationFrame)(function () {
+      return _componentDidUpdate(_this3);
+    });
   };
 
   InkTabBarNode.prototype.componentWillUnmount = function componentWillUnmount() {

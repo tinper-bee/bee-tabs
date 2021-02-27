@@ -130,20 +130,24 @@ var ScrollableTabBarNode = function (_React$Component) {
   };
 
   ScrollableTabBarNode.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-    var props = this.props;
-    if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
-      this.setOffset(0);
-      return;
-    }
-    var nextPrev = this.setNextPrev();
-    // wait next, prev show hide
-    /* eslint react/no-did-update-set-state:0 */
-    if (this.isNextPrevShown(this.state) !== this.isNextPrevShown(nextPrev)) {
-      this.setState({}, this.scrollToActiveTab);
-    } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
-      // can not use props.activeKey
-      this.scrollToActiveTab();
-    }
+    var _this3 = this;
+
+    (0, _utils.requestAnimationFrame)(function () {
+      var props = _this3.props;
+      if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
+        _this3.setOffset(0);
+        return;
+      }
+      var nextPrev = _this3.setNextPrev();
+      // wait next, prev show hide
+      /* eslint react/no-did-update-set-state:0 */
+      if (_this3.isNextPrevShown(_this3.state) !== _this3.isNextPrevShown(nextPrev)) {
+        _this3.setState({}, _this3.scrollToActiveTab);
+      } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
+        // can not use props.activeKey
+        _this3.scrollToActiveTab();
+      }
+    });
   };
 
   ScrollableTabBarNode.prototype.componentWillUnmount = function componentWillUnmount() {

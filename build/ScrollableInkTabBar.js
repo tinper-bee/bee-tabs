@@ -68,7 +68,7 @@ var ScrollableInkTabBar = function (_React$Component) {
 
     _reactDom2["default"].findDOMNode(this).addEventListener('DNDclick', function (e) {
       if (e && e.detail && e.detail.key) {
-        _this2.onTabClick.call(_this2, e.detail.key);
+        _this2.props.onTabClick.call(_this2, e.detail.key);
       }
     });
   };
@@ -78,7 +78,7 @@ var ScrollableInkTabBar = function (_React$Component) {
 
     _reactDom2["default"].findDOMNode(this).removeEventListener('DNDclick', function (e) {
       if (e && e.detail && e.detail.key) {
-        _this3.onTabClick.call(_this3, e.detail.key);
+        _this3.props.onTabClick.call(_this3, e.detail.key);
       }
     });
   };
