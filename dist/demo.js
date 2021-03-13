@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(303);var Demo2 = __webpack_require__(304);var Demo3 = __webpack_require__(305);var Demo4 = __webpack_require__(306);var Demo5 = __webpack_require__(410);var Demo6 = __webpack_require__(411);var Demo7 = __webpack_require__(412);var Demo8 = __webpack_require__(413);var Demo9 = __webpack_require__(414);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\n *  @title 基础Tab\n *  @description 通过Tabs和TabPane配合完成Tab功能\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\n\n\nconst {TabPane} = Tabs;\n\nclass Demo1 extends Component {\n    state = {\n        activeKey: \"1\"\n    }\n\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey} o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    render() {\n        return (\n            <Tabs\n                defaultActiveKey=\"1\"\n                onChange={this.onChange}\n                className=\"demo1-tabs\"\n            >\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n            </Tabs>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\n  margin-bottom: 40px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用", "code": "/**\n *  @title 禁用\n *  @description 禁用某一项。\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\n\n\nconst {TabPane} = Tabs;\n\nclass Demo2 extends Component {\n    render() {\n        return (\n            <Tabs defaultActiveKey=\"1\">\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                <TabPane tab='Tab 2' disabled key=\"2\">Content of Tab Pane 2</TabPane>\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n            </Tabs>\n        )\n    }\n}\n\nexport default Demo2;", "desc": " 禁用某一项。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 图标", "code": "/**\n *  @title 图标\n *  @description 有图标的标签。\n *\n */\n\nimport React, {Component} from 'react';\nimport { Icon, Tabs } from 'tinper-bee';\n\n\nconst {TabPane} = Tabs;\n\nclass Demo3 extends Component {\n    render() {\n        return (\n            <Tabs defaultActiveKey=\"1\">\n                <TabPane tab={<span><Icon type=\"uf-home\"></Icon>主页</span>} key=\"1\">Content of Tab Pane 1</TabPane>\n                <TabPane tab={<span><Icon type=\"uf-settings\"></Icon>设置</span>} key=\"2\">Content of Tab Pane 2</TabPane>\n                <TabPane tab={<span><Icon type=\"uf-folder-o\"></Icon>文件</span>} key=\"3\">Content of Tab Pane 3</TabPane>\n            </Tabs>\n        )\n    }\n}\n\nexport default Demo3;", "desc": " 有图标的标签。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 位置", "code": "/**\n *\n * @title 位置\n * @description tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Select, Tabs } from 'tinper-bee';\n\n\nconst {TabPane} = Tabs;\nconst {Option} = Select;\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = ({\n            activeKey: \"1\",\n            start: 0,\n            tabBarPosition: \"left\"\n        })\n    }\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey}o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    onTabClick = (key) => {\n        console.log(`onTabClick ${key}o^o`);\n        if (key === this.state.activeKey) {\n            this.setState({\n                activeKey: '',\n            });\n        }\n    }\n\n    changeTabPosition = (tabBarPosition) => {\n        this.setState({ tabBarPosition });\n    }\n\n    render() {\n\n        return (\n            <div className=\"demo4\">\n                <div style={{ marginBottom: 16 }}>\n                    Tab position：\n                    <Select\n                        value={this.state.tabBarPosition}\n                        onChange={this.changeTabPosition}\n                    >\n                        <Option value=\"top\">top</Option>\n                        <Option value=\"bottom\">bottom</Option>\n                        <Option value=\"left\">left</Option>\n                        <Option value=\"right\">right</Option>\n                    </Select>\n                </div>\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    tabBarPosition={this.state.tabBarPosition}\n                    onChange={this.onChange}\n                    defaultActiveKey=\"1\"\n                    className=\"demo4-tabs\"\n                    onTabClick={this.onTabClick}\n                >\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\n                    <TabPane tab='Tab 6' key=\"6\">Content of Tab Pane 6</TabPane>\n                    <TabPane tab='Tab 7' key=\"7\">Content of Tab Pane 7</TabPane>\n                    <TabPane tab='Tab 8' key=\"8\">Content of Tab Pane 8</TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;", "desc": " tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。", "scss_code": ".demo4{\n  width: 600px;\n  margin: 20px;\n  .demo4-tabs{\n    &.u-tabs-left, &.u-tabs-right{\n      height: 300px;\n    }\n  }\n  .u-select{\n    width: 100px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 顶部border", "code": "/**\n *\n * @title 顶部border\n * @description `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Tabs } from 'tinper-bee';\n\n\nconst {TabPane} = Tabs;\n\nclass Demo5 extends Component {\n    render() {\n\n        return (\n            <div className=\"Demo5\">\n                <Tabs\n                    className=\"Demo5-tabs\"\n                    defaultActiveKey=\"1\"\n                    tabBarStyle=\"upborder\"\n                >\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\nexport default Demo5;", "desc": " `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 附加操作", "code": "/**\r\n *\r\n * @title 附加操作\r\n * @description `extraContent`参数可以在页签右边自定义附加操作。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tabs } from 'tinper-bee';\r\n\n\r\n\r\nconst {TabPane} = Tabs;\r\nclass Demo6 extends Component {\r\n\r\n    add = () => {\r\n        alert(\"在这里添加操作 ^_^\")\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"Demo6\">\r\n                <Tabs\r\n                    className=\"Demo6-tabs\"\r\n                    defaultActiveKey=\"1\"\r\n                    tabBarStyle=\"upborder\"\r\n                    extraContent={\r\n                        <Button className=\"add-button\" size=\"sm\" colors=\"primary\" onClick={this.add}>一些操作</Button>\r\n                    }\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo6;", "desc": " `extraContent`参数可以在页签右边自定义附加操作。", "scss_code": ".Demo6-tabs{\n  .add-button{\n    margin: 3px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 查询形式tab", "code": "/**\n *  @title 查询形式tab\n *  @description SearchTabs = Tabs.SearchTabs\n *\n */\n\nimport React, {Component} from 'react';\nimport { Button, Tabs } from 'tinper-bee';\n\n\nconst SearchTabs = Tabs.SearchTabs;\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            tabList:[\n                {\n                    name:\"待提交(9)\",value:'1'\n                },\n                {\n                    name:\"审批中(12)\",value:'2'\n                },\n                {\n                    name:\"执行中(5)\",value:'3'\n                },\n                {\n                    name:\"已完成(123)\",value:'4'\n                },\n                {\n                    name:\"已删除(0)\",value:'5'\n                },\n                {\n                    name:\"全部(149)\",value:'6'\n                },\n            ],\n            selectValue:'3'\n        }\n    }\n    getData=()=>{\n        this.setState({\n            selectValue:'1',\n            tabList:[\n                {\n                    name:\"已删除(0)\",value:'1'\n                },\n                {\n                    name:\"全部(70)\",value:'2'\n                },\n                {\n                    name:\"待提交(3)\",value:'3'\n                },\n                {\n                    name:\"审批中(67)\",value:'4'\n                },\n            ]\n        })\n    }\n\n    render () {\n        return (\n            <div>\n                <Button colors='primary' onClick={this.getData} style={{'marginBottom':'10px'}}>更改数据</Button>\n                <SearchTabs value={this.state.selectValue} onChange={(v)=>{console.log('onchange',v)}}>\n                    {\n                        this.state.tabList.map(item=>\n                            <SearchTabs.Item value={item.value}>{item.name}</SearchTabs.Item >)\n                    }\n                </SearchTabs>\n            </div>\n        )\n    }\n}\nexport default Demo1", "desc": " SearchTabs = Tabs.SearchTabs" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 新增和关闭页签", "code": "/**\r\n *\r\n * @title 新增和关闭页签\r\n * @description 只有卡片样式的页签支持新增和关闭选项。使用 closable={false} 禁止关闭。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\r\n\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.newTabIndex = 0;\r\n        const panes = [\r\n            { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },\r\n            { title: 'Tab 2', content: 'Content of Tab 2', key: '2' },\r\n            {\r\n              title: 'Tab 3',\r\n              content: 'Content of Tab 3',\r\n              key: '3',\r\n              closable: false,\r\n            },\r\n        ];\r\n        this.state = {\r\n            activeKey: panes[0].key,\r\n            panes\r\n        }\r\n    }\r\n\r\n    onTabChange = (activeKey) => {\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n    \r\n    remove = targetKey => {\r\n        let { activeKey } = this.state;\r\n        let lastIndex;\r\n        this.state.panes.forEach((pane, i) => {\r\n          if (pane.key === targetKey) {\r\n            lastIndex = i - 1;\r\n          }\r\n        });\r\n        const panes = this.state.panes.filter(pane => pane.key !== targetKey);\r\n        if (panes.length && activeKey === targetKey) {\r\n          if (lastIndex >= 0) {\r\n            activeKey = panes[lastIndex].key;\r\n          } else {\r\n            activeKey = panes[0].key;\r\n          }\r\n        }\r\n        this.setState({ panes, activeKey });\r\n    };\r\n\r\n    add = () => {\r\n        const { panes } = this.state;\r\n        const activeKey = `newTab${this.newTabIndex++}`;\r\n        panes.push({ title: 'New Tab', content: 'Content of new Tab', key: activeKey });\r\n        this.setState({ panes, activeKey });\r\n    };\r\n\r\n    onEdit = (targetKey, action) => {\r\n        console.log('onEdit', targetKey, action)\r\n        this[action](targetKey);\r\n    };\r\n    \r\n    onNextClick = (event) => {\r\n        console.log('onNextClick', event)\r\n    }\r\n    \r\n    onPrevClick = (event) => {\r\n        console.log('onPrevClick', event)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <Tabs\r\n                className=\"demo8\"\r\n                activeKey={this.state.activeKey}\r\n                onChange={this.onTabChange}\r\n                tabBarStyle=\"editable-card\"\r\n                onEdit={this.onEdit}\r\n                onNextClick={this.onNextClick}\r\n                onPrevClick={this.onPrevClick}\r\n            >\r\n                {this.state.panes.map(pane => (\r\n                    <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>\r\n                        {pane.content}\r\n                    </TabPane>\r\n                ))}\r\n            </Tabs>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo8;", "desc": " 只有卡片样式的页签支持新增和关闭选项。使用 closable={false} 禁止关闭。" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 可拖拽标签", "code": "/**\n *  @title 可拖拽标签\n *  @description 使用 react-dnd 实现标签可拖拽。\n *\n */\n\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\n\nimport { DndProvider, DragSource, DropTarget } from 'react-dnd';\nimport HTML5Backend from 'react-dnd-html5-backend';\n\nconst {TabPane} = Tabs;\n\n// Drag & Drop node\nclass TabNode extends Component {\n    render() {\n      const { connectDragSource, connectDropTarget, children } = this.props;\n      return connectDragSource(connectDropTarget(children));\n    }\n}\n  \nconst cardTarget = {\n    drop(props, monitor) {\n      const dragKey = monitor.getItem().index;\n      const hoverKey = props.index;\n  \n      if (dragKey === hoverKey) {\n        return;\n      }\n  \n      props.moveTabNode(dragKey, hoverKey);\n      monitor.getItem().index = hoverKey;\n    },\n};\n  \nconst cardSource = {\n    beginDrag(props) {\n      return {\n        id: props.id,\n        index: props.index,\n      };\n    },\n};\n  \nconst WrapTabNode = DropTarget('DND_NODE', cardTarget, connect => ({\n    connectDropTarget: connect.dropTarget(),\n  }))(\n    DragSource('DND_NODE', cardSource, (connect, monitor) => ({\n      connectDragSource: connect.dragSource(),\n      isDragging: monitor.isDragging(),\n    }))(TabNode),\n);\n  \nclass DraggableTabs extends Component {\n    state = {\n      order: [],\n    };\n  \n    moveTabNode = (dragKey, hoverKey) => {\n      const newOrder = this.state.order.slice();\n      const { children } = this.props;\n  \n      React.Children.forEach(children, c => {\n        if (newOrder.indexOf(c.key) === -1) {\n          newOrder.push(c.key);\n        }\n      });\n  \n      const dragIndex = newOrder.indexOf(dragKey);\n      const hoverIndex = newOrder.indexOf(hoverKey);\n  \n      newOrder.splice(dragIndex, 1);\n      newOrder.splice(hoverIndex, 0, dragKey);\n  \n      this.setState({\n        order: newOrder,\n      });\n    };\n  \n    renderTabBar = (props, DefaultTabBar) => (\n      <DefaultTabBar {...props}>\n        {node => (\n          <WrapTabNode key={node.key} index={node.key} moveTabNode={this.moveTabNode}>\n            {node}\n          </WrapTabNode>\n        )}\n      </DefaultTabBar>\n    );\n  \n    render() {\n        const { order } = this.state;\n        const { children } = this.props;\n    \n        const tabs = [];\n        React.Children.forEach(children, c => {\n            tabs.push(c);\n        });\n  \n        const orderTabs = tabs.slice().sort((a, b) => {\n            const orderA = order.indexOf(a.key);\n            const orderB = order.indexOf(b.key);\n    \n            if (orderA !== -1 && orderB !== -1) {\n            return orderA - orderB;\n            }\n            if (orderA !== -1) {\n            return -1;\n            }\n            if (orderB !== -1) {\n            return 1;\n            }\n    \n            const ia = tabs.indexOf(a);\n            const ib = tabs.indexOf(b);\n    \n            return ia - ib;\n        });\n        return (\n            <DndProvider backend={HTML5Backend}>\n                <Tabs renderTabBar={this.renderTabBar} {...this.props}>\n                    {orderTabs}\n                </Tabs>\n            </DndProvider>\n        );\n    }\n}\n\nclass Demo9 extends Component {\n    render() {\n        return (\n            <DraggableTabs>\n                <TabPane tab=\"tab 1\" key=\"1\">\n                Content of Tab Pane 1\n                </TabPane>\n                <TabPane tab=\"tab 2\" key=\"2\">\n                Content of Tab Pane 2\n                </TabPane>\n                <TabPane tab=\"tab 3\" key=\"3\">\n                Content of Tab Pane 3\n                </TabPane>\n            </DraggableTabs>\n        )\n    }\n}\n\nexport default Demo9;\n", "desc": " 使用 react-dnd 实现标签可拖拽。" }];
+	var Demo1 = __webpack_require__(303);var Demo2 = __webpack_require__(304);var Demo3 = __webpack_require__(305);var Demo4 = __webpack_require__(306);var Demo5 = __webpack_require__(410);var Demo6 = __webpack_require__(411);var Demo7 = __webpack_require__(412);var Demo8 = __webpack_require__(413);var Demo9 = __webpack_require__(414);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\r\n *  @title 基础Tab\r\n *  @description 通过Tabs和TabPane配合完成Tab功能\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\r\n\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo1 extends Component {\r\n    state = {\r\n        activeKey: \"1\"\r\n    }\r\n\r\n    onChange = (activeKey) => {\r\n        console.log(`onChange ${activeKey} o-^-o`);\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <Tabs\r\n                defaultActiveKey=\"1\"\r\n                onChange={this.onChange}\r\n                className=\"demo1-tabs\"\r\n            >\r\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo1;", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\r\n  margin-bottom: 40px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用", "code": "/**\r\n *  @title 禁用\r\n *  @description 禁用某一项。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\r\n\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo2 extends Component {\r\n    render() {\r\n        return (\r\n            <Tabs defaultActiveKey=\"1\">\r\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                <TabPane tab='Tab 2' disabled key=\"2\">Content of Tab Pane 2</TabPane>\r\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo2;", "desc": " 禁用某一项。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 图标", "code": "/**\r\n *  @title 图标\r\n *  @description 有图标的标签。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Icon, Tabs } from 'tinper-bee';\r\n\n\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo3 extends Component {\r\n    render() {\r\n        return (\r\n            <Tabs defaultActiveKey=\"1\">\r\n                <TabPane tab={<span><Icon type=\"uf-home\"></Icon>主页</span>} key=\"1\">Content of Tab Pane 1</TabPane>\r\n                <TabPane tab={<span><Icon type=\"uf-settings\"></Icon>设置</span>} key=\"2\">Content of Tab Pane 2</TabPane>\r\n                <TabPane tab={<span><Icon type=\"uf-folder-o\"></Icon>文件</span>} key=\"3\">Content of Tab Pane 3</TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo3;", "desc": " 有图标的标签。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 位置", "code": "/**\r\n *\r\n * @title 位置\r\n * @description tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Select, Tabs } from 'tinper-bee';\r\n\n\r\n\r\nconst {TabPane} = Tabs;\r\nconst {Option} = Select;\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = ({\r\n            activeKey: \"1\",\r\n            start: 0,\r\n            tabBarPosition: \"left\"\r\n        })\r\n    }\r\n    onChange = (activeKey) => {\r\n        console.log(`onChange ${activeKey}o-^-o`);\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    onTabClick = (key) => {\r\n        console.log(`onTabClick ${key}o^o`);\r\n        if (key === this.state.activeKey) {\r\n            this.setState({\r\n                activeKey: '',\r\n            });\r\n        }\r\n    }\r\n\r\n    changeTabPosition = (tabBarPosition) => {\r\n        this.setState({ tabBarPosition });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo4\">\r\n                <div style={{ marginBottom: 16 }}>\r\n                    Tab position：\r\n                    <Select\r\n                        value={this.state.tabBarPosition}\r\n                        onChange={this.changeTabPosition}\r\n                    >\r\n                        <Option value=\"top\">top</Option>\r\n                        <Option value=\"bottom\">bottom</Option>\r\n                        <Option value=\"left\">left</Option>\r\n                        <Option value=\"right\">right</Option>\r\n                    </Select>\r\n                </div>\r\n                <Tabs\r\n                    activeKey={this.state.activeKey}\r\n                    tabBarPosition={this.state.tabBarPosition}\r\n                    onChange={this.onChange}\r\n                    defaultActiveKey=\"1\"\r\n                    className=\"demo4-tabs\"\r\n                    onTabClick={this.onTabClick}\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\r\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\r\n                    <TabPane tab='Tab 6' key=\"6\">Content of Tab Pane 6</TabPane>\r\n                    <TabPane tab='Tab 7' key=\"7\">Content of Tab Pane 7</TabPane>\r\n                    <TabPane tab='Tab 8' key=\"8\">Content of Tab Pane 8</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo4;", "desc": " tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。", "scss_code": ".demo4{\r\n  width: 600px;\r\n  margin: 20px;\r\n  .demo4-tabs{\r\n    &.u-tabs-left, &.u-tabs-right{\r\n      height: 300px;\r\n    }\r\n  }\r\n  .u-select{\r\n    width: 100px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 顶部border", "code": "/**\r\n *\r\n * @title 顶部border\r\n * @description `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Tabs } from 'tinper-bee';\r\n\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo5 extends Component {\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"Demo5\">\r\n                <Tabs\r\n                    className=\"Demo5-tabs\"\r\n                    defaultActiveKey=\"1\"\r\n                    tabBarStyle=\"upborder\"\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\r\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo5;", "desc": " `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 附加操作", "code": "/**\r\n *\r\n * @title 附加操作\r\n * @description `extraContent`参数可以在页签右边自定义附加操作。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tabs } from 'tinper-bee';\r\n\n\r\n\r\nconst {TabPane} = Tabs;\r\nclass Demo6 extends Component {\r\n\r\n    add = () => {\r\n        alert(\"在这里添加操作 ^_^\")\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"Demo6\">\r\n                <Tabs\r\n                    className=\"Demo6-tabs\"\r\n                    defaultActiveKey=\"1\"\r\n                    tabBarStyle=\"upborder\"\r\n                    extraContent={\r\n                        <Button className=\"add-button\" size=\"sm\" colors=\"primary\" onClick={this.add}>一些操作</Button>\r\n                    }\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo6;", "desc": " `extraContent`参数可以在页签右边自定义附加操作。", "scss_code": ".Demo6-tabs{\r\n  .add-button{\r\n    margin: 3px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 查询形式tab", "code": "/**\r\n *  @title 查询形式tab\r\n *  @description SearchTabs = Tabs.SearchTabs\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Button, Tabs } from 'tinper-bee';\r\n\n\r\n\r\nconst SearchTabs = Tabs.SearchTabs;\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.state={\r\n            tabList:[\r\n                {\r\n                    name:\"待提交(9)\",value:'1'\r\n                },\r\n                {\r\n                    name:\"审批中(12)\",value:'2'\r\n                },\r\n                {\r\n                    name:\"执行中(5)\",value:'3'\r\n                },\r\n                {\r\n                    name:\"已完成(123)\",value:'4'\r\n                },\r\n                {\r\n                    name:\"已删除(0)\",value:'5'\r\n                },\r\n                {\r\n                    name:\"全部(149)\",value:'6'\r\n                },\r\n            ],\r\n            selectValue:'3'\r\n        }\r\n    }\r\n    getData=()=>{\r\n        this.setState({\r\n            selectValue:'1',\r\n            tabList:[\r\n                {\r\n                    name:\"已删除(0)\",value:'1'\r\n                },\r\n                {\r\n                    name:\"全部(70)\",value:'2'\r\n                },\r\n                {\r\n                    name:\"待提交(3)\",value:'3'\r\n                },\r\n                {\r\n                    name:\"审批中(67)\",value:'4'\r\n                },\r\n            ]\r\n        })\r\n    }\r\n\r\n    render () {\r\n        return (\r\n            <div>\r\n                <Button colors='primary' onClick={this.getData} style={{'marginBottom':'10px'}}>更改数据</Button>\r\n                <SearchTabs value={this.state.selectValue} onChange={(v)=>{console.log('onchange',v)}}>\r\n                    {\r\n                        this.state.tabList.map(item=>\r\n                            <SearchTabs.Item value={item.value}>{item.name}</SearchTabs.Item >)\r\n                    }\r\n                </SearchTabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\nexport default Demo1", "desc": " SearchTabs = Tabs.SearchTabs" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 新增和关闭页签", "code": "/**\r\n *\r\n * @title 新增和关闭页签\r\n * @description 只有卡片样式的页签支持新增和关闭选项。使用 closable={false} 禁止关闭。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\r\n\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.newTabIndex = 0;\r\n        const panes = [\r\n            { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },\r\n            { title: 'Tab 2', content: 'Content of Tab 2', key: '2' },\r\n            {\r\n              title: 'Tab 3',\r\n              content: 'Content of Tab 3',\r\n              key: '3',\r\n              closable: false,\r\n            },\r\n        ];\r\n        this.state = {\r\n            activeKey: panes[0].key,\r\n            panes\r\n        }\r\n    }\r\n\r\n    onTabChange = (activeKey) => {\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n    \r\n    remove = targetKey => {\r\n        let { activeKey } = this.state;\r\n        let lastIndex;\r\n        this.state.panes.forEach((pane, i) => {\r\n          if (pane.key === targetKey) {\r\n            lastIndex = i - 1;\r\n          }\r\n        });\r\n        const panes = this.state.panes.filter(pane => pane.key !== targetKey);\r\n        if (panes.length && activeKey === targetKey) {\r\n          if (lastIndex >= 0) {\r\n            activeKey = panes[lastIndex].key;\r\n          } else {\r\n            activeKey = panes[0].key;\r\n          }\r\n        }\r\n        this.setState({ panes, activeKey });\r\n    };\r\n\r\n    add = () => {\r\n        const { panes } = this.state;\r\n        const activeKey = `newTab${this.newTabIndex++}`;\r\n        panes.push({ title: 'New Tab', content: 'Content of new Tab', key: activeKey });\r\n        this.setState({ panes, activeKey });\r\n    };\r\n\r\n    onEdit = (targetKey, action) => {\r\n        console.log('onEdit', targetKey, action)\r\n        this[action](targetKey);\r\n    };\r\n    \r\n    onNextClick = (event) => {\r\n        console.log('onNextClick', event)\r\n    }\r\n    \r\n    onPrevClick = (event) => {\r\n        console.log('onPrevClick', event)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <Tabs\r\n                className=\"demo8\"\r\n                activeKey={this.state.activeKey}\r\n                onChange={this.onTabChange}\r\n                tabBarStyle=\"editable-card\"\r\n                onEdit={this.onEdit}\r\n                onNextClick={this.onNextClick}\r\n                onPrevClick={this.onPrevClick}\r\n            >\r\n                {this.state.panes.map(pane => (\r\n                    <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>\r\n                        {pane.content}\r\n                    </TabPane>\r\n                ))}\r\n            </Tabs>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo8;", "desc": " 只有卡片样式的页签支持新增和关闭选项。使用 closable={false} 禁止关闭。" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 可拖拽标签", "code": "/**\r\n *  @title 可拖拽标签\r\n *  @description 使用 react-dnd 实现标签可拖拽。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Tabs } from 'tinper-bee';\r\n\r\nimport { DndProvider, DragSource, DropTarget } from 'react-dnd';\r\nimport HTML5Backend from 'react-dnd-html5-backend';\r\n\r\nconst {TabPane} = Tabs;\r\n\r\n// Drag & Drop node\r\nclass TabNode extends Component {\r\n    render() {\r\n      const { connectDragSource, connectDropTarget, children } = this.props;\r\n      return connectDragSource(connectDropTarget(children));\r\n    }\r\n}\r\n  \r\nconst cardTarget = {\r\n    drop(props, monitor) {\r\n      const dragKey = monitor.getItem().index;\r\n      const hoverKey = props.index;\r\n  \r\n      if (dragKey === hoverKey) {\r\n        return;\r\n      }\r\n  \r\n      props.moveTabNode(dragKey, hoverKey);\r\n      monitor.getItem().index = hoverKey;\r\n    },\r\n};\r\n  \r\nconst cardSource = {\r\n    beginDrag(props) {\r\n      return {\r\n        id: props.id,\r\n        index: props.index,\r\n      };\r\n    },\r\n};\r\n  \r\nconst WrapTabNode = DropTarget('DND_NODE', cardTarget, connect => ({\r\n    connectDropTarget: connect.dropTarget(),\r\n  }))(\r\n    DragSource('DND_NODE', cardSource, (connect, monitor) => ({\r\n      connectDragSource: connect.dragSource(),\r\n      isDragging: monitor.isDragging(),\r\n    }))(TabNode),\r\n);\r\n  \r\nclass DraggableTabs extends Component {\r\n    state = {\r\n      order: [],\r\n    };\r\n  \r\n    moveTabNode = (dragKey, hoverKey) => {\r\n      const newOrder = this.state.order.slice();\r\n      const { children } = this.props;\r\n  \r\n      React.Children.forEach(children, c => {\r\n        if (newOrder.indexOf(c.key) === -1) {\r\n          newOrder.push(c.key);\r\n        }\r\n      });\r\n  \r\n      const dragIndex = newOrder.indexOf(dragKey);\r\n      const hoverIndex = newOrder.indexOf(hoverKey);\r\n  \r\n      newOrder.splice(dragIndex, 1);\r\n      newOrder.splice(hoverIndex, 0, dragKey);\r\n  \r\n      this.setState({\r\n        order: newOrder,\r\n      });\r\n    };\r\n  \r\n    renderTabBar = (props, DefaultTabBar) => (\r\n      <DefaultTabBar {...props}>\r\n        {node => (\r\n          <WrapTabNode key={node.key} index={node.key} moveTabNode={this.moveTabNode}>\r\n            {node}\r\n          </WrapTabNode>\r\n        )}\r\n      </DefaultTabBar>\r\n    );\r\n  \r\n    render() {\r\n        const { order } = this.state;\r\n        const { children } = this.props;\r\n    \r\n        const tabs = [];\r\n        React.Children.forEach(children, c => {\r\n            tabs.push(c);\r\n        });\r\n  \r\n        const orderTabs = tabs.slice().sort((a, b) => {\r\n            const orderA = order.indexOf(a.key);\r\n            const orderB = order.indexOf(b.key);\r\n    \r\n            if (orderA !== -1 && orderB !== -1) {\r\n            return orderA - orderB;\r\n            }\r\n            if (orderA !== -1) {\r\n            return -1;\r\n            }\r\n            if (orderB !== -1) {\r\n            return 1;\r\n            }\r\n    \r\n            const ia = tabs.indexOf(a);\r\n            const ib = tabs.indexOf(b);\r\n    \r\n            return ia - ib;\r\n        });\r\n        return (\r\n            <DndProvider backend={HTML5Backend}>\r\n                <Tabs renderTabBar={this.renderTabBar} {...this.props}>\r\n                    {orderTabs}\r\n                </Tabs>\r\n            </DndProvider>\r\n        );\r\n    }\r\n}\r\n\r\nclass Demo9 extends Component {\r\n    render() {\r\n        return (\r\n            <DraggableTabs>\r\n                <TabPane tab=\"tab 1\" key=\"1\">\r\n                Content of Tab Pane 1\r\n                </TabPane>\r\n                <TabPane tab=\"tab 2\" key=\"2\">\r\n                Content of Tab Pane 2\r\n                </TabPane>\r\n                <TabPane tab=\"tab 3\" key=\"3\">\r\n                Content of Tab Pane 3\r\n                </TabPane>\r\n            </DraggableTabs>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo9;\r\n", "desc": " 使用 react-dnd 实现标签可拖拽。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -39093,6 +39093,7 @@
 	exports.getLeft = getLeft;
 	exports.getTop = getTop;
 	exports.getDataAttr = getDataAttr;
+	exports.requestAnimationFrame = requestAnimationFrame;
 	
 	var _react = __webpack_require__(1);
 	
@@ -39228,6 +39229,14 @@
 	    }
 	    return prev;
 	  }, {});
+	}
+	
+	function requestAnimationFrame(callback) {
+	  if (window.requestAnimationFrame) {
+	    window.requestAnimationFrame(callback);
+	  } else {
+	    window.setTimeout(callback, 1000 / 60);
+	  }
 	}
 
 /***/ }),
@@ -39488,7 +39497,11 @@
 	  };
 	
 	  InkTabBarNode.prototype.componentDidUpdate = function componentDidUpdate() {
-	    _componentDidUpdate(this);
+	    var _this3 = this;
+	
+	    (0, _utils.requestAnimationFrame)(function () {
+	      return _componentDidUpdate(_this3);
+	    });
 	  };
 	
 	  InkTabBarNode.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -39954,20 +39967,24 @@
 	  };
 	
 	  ScrollableTabBarNode.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var props = this.props;
-	    if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
-	      this.setOffset(0);
-	      return;
-	    }
-	    var nextPrev = this.setNextPrev();
-	    // wait next, prev show hide
-	    /* eslint react/no-did-update-set-state:0 */
-	    if (this.isNextPrevShown(this.state) !== this.isNextPrevShown(nextPrev)) {
-	      this.setState({}, this.scrollToActiveTab);
-	    } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
-	      // can not use props.activeKey
-	      this.scrollToActiveTab();
-	    }
+	    var _this3 = this;
+	
+	    (0, _utils.requestAnimationFrame)(function () {
+	      var props = _this3.props;
+	      if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
+	        _this3.setOffset(0);
+	        return;
+	      }
+	      var nextPrev = _this3.setNextPrev();
+	      // wait next, prev show hide
+	      /* eslint react/no-did-update-set-state:0 */
+	      if (_this3.isNextPrevShown(_this3.state) !== _this3.isNextPrevShown(nextPrev)) {
+	        _this3.setState({}, _this3.scrollToActiveTab);
+	      } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
+	        // can not use props.activeKey
+	        _this3.scrollToActiveTab();
+	      }
+	    });
 	  };
 	
 	  ScrollableTabBarNode.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -42557,7 +42574,8 @@
 	  onChange: _propTypes2["default"].func,
 	  scrollToEnd: _propTypes2["default"].func,
 	  onKeyDown: _propTypes2["default"].func,
-	  enterKeyDown: _propTypes2["default"].bool //是否启用 enter 和 space 键
+	  enterKeyDown: _propTypes2["default"].bool, //是否启用 enter 和 space 键
+	  userSelectText: _propTypes2["default"].bool
 	};
 	
 	var Select = function (_Component) {
@@ -42886,6 +42904,9 @@
 	  // combobox ignore
 	
 	
+	  // 选择下拉列表内容时调用
+	
+	
 	  Select.prototype.focus = function focus() {
 	    if ((0, _util.isSingleMode)(this.props)) {
 	      this.selectionRef.focus();
@@ -42905,6 +42926,9 @@
 	  /**
 	   * noCheck 判断输入的值是否不需要匹配option
 	   */
+	
+	
+	  // 超出长度时hover "+n" 显示的option的名称
 	
 	
 	  Select.prototype.renderClear = function renderClear() {
@@ -42963,7 +42987,7 @@
 	    var realOpen = this.getRealOpenState();
 	    var options = this._options || [];
 	    var dataOrAriaAttributeProps = {};
-	    var customProps = _extends({}, (0, _omit2["default"])(props, ['transitionName', 'choiceTransitionName', 'optionLabelProp', 'notFoundContent', 'clsPrefix', 'prefixCls', 'placeholder', 'dropdownStyle', 'dropdownMenuStyle', 'optionFilterProp', 'showAction', 'tokenSeparators', 'showSearch', 'allowClear', 'enterKeyDown', 'defaultOpen', 'labelInValue', 'defaultActiveFirstOption', 'onSearch', 'onDeselect', 'onInputKeyDown', 'showArrow', 'dropdownMatchSelectWidth', 'autoClearSearchValue', 'searchPlaceholder', 'scrollToEnd', 'filterOption', 'backfill', 'tags', 'combobox', 'supportWrite', 'onChange', 'onFocus', 'onBlur', 'onSelect', 'onSearch', 'onDeselect', 'onInputKeyDown', 'onKeyDown']));
+	    var customProps = _extends({}, (0, _omit2["default"])(props, ['transitionName', 'choiceTransitionName', 'optionLabelProp', 'notFoundContent', 'clsPrefix', 'prefixCls', 'placeholder', 'dropdownStyle', 'dropdownMenuStyle', 'optionFilterProp', 'showAction', 'tokenSeparators', 'showSearch', 'allowClear', 'enterKeyDown', 'defaultOpen', 'labelInValue', 'defaultActiveFirstOption', 'onSearch', 'onDeselect', 'onInputKeyDown', 'showArrow', 'dropdownMatchSelectWidth', 'autoClearSearchValue', 'searchPlaceholder', 'scrollToEnd', 'filterOption', 'backfill', 'tags', 'combobox', 'supportWrite', 'onChange', 'onFocus', 'onBlur', 'onSelect', 'onSearch', 'onDeselect', 'onInputKeyDown', 'onKeyDown', 'userSelectText']));
 	    for (var key in props) {
 	      if (Object.prototype.hasOwnProperty.call(props, key) && (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role')) {
 	        dataOrAriaAttributeProps[key] = props[key];
@@ -43249,13 +43273,49 @@
 	    if (open && !_this2.getInputDOMNode()) {
 	      _this2.onInputKeyDown(event);
 	    } else if (keyCode === _tinperBeeCore.KeyCode.DOWN) {
-	      if (!open) _this2.setOpenState(true);
+	      if (!open) {
+	        _this2.setOpenState(true);
+	        event.target._dataTransfer = {
+	          _cancelBubble: true
+	        };
+	      } else {
+	        _this2.appendDataTransferToEvent(event);
+	      }
+	      event.preventDefault();
+	    } else if (keyCode === _tinperBeeCore.KeyCode.UP) {
+	      if (open) {
+	        _this2.appendDataTransferToEvent(event);
+	      }
 	      event.preventDefault();
 	    } else if (keyCode === _tinperBeeCore.KeyCode.ENTER || keyCode === _tinperBeeCore.KeyCode.SPACE) {
 	      if (!open && enterKeyDown) _this2.setOpenState(true);
 	      event.preventDefault();
 	    }
 	    onKeyDown(event); //sp
+	  };
+	
+	  this.appendDataTransferToEvent = function (event) {
+	    var _props3 = _this2.props,
+	        eventKey = _props3.eventKey,
+	        children = _props3.children;
+	
+	    var _eventKey = eventKey || '0-menu-';
+	    var keyCode = event.keyCode;
+	    var activeKeyKey = _this2.refs.menuItemRef.store.getState().activeKey[_eventKey];
+	    var activeIndex = children.findIndex(function (data) {
+	      return data.key == activeKeyKey;
+	    });
+	    var activeIndexOld = children.findIndex(function (data) {
+	      return data.key == _this2.old_activeKeyKey;
+	    });
+	    // console.log('activeIndex', activeIndex, activeIndexOld);
+	    if (keyCode === _tinperBeeCore.KeyCode.DOWN && activeIndex > activeIndexOld || keyCode === _tinperBeeCore.KeyCode.UP && (activeIndex < activeIndexOld || activeIndexOld == -1)) {
+	      event.target._dataTransfer = {
+	        _cancelBubble: true
+	      };
+	    }
+	    _this2.old_activeKeyKey = activeKeyKey;
+	    return activeIndex;
 	  };
 	
 	  this.onInputKeyDown = function (event) {
@@ -43287,7 +43347,11 @@
 	      event.preventDefault();
 	    } else if (keyCode === _tinperBeeCore.KeyCode.ESC) {
 	      if (state.open) {
-	        _this2.setOpenState(false);
+	        if (_this2.props.needFocusAfterSetOpenState) {
+	          _this2.setOpenState(false, true);
+	        } else {
+	          _this2.setOpenState(false);
+	        }
 	        event.preventDefault();
 	        event.stopPropagation();
 	      }
@@ -43698,9 +43762,9 @@
 	  };
 	
 	  this.getValueByInput = function (string) {
-	    var _props3 = _this2.props,
-	        multiple = _props3.multiple,
-	        tokenSeparators = _props3.tokenSeparators;
+	    var _props4 = _this2.props,
+	        multiple = _props4.multiple,
+	        tokenSeparators = _props4.tokenSeparators;
 	
 	    var nextValue = _this2.state.value;
 	    var hasNewValue = false;
@@ -43909,6 +43973,18 @@
 	    });
 	  };
 	
+	  this.getOptionName = function (optionsInfo, maxTagCount, value) {
+	    var titleArr = [];
+	    var arr = value.slice(maxTagCount);
+	    Object.keys(optionsInfo).forEach(function (key, index) {
+	      var optionItem = optionsInfo[key];
+	      if (arr.includes(optionItem.value)) {
+	        titleArr.push(optionItem.label);
+	      }
+	    });
+	    return titleArr;
+	  };
+	
 	  this.forcePopupAlign = function () {
 	    if (!_this2.state.open) {
 	      return;
@@ -43922,11 +43998,11 @@
 	
 	  this.renderFilterOptions = function () {
 	    var inputValue = _this2.state.inputValue;
-	    var _props4 = _this2.props,
-	        children = _props4.children,
-	        tags = _props4.tags,
-	        filterOption = _props4.filterOption,
-	        notFoundContent = _props4.notFoundContent;
+	    var _props5 = _this2.props,
+	        children = _props5.children,
+	        tags = _props5.tags,
+	        filterOption = _props5.filterOption,
+	        notFoundContent = _props5.notFoundContent;
 	
 	    var menuItems = [];
 	    var childrenKeys = [];
@@ -44037,6 +44113,7 @@
 	
 	      if (_this2.filterOption(inputValue, child)) {
 	        var menuItem = _react2["default"].createElement(_MenuItem2["default"], _extends({
+	          ref: 'menuItemRef',
 	          style: _util.UNSELECTABLE_STYLE,
 	          attribute: _util.UNSELECTABLE_ATTRIBUTE,
 	          value: childValue,
@@ -44059,7 +44136,8 @@
 	    var _state2 = _this2.state,
 	        value = _state2.value,
 	        open = _state2.open,
-	        inputValue = _state2.inputValue;
+	        inputValue = _state2.inputValue,
+	        optionsInfo = _state2.optionsInfo;
 	
 	    var props = _this2.props;
 	    var choiceTransitionName = props.choiceTransitionName,
@@ -44068,7 +44146,8 @@
 	        maxTagCount = props.maxTagCount,
 	        maxTagPlaceholder = props.maxTagPlaceholder,
 	        showSearch = props.showSearch,
-	        removeIcon = props.removeIcon;
+	        removeIcon = props.removeIcon,
+	        userSelectText = props.userSelectText;
 	
 	    var className = prefixCls + '-selection-rendered';
 	    // search input is inside topControlNode in single, multiple & combobox. 2016/04/13
@@ -44129,11 +44208,13 @@
 	      var maxTagPlaceholderEl = void 0;
 	      if (maxTagCount !== undefined && value.length > maxTagCount) {
 	        limitedCountValue = limitedCountValue.slice(0, maxTagCount);
-	        var omittedValues = _this2.getVLForOnChange(value.slice(maxTagCount, value.length));
+	        var _title = _this2.getOptionName(optionsInfo, maxTagCount, value); // 获取option的中文名
+	        // const omittedValues = this.getVLForOnChange(title.slice(maxTagCount, value.length)); // 截取hover时需要显示的数组
 	        var content = '+ ' + (value.length - maxTagCount) + ' ...';
 	        if (maxTagPlaceholder) {
-	          content = typeof maxTagPlaceholder === 'function' ? maxTagPlaceholder(omittedValues) : maxTagPlaceholder;
+	          content = typeof maxTagPlaceholder === 'function' ? maxTagPlaceholder(_title) : maxTagPlaceholder;
 	        }
+	        //超过最大长度显示的内容
 	        maxTagPlaceholderEl = _react2["default"].createElement(
 	          'li',
 	          _extends({
@@ -44142,7 +44223,7 @@
 	            onMouseDown: _util.preventDefaultEvent,
 	            className: prefixCls + '-selection-choice ' + prefixCls + '-selection-choice-disabled',
 	            key: 'maxTagPlaceholder',
-	            title: (0, _util.toTitle)(content)
+	            title: (0, _util.toTitle)(_title)
 	          }),
 	          _react2["default"].createElement(
 	            'div',
@@ -44226,7 +44307,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: className, ref: _this2.saveTopCtrlRef },
+	      { className: className, ref: _this2.saveTopCtrlRef, style: { userSelect: userSelectText ? "text" : null } },
 	      _this2.getPlaceholderElement(),
 	      innerNode
 	    );
@@ -52540,6 +52621,10 @@
 	function toTitle(title) {
 	  if (typeof title === 'string') {
 	    return title;
+	  }
+	  //如果是超出数量长度隐藏起来的选项
+	  if (Array.isArray(title)) {
+	    return title.join();
 	  }
 	  return null;
 	}

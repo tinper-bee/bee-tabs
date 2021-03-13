@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { setTransform, isTransformSupported, getLeft, getStyle, getTop, getActiveIndex } from './utils';
+import { setTransform, isTransformSupported, getLeft, getStyle, getTop, getActiveIndex, requestAnimationFrame } from './utils';
 
 function componentDidUpdate(component, init) {
   const { styles, panels, activeKey, direction } = component.props;
@@ -87,7 +87,7 @@ export default class InkTabBarNode extends React.Component {
   }
 
   componentDidUpdate() {
-    componentDidUpdate(this);
+    requestAnimationFrame(() => componentDidUpdate(this))
   }
 
   componentWillUnmount() {

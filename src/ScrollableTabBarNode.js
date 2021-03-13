@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import debounce from 'lodash/debounce';
 import ResizeObserver from 'resize-observer-polyfill';
-import { setTransform, isTransformSupported } from './utils';
+import { setTransform, isTransformSupported, requestAnimationFrame } from './utils';
 
 export default class ScrollableTabBarNode extends React.Component {
   constructor(props) {
@@ -31,20 +31,22 @@ export default class ScrollableTabBarNode extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const props = this.props;
-    if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
-      this.setOffset(0);
-      return;
-    }
-    const nextPrev = this.setNextPrev();
-    // wait next, prev show hide
-    /* eslint react/no-did-update-set-state:0 */
-    if (this.isNextPrevShown(this.state) !== this.isNextPrevShown(nextPrev)) {
-      this.setState({}, this.scrollToActiveTab);
-    } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
-      // can not use props.activeKey
-      this.scrollToActiveTab();
-    }
+    requestAnimationFrame(() => {
+      const props = this.props;
+      if (prevProps && prevProps.tabBarPosition !== props.tabBarPosition) {
+        this.setOffset(0);
+        return;
+      }
+      const nextPrev = this.setNextPrev();
+      // wait next, prev show hide
+      /* eslint react/no-did-update-set-state:0 */
+      if (this.isNextPrevShown(this.state) !== this.isNextPrevShown(nextPrev)) {
+        this.setState({}, this.scrollToActiveTab);
+      } else if (!prevProps || props.activeKey !== prevProps.activeKey) {
+        // can not use props.activeKey
+        this.scrollToActiveTab();
+      }
+    })
   }
 
   componentWillUnmount() {
