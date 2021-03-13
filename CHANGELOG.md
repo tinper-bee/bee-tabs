@@ -1,3 +1,7 @@
+## [3.0.5](https://github.com/tinper-bee/bee-tabs/compare/v3.0.4...v3.0.5) (2021-03-13)
+
+
+
 ## [3.0.4](https://github.com/tinper-bee/bee-tabs/compare/v3.0.3...v3.0.4) (2020-10-14)
 
 
